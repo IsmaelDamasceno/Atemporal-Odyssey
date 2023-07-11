@@ -1603,29 +1603,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &780095649 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3232420470916518762, guid: dd9f151dbdb7f7c4b85578b2d07a69bb, type: 3}
-  m_PrefabInstance: {fileID: 3232420471287923659}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &780095652 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3232420470916518767, guid: dd9f151dbdb7f7c4b85578b2d07a69bb, type: 3}
   m_PrefabInstance: {fileID: 3232420471287923659}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &780095655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 780095649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3c668a6ebaae9143b095a8cc5f03a3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 1
 --- !u!1 &1602449088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1686,26 +1668,6 @@ PrefabInstance:
     - target: {fileID: 3232420470916518762, guid: dd9f151dbdb7f7c4b85578b2d07a69bb, type: 3}
       propertyPath: m_Name
       value: Attack Slash
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232420470916518762, guid: dd9f151dbdb7f7c4b85578b2d07a69bb, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232420470916518766, guid: dd9f151dbdb7f7c4b85578b2d07a69bb, type: 3}
-      propertyPath: m_Size.x
-      value: 2.2089894
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232420470916518766, guid: dd9f151dbdb7f7c4b85578b2d07a69bb, type: 3}
-      propertyPath: m_Size.y
-      value: 1.8301222
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232420470916518766, guid: dd9f151dbdb7f7c4b85578b2d07a69bb, type: 3}
-      propertyPath: m_Center.x
-      value: 0.7921777
-      objectReference: {fileID: 0}
-    - target: {fileID: 3232420470916518766, guid: dd9f151dbdb7f7c4b85578b2d07a69bb, type: 3}
-      propertyPath: m_Center.y
-      value: -0.13777006
       objectReference: {fileID: 0}
     - target: {fileID: 3232420470916518767, guid: dd9f151dbdb7f7c4b85578b2d07a69bb, type: 3}
       propertyPath: m_RootOrder
