@@ -14,4 +14,5 @@ public class FinishAttack : StateMachineBehaviour
 		PlayerAttack attack = animator.GetComponent<PlayerAttack>();
 		attack.SetAttacking(false, typeof(FinishAttack));
 	}
+	
 }

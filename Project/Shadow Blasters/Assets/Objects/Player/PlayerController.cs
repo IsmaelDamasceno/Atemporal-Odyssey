@@ -15,6 +15,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 _originalScale;
     private BoxCollider2D _feetCollider;
 
+    public PlayerControls GetControls()
+    {
+        return _controls;
+    }
+
     void Awake()
     {
         _feetCollider = transform.GetChild(0).GetComponent<BoxCollider2D>();

@@ -57,23 +57,36 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private Animator _playerAnimator;
 
-    void Start()
-    {
-        CanAttack = true;
-        _sprRenderer = GetComponent<SpriteRenderer>();
-        _selfAnimator = GetComponent<Animator>();
-        _playerAnimator = transform.parent.GetComponent<Animator>();
-    }
+    /// <summary>
+    /// Player Controller
+    /// </summary>
+	private PlayerControls _controls;
 
-    void Update()
+	void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            Atacar();
-        }
-    }
+		#region Animation Setup
+		_sprRenderer = GetComponent<SpriteRenderer>();
+		_selfAnimator = GetComponent<Animator>();
+		_playerAnimator = transform.parent.GetComponent<Animator>();
 
-    private IEnumerator Cooldown()
+		CanAttack = true;
+		#endregion
+
+		#region Attack Controls
+		_controls = new PlayerControls();
+		
+		_controls.Player.Attack.started += (_) => { Atacar(); };
+		#endregion
+	}
+
+	private void OnEnable() => _controls.Enable();
+	private void OnDisable() => _controls.Disable();
+
+    /// <summary>
+    /// Attack Cooldown
+    /// </summary>
+    /// <returns>Amount of seconds to wait</returns>
+	private IEnumerator Cooldown()
     {
         yield return new WaitForSeconds(_cooldown);
 
@@ -85,6 +98,7 @@ public class PlayerAttack : MonoBehaviour
         {
             return;
         }
+
         _attackingProp.Value = true;
         CanAttack = false;
 
