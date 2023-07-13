@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -73,7 +74,7 @@ public class PlayerAttack : MonoBehaviour
 		#endregion
 
 		#region Attack Controls
-		_controls = new PlayerControls();
+		_controls = Globals.InitiateControls();
 		
 		_controls.Player.Attack.started += (_) => { Attack(); };
 		#endregion

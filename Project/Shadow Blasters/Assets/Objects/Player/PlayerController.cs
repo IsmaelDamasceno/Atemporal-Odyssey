@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -27,7 +29,7 @@ public class PlayerController : MonoBehaviour
 
         _rb = GetComponent<Rigidbody2D>();
 
-        _controls = new PlayerControls();
+		_controls = Globals.InitiateControls();
 
 		#region Movement Controls
 		// Put the value of "Movement" input in _movement value when "Movement" is performed
