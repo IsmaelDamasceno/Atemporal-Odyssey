@@ -75,7 +75,7 @@ public class PlayerAttack : MonoBehaviour
 		#region Attack Controls
 		_controls = new PlayerControls();
 		
-		_controls.Player.Attack.started += (_) => { Atacar(); };
+		_controls.Player.Attack.started += (_) => { Attack(); };
 		#endregion
 	}
 
@@ -93,7 +93,7 @@ public class PlayerAttack : MonoBehaviour
         CanAttack = true;
     }
 
-	public void Atacar() {
+	public void Attack() {
         if (!CanAttack)
         {
             return;
