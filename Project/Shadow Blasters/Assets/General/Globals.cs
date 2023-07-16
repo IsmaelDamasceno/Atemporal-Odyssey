@@ -17,5 +17,6 @@ public static class Globals
 		{
 			_playerControls = new PlayerControls();
 		}
+        return _playerControls;
     }
 }
