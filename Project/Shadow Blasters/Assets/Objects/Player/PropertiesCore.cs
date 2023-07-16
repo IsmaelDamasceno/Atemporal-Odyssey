@@ -11,6 +11,8 @@ namespace Player
 		[HideInInspector] public BoxCollider2D Collider;
 		[HideInInspector] public BoxCollider2D FeetCollider;
 
+		[HideInInspector] public bool Attacking = false;
+
 		void Awake()
 		{
 			Rigidbody = GetComponent<Rigidbody2D>();
