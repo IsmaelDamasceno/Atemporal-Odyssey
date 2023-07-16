@@ -7,10 +7,7 @@ using UnityEngine;
 public static class Globals
 {
     private static PlayerControls _playerControls;
-    public static PlayerControls GetPlayerControls()
-    {
-        return _playerControls;
-    }
+
     public static PlayerControls InitiateControls()
     {
 		if (_playerControls == null)
