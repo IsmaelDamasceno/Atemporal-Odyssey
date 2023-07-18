@@ -15,20 +15,27 @@ namespace Player
 
 		private GameObject _root;
 		private PropertiesCore _propsCore;
+		private DashOrgan _dashOrgan;
 
+		private void Awake()
+		{
+			_inputOrgan = transform.parent.GetComponent<InputOrgan>();
+			_inputOrgan.RegisterChild("Move", this);
+		}
 		void Start()
 		{
 			_root = GetRoot();
 			_propsCore = _root.GetComponent<PropertiesCore>();
 
-			_inputOrgan = transform.parent.GetComponent<InputOrgan>();
 			_rigidbody = _root.GetComponent<Rigidbody2D>();
 			_originalPlayerScale = _root.transform.localScale;
+
+			_dashOrgan = _inputOrgan.GetChild("Dash") as DashOrgan;
 		}
 
 		private void Update()
 		{
-			if (_inputOrgan.MoveInput != 0f && !_propsCore.Attacking)
+			if (_inputOrgan.MoveInput != 0f && !_propsCore.Attacking && !_dashOrgan.Dashing)
 			{
 				_root.transform.localScale = new Vector2(_inputOrgan.MoveInput * _originalPlayerScale.x, _originalPlayerScale.y);
 			}

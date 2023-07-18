@@ -14,9 +14,13 @@ namespace Player
 		private Rigidbody2D _rb;
 		[SerializeField] private LayerMask _groundMask;
 
-		void Start()
+		private void Awake()
 		{
 			_inputOrgan = transform.parent.GetComponent<InputOrgan>();
+			_inputOrgan.RegisterChild("Jump", this);
+		}
+		void Start()
+		{
 			_rb = GetRoot().GetComponent<Rigidbody2D>();
 			_feetCollider = GetRoot().GetComponent<PropertiesCore>().FeetCollider;
 		}

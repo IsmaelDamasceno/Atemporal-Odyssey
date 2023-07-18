@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BaseOrgan : MonoBehaviour
@@ -15,4 +16,16 @@ public class BaseOrgan : MonoBehaviour
 		}
 		return gameObject;
 	}
+	public BaseOrgan GetChild(string name)
+	{
+		return _children[name];
+	}
+	public void RegisterChild(string name, BaseOrgan organ)
+	{
+		_children[name] = organ;
+	}
+
+	private Dictionary<string, BaseOrgan> _children = new Dictionary<string, BaseOrgan>();
+
+
 }

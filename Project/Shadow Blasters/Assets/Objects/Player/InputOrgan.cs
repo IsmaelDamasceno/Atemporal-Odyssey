@@ -6,17 +6,18 @@ namespace Player
 {
 	public class InputOrgan : BaseOrgan
 	{
-
 		private PlayerControls _controls;
 
 		[HideInInspector] public float MoveInput;
 		[HideInInspector] public bool JumpingInput;
 		[HideInInspector] public bool DashingInput;
 		[HideInInspector] public bool AttackInput;
+		[HideInInspector] public float Direction;
 
 		void Awake()
 		{
 			_controls = Globals.InitiateControls();
+			Direction = 1f;
 
 			#region Controls
 			#region Move Input
@@ -43,7 +44,10 @@ namespace Player
 
 		void Update()
 		{
-
+			if (MoveInput != 0f)
+			{
+				Direction = MoveInput;
+			}
 		}
 	}
 }
