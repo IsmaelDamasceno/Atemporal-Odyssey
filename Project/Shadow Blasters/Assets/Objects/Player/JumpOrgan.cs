@@ -6,13 +6,14 @@ namespace Player
 {
 	public class JumpOrgan : BaseOrgan
 	{
-
 		[SerializeField] private float _jumpStrenght;
+		[SerializeField] private LayerMask _groundMask;
 
 		private BoxCollider2D _feetCollider;
 		private InputOrgan _inputOrgan;
 		private Rigidbody2D _rb;
-		[SerializeField] private LayerMask _groundMask;
+
+		private float _initialY;
 
 		private void Awake()
 		{
@@ -32,6 +33,15 @@ namespace Player
 				if (OnFloor() && _rb.velocity.y <= .03f)
 				{
 					_rb.velocity = new Vector2(_rb.velocity.x, _jumpStrenght);
+					_initialY = transform.position.y;
+				}
+			}
+			else
+			{
+				float yDiff = transform.position.y - _initialY;
+				if (!OnFloor() && yDiff >= 1.4f && _rb.velocity.y >= 0f)
+				{
+					_rb.velocity = new Vector2(_rb.velocity.x, Mathf.Abs(_rb.velocity.y * 0.4f));
 				}
 			}
 		}
