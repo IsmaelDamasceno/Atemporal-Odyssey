@@ -31,7 +31,7 @@ public class HealthSystem : MonoBehaviour
     void Start()
     {
 		SetMaxHealth(10);
-        SetHealth(2);
+        SetHealth(s_healthMax);
     }
 
     void Update()
