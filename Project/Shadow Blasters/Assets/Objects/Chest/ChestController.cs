@@ -4,17 +4,33 @@ using UnityEngine;
 
 public class ChestController : MonoBehaviour
 {
-
-    private AnimatorStateInfo _animStateInfo;
-    public bool Open;
+    public bool Open { get; private set; }
+    private Player.InputOrgan _playerInputs;
+    private Animator _animator;
 
     void Start()
     {
-		_animStateInfo = GetComponent<Animator>().GetCurrentAnimatorStateInfo(0);
+		_animator = GetComponent<Animator>();
+        _playerInputs =
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Player.PropertiesCore>().GetChild("Input") as Player.InputOrgan;
     }
 
     void Update()
     {
         
+    }
+
+    public void SetChest(bool value)
+    {
+        Open = value;
+        _animator.SetBool("Open", Open);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && _playerInputs.InteractInput)
+        {
+            SetChest(true);
+        }
     }
 }
