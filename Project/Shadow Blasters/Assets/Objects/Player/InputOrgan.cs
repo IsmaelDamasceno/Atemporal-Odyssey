@@ -11,15 +11,18 @@ namespace Player
 		[HideInInspector] public float MoveInput;
 		[HideInInspector] public bool JumpingInput;
 		[HideInInspector] public bool DashingInput;
+		[HideInInspector] public bool InteractInput;
 		[HideInInspector] public bool AttackInput;
 		[HideInInspector] public float Direction;
 
 		void Awake()
 		{
-			_controls = Globals.InitiateControls();
 			Direction = 1f;
+			transform.parent.GetComponent<PropertiesCore>().RegisterChild("Input", this);
 
 			#region Controls
+			_controls = Globals.InitiateControls();
+
 			#region Move Input
 			_controls.Player.Movement.performed += (ctx) => { MoveInput = ctx.ReadValue<float>(); };
 			_controls.Player.Movement.canceled += (_) => { MoveInput = 0f; };
@@ -35,6 +38,10 @@ namespace Player
 			#region Dash Input
 			_controls.Player.Dash.performed += (_) => { DashingInput = true; };
 			_controls.Player.Dash.canceled += (_) => { DashingInput = false; };
+			#endregion
+			#region Interact Input
+			_controls.Player.Interact.performed += (_) => { InteractInput = true; };
+			_controls.Player.Interact.canceled += (_) => { InteractInput = false; };
 			#endregion
 			#endregion
 		}
