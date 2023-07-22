@@ -31,7 +31,6 @@ public class HealthSystem : MonoBehaviour
     void Start()
     {
 		SetMaxHealth(10);
-        SetHealth(s_healthMax);
     }
 
     void Update()
@@ -64,15 +63,15 @@ public class HealthSystem : MonoBehaviour
         s_healthMax = value;
         if (s_heartList.Count < value)
         {
-            int count = value - s_heartList.Count;
-            for(int i = 0; i < count; i++)
+			for (int i = s_heartList.Count; i < value; i++)
             {
                 GameObject instance = Instantiate(s_Entity._heartPrefab, s_Entity.transform);
                 instance.transform.localPosition = new Vector2(i * s_Entity._spacing, 0f);
 				s_heartList.Add(instance);
             }
-        }
-        else if (s_heartList.Count > value)
+			ChangeHealth(value);
+		}
+		else if (s_heartList.Count > value)
         {
             for(int i = s_heartList.Count-1; i >= value; i--)
             {
