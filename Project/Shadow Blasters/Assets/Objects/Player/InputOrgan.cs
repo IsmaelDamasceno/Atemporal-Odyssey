@@ -58,7 +58,14 @@ namespace Player
 
 			if (Input.GetKeyDown(KeyCode.Tab))
 			{
-				InventoryAnimations.OpenInventory();
+				if (InventoryManager.Open)
+				{
+					InventoryAnimations.CloseInventory();
+				}
+				else
+				{
+					InventoryAnimations.OpenInventory();
+				}
 			}
 		}
 	}
