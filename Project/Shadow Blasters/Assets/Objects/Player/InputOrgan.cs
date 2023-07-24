@@ -55,6 +55,11 @@ namespace Player
 			{
 				Direction = MoveInput;
 			}
+
+			if (Input.GetKeyDown(KeyCode.Tab))
+			{
+				InventoryAnimations.OpenInventory();
+			}
 		}
 	}
 }
