@@ -13,7 +13,7 @@ public class Slot : MonoBehaviour, IPointerDownHandler
     public Color DefaultColor;
     public Color HoverColor;
 
-    void Start()
+    void Awake()
     {
         _image = GetComponent<Image>();
     }
@@ -29,4 +29,9 @@ public class Slot : MonoBehaviour, IPointerDownHandler
 			}
 		}
 	}
+
+    public void SetActive(bool val)
+    {
+        _image.color = (val == true) ? HoverColor : DefaultColor;
+    }
 }
