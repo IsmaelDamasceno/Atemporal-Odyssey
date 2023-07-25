@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SlotItem : MonoBehaviour, IPointerDownHandler
+public class SlotItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     [SerializeField] private GameObject _heldItem;
@@ -25,14 +25,30 @@ public class SlotItem : MonoBehaviour, IPointerDownHandler
 		{
 			transform.position = Input.mousePosition;
 		}
+        if (_hovered)
+        {
+            if (transform.parent.TryGetComponent(out Slot slot))
+            {
+                slot.Image.color = slot.HoveredColor;
+            }
+        }
 	}
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log($"Mouse down on {eventData.pointerCurrentRaycast.gameObject.name}");
 		if (!Held)
 		{
 			InventoryMouse.PickItem(this);
 		}
 	}
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        _hovered = true;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _hovered = false;
+    }
 }

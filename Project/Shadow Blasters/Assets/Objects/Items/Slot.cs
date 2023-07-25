@@ -4,23 +4,41 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Slot : MonoBehaviour, IPointerDownHandler
+public class Slot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private bool _hovered;
-    private Image _image;
+	private bool _selected;
 
+    public Image Image { get; private set; }
     public SlotItem Item;
     public Color DefaultColor;
-    public Color HoverColor;
+    public Color SelectedColor;
+    public Color HoveredColor;
 
     void Awake()
     {
-        _image = GetComponent<Image>();
+		Image = GetComponent<Image>();
+    }
+    void Update()
+    {
+        if (_hovered && Item == null)
+        {
+
+		}
+	}
+
+    public void SetActive(bool val)
+    {
+		_selected = val;
+		if (!_hovered)
+		{
+			Image.color = (val == true) ? SelectedColor : DefaultColor;
+		}
     }
 
-    public void OnPointerDown(PointerEventData eventData)
-    {
-		Debug.Log($"Mouse down on {eventData.pointerCurrentRaycast.gameObject.name}");
+	#region Pointer Handlers
+	public void OnPointerDown(PointerEventData eventData)
+	{
 		if (InventoryMouse.HeldItem != null)
 		{
 			if (Item == null)
@@ -30,8 +48,16 @@ public class Slot : MonoBehaviour, IPointerDownHandler
 		}
 	}
 
-    public void SetActive(bool val)
-    {
-        _image.color = (val == true) ? HoverColor : DefaultColor;
-    }
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		_hovered = true;
+		Image.color = HoveredColor;
+	}
+
+	public void OnPointerExit(PointerEventData eventData)
+	{
+		_hovered = false;
+		Image.color = (_selected == true) ? SelectedColor : DefaultColor;
+	}
+	#endregion
 }

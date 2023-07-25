@@ -91,4 +91,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Item: {fileID: 0}
   DefaultColor: {r: 0.8392157, g: 0.80784315, b: 0.8980392, a: 1}
-  HoverColor: {r: 0.5245465, g: 0.47726062, b: 0.6132076, a: 1}
+  SelectedColor: {r: 0.56401974, g: 0.5277234, b: 0.6320754, a: 1}
+  HoveredColor: {r: 0.49568352, g: 0.745283, b: 0.54993016, a: 1}
