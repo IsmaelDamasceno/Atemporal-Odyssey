@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 764251212}
   - component: {fileID: 764251213}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: DashOrgan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,7 @@ GameObject:
   - component: {fileID: 8082379111555332932}
   - component: {fileID: 8082379111555332933}
   - component: {fileID: 8082379111555332931}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PlayerEntity
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8082379111688789565}
   - component: {fileID: 8082379111688789564}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: InputOrgan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,6 +251,7 @@ MonoBehaviour:
   MoveInput: 0
   JumpingInput: 0
   DashingInput: 0
+  InteractInput: 0
   AttackInput: 0
   Direction: 0
 --- !u!1 &8082379111697017830
@@ -263,7 +264,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8082379111697017829}
   - component: {fileID: 8082379111697017828}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: MoveOrgan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8082379111742549422}
   - component: {fileID: 8082379111742549421}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: JumpOrgan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -356,7 +357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8082379112158910666}
   - component: {fileID: 8082379112158910665}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FeetCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,6 +460,10 @@ PrefabInstance:
     - target: {fileID: 528516376017094446, guid: e571c5356907f5b488f2d586398a6040, type: 3}
       propertyPath: m_Name
       value: AttackOrgan
+      objectReference: {fileID: 0}
+    - target: {fileID: 528516376017094446, guid: e571c5356907f5b488f2d586398a6040, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

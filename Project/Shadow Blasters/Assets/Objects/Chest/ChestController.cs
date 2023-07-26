@@ -8,6 +8,8 @@ public class ChestController : MonoBehaviour
     private Player.InputOrgan _playerInputs;
     private Animator _animator;
 
+    [SerializeField] private List<GameObject> _itemStorage;
+
     void Start()
     {
 		_animator = GetComponent<Animator>();
@@ -24,6 +26,14 @@ public class ChestController : MonoBehaviour
     {
         Open = value;
         _animator.SetBool("Open", Open);
+        if (Open && _itemStorage != null)
+        {
+            foreach(GameObject item in _itemStorage)
+            {
+                Instantiate(item, transform.position, Quaternion.Euler(Vector3.zero));
+            }
+            _itemStorage = null;
+		}
     }
 
     private void OnTriggerStay2D(Collider2D collision)
