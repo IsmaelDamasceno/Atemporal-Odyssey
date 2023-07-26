@@ -40,4 +40,17 @@ public class HotbarManager : MonoBehaviour
 			}
 		}
 	}
+
+	public static Slot GetSlotAvailable()
+	{
+		foreach(Slot slot in s_Slots)
+		{
+			if (slot.Item == null)
+			{
+				return slot;
+			}
+		}
+		Debug.LogWarning("No Slot available found in the hotbar");
+		return null;
+	}
 }

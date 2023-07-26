@@ -7,16 +7,21 @@ using UnityEngine.UI;
 public class SlotItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
-    [SerializeField] private GameObject _heldItem;
-
     public bool Held;
     public Image Image { get; private set; }
     private bool _hovered;
+    [SerializeField] private Item _item;
 
-    void Start()
+    void Awake()
     {
+        Debug.Log("Awake");
         Image = GetComponent<Image>();
         transform.parent.GetComponent<Slot>().Item = this;
+
+        if (_item != null)
+        {
+            InitializeItem(_item);
+        }
     }
 
     void Update()
@@ -34,7 +39,15 @@ public class SlotItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
         }
 	}
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void InitializeItem(Item newItem)
+    {
+        Debug.Log("Initialize Item");
+		_item = newItem;
+        Image.sprite = _item.Sprite;
+    }
+
+
+	public void OnPointerDown(PointerEventData eventData)
     {
 		if (!Held)
 		{

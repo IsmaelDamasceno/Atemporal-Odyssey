@@ -4,15 +4,30 @@ using UnityEngine;
 
 public class DroppedItem : MonoBehaviour
 {
-
-    [SerializeField] private GameObject _slotItem;
+    [SerializeField] private Item _item;
+    private SpriteRenderer _image;
 
     private Player.InputOrgan _playerInputs;
+
+    private void Awake()
+    {
+        _image = GetComponent<SpriteRenderer>();
+        if (_item != null)
+        {
+            InitializeItem(_item);
+        }
+    }
 
     void Start()
     {
         _playerInputs =
             GameObject.FindGameObjectWithTag("Player").GetComponent<Player.PropertiesCore>().GetChild("Input") as Player.InputOrgan;
+	}
+
+    public void InitializeItem(Item newItem)
+    {
+        _item = newItem;
+        _image.sprite = _item.Sprite;
     }
 
     void Update()
@@ -24,8 +39,8 @@ public class DroppedItem : MonoBehaviour
     {
         if (collision.CompareTag("Player") && _playerInputs.InteractInput)
         {
+			InventoryManager.CreateInvItem(_item);
             Destroy(gameObject);
-        }
+		}
     }
-
 }
