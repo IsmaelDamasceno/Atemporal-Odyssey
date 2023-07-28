@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3305283493930938913, guid: a390f58011371704e9611fae4cb0e34b, type: 3}
       propertyPath: m_Name
-      value: Dropped Pickaxe Variant
+      value: Dropped Pickaxe
       objectReference: {fileID: 0}
     - target: {fileID: 3305283493930938914, guid: a390f58011371704e9611fae4cb0e34b, type: 3}
       propertyPath: m_Sprite
@@ -104,6 +104,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3305283493930938917, guid: a390f58011371704e9611fae4cb0e34b, type: 3}
+      propertyPath: _item
+      value: 
+      objectReference: {fileID: 11400000, guid: d0b067b113471d940accdcbb88ada5e5, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a390f58011371704e9611fae4cb0e34b, type: 3}
