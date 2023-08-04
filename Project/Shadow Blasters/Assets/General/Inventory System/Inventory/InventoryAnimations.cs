@@ -43,11 +43,15 @@ public class InventoryAnimations : MonoBehaviour
     {
         s_Instance.StartCoroutine(s_Instance.OpenCloseCoroutine(1));
         InventoryManager.Open = true;
+
+        HotbarManager.GetSelectedSlot().SetActive(false);
     }
     public static void CloseInventory()
     {
 		s_Instance.StartCoroutine(s_Instance.OpenCloseCoroutine(0));
 		InventoryManager.Open = false;
+
+		HotbarManager.GetSelectedSlot().SetActive(true);
 	}
 
     private IEnumerator OpenCloseCoroutine(int val)

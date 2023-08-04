@@ -30,15 +30,25 @@ public class HotbarManager : MonoBehaviour
 
 	void Update()
 	{
+		if (InventoryManager.Open)
+		{
+			return;
+		}
+
 		for(int key = (int)KeyCode.Alpha1; key <= (int)KeyCode.Alpha9; key ++)
 		{
 			if (Input.GetKeyDown((KeyCode)key))
 			{
-				s_Slots[s_SelectedSlot].SetActive(false);
+				GetSelectedSlot().SetActive(false);
 				s_SelectedSlot = key - ((int)KeyCode.Alpha1);
-				s_Slots[s_SelectedSlot].SetActive(true);
+				GetSelectedSlot().SetActive(true);
 			}
 		}
+	}
+
+	public static Slot GetSelectedSlot()
+	{
+		return s_Slots[s_SelectedSlot];
 	}
 
 	public static Slot GetSlotAvailable()
