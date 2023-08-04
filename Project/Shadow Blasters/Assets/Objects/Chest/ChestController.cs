@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChestController : MonoBehaviour
+public class ChestController : MonoBehaviour, IInteractable
 {
     public bool Open { get; private set; }
-    private Player.InputOrgan _playerInputs;
     private Animator _animator;
+
+    [SerializeField] private List<GameObject> _itemStorage;
 
     void Start()
     {
 		_animator = GetComponent<Animator>();
-        _playerInputs =
-            GameObject.FindGameObjectWithTag("Player").GetComponent<Player.PropertiesCore>().GetChild("Input") as Player.InputOrgan;
     }
 
     void Update()
@@ -24,13 +23,27 @@ public class ChestController : MonoBehaviour
     {
         Open = value;
         _animator.SetBool("Open", Open);
+        if (Open && _itemStorage != null)
+        {
+            foreach(GameObject item in _itemStorage)
+            {
+                Debug.Log($"Instantiating {item}");
+                Instantiate(item, transform.position, Quaternion.Euler(Vector3.zero));
+            }
+            _itemStorage = null;
+		}
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    public bool Interact()
     {
-        if (collision.CompareTag("Player") && _playerInputs.InteractInput)
+        if (!Open)
         {
-            SetChest(true);
+			SetChest(true);
+            return true;
+		}
+        else
+        {
+            return false;
         }
     }
 }

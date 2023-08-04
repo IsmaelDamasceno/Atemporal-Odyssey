@@ -41,9 +41,7 @@ public class InventoryManager : MonoBehaviour
 		{
 			// Instantiates and Initializes the item in said Slot
 			Transform parentSlot = availableSlot.transform;
-			Debug.Log("Instantiation");
 			SlotItem newSlotItem = Instantiate(s_Instance._slotItemPrefab, parentSlot).GetComponent<SlotItem>();
-			Debug.Log("Instantiated");
 			newSlotItem.InitializeItem(item);
 		}
 	}
