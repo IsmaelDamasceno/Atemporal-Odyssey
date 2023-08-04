@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
+/// <summary>
+/// Métodos de utilidade global
+/// </summary>
 public static class Globals
 {
     private static PlayerControls _playerControls;

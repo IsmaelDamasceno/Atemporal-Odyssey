@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// Classe representando um Item que reside em um Slot no Inventory System
+/// </summary>
 public class SlotItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
@@ -14,7 +17,6 @@ public class SlotItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
 
     void Awake()
     {
-        Debug.Log("Awake");
         Image = GetComponent<Image>();
         transform.parent.GetComponent<Slot>().Item = this;
 
@@ -39,14 +41,20 @@ public class SlotItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler
         }
 	}
 
+    /// <summary>
+    /// Inicializa o GameObject conforme um item
+    /// </summary>
+    /// <param name="newItem">Item para usar na utilização</param>
     public void InitializeItem(Item newItem)
     {
-        Debug.Log("Initialize Item");
 		_item = newItem;
         Image.sprite = _item.Sprite;
     }
 
-
+    /// <summary>
+    /// Faz com que o mouse pegue o Item
+    /// </summary>
+    /// <param name="eventData"></param>
 	public void OnPointerDown(PointerEventData eventData)
     {
 		if (!Held)

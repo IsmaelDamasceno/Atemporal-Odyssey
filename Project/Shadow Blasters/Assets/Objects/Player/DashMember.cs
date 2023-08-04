@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Player
 {
+	/// <summary>
+	/// Controla o sistema de Dash do jogador
+	/// </summary>
 	public class DashMember : BaseMember
 	{
 		[HideInInspector] public bool Dashing;

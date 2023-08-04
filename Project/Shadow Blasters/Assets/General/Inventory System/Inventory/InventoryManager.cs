@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
+/// <summary>
+/// Controla o armazenamento e ações do Inventory System (slots, criar item, achar slot disponível, etc)
+/// </summary>
 public class InventoryManager : MonoBehaviour
 {
 	[SerializeField] private GameObject _slotItemPrefab;
@@ -32,6 +35,10 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+	/// <summary>
+	/// Cria um Item no primeiro Slot disponível encontrado
+	/// </summary>
+	/// <param name="item">Item para criar</param>
 	public static void CreateInvItem(Item item)
 	{
 		// Gets the first Slot available
@@ -45,6 +52,11 @@ public class InventoryManager : MonoBehaviour
 			newSlotItem.InitializeItem(item);
 		}
 	}
+
+	/// <summary>
+	/// Procura pelo primeiro Slot disponível encontrado
+	/// </summary>
+	/// <returns>Referência ao Slot encontrado, null caso o inventário esteja cheio</returns>
     public static Slot GetSlotAvailable()
     {
 		#region Look for Available Hotbar Slot

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Player
 {
+	/// <summary>
+	/// Controla o sistema de movimento do jogador
+	/// </summary>
 	public class MoveMember : BaseMember
 	{
 

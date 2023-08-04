@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controla o armazenamento, ações, e animações do baú
+/// </summary>
 public class ChestController : MonoBehaviour, IInteractable
 {
     public bool Open { get; private set; }
@@ -19,6 +22,10 @@ public class ChestController : MonoBehaviour, IInteractable
         
     }
 
+    /// <summary>
+    /// Abre ou fecha o baú
+    /// </summary>
+    /// <param name="value">False (fechar), true (abrir)</param>
     public void SetChest(bool value)
     {
         Open = value;
@@ -34,6 +41,10 @@ public class ChestController : MonoBehaviour, IInteractable
 		}
     }
 
+    /// <summary>
+    /// Executado ao interagir com o baú
+    /// </summary>
+    /// <returns>True caso a interação seja bem sucedida, false do contrário</returns>
     public bool Interact()
     {
         if (!Open)

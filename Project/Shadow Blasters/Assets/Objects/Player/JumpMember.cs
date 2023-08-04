@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Player
 {
+	/// <summary>
+	/// Controla o sistema de pulo do jogador
+	/// </summary>
 	public class JumpMember : BaseMember
 	{
 		[SerializeField] private float _jumpStrenght;

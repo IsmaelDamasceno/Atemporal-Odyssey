@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Player
 {
+	/// <summary>
+	/// Guarda referência de Components importados do jogador (rigidbody, colliders, etc)
+	/// </summary>
 	public class PropertiesCore : BaseMember
 	{
 		[HideInInspector] public Rigidbody2D Rigidbody;

@@ -4,6 +4,9 @@ using UnityEngine;
 
 namespace Player
 {
+	/// <summary>
+	/// Controla e seta os inputs de teclado
+	/// </summary>
 	public class InputMember : BaseMember
 	{
 		private PlayerControls _controls;

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Controla as animações do Inventory System (abrir/fechar)
+/// </summary>
 public class InventoryAnimations : MonoBehaviour
 {
     public static InventoryAnimations s_Instance;
@@ -39,6 +42,9 @@ public class InventoryAnimations : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Inicia a animação de abertura do baú
+    /// </summary>
     public static void OpenInventory()
     {
         s_Instance.StartCoroutine(s_Instance.OpenCloseCoroutine(1));
@@ -46,7 +52,11 @@ public class InventoryAnimations : MonoBehaviour
 
         HotbarManager.GetSelectedSlot().SetActive(false);
     }
-    public static void CloseInventory()
+
+	/// <summary>
+	/// Inicia a animação de fechamento do baú
+	/// </summary>
+	public static void CloseInventory()
     {
 		s_Instance.StartCoroutine(s_Instance.OpenCloseCoroutine(0));
 		InventoryManager.Open = false;
@@ -54,6 +64,11 @@ public class InventoryAnimations : MonoBehaviour
 		HotbarManager.GetSelectedSlot().SetActive(true);
 	}
 
+    /// <summary>
+    /// Executa a animação
+    /// </summary>
+    /// <param name="val">Define a animação: fechar (0), ou abrir (1)</param>
+    /// <returns></returns>
     private IEnumerator OpenCloseCoroutine(int val)
     {
         if (s_inAnimation)

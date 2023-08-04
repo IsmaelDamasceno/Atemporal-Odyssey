@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/// <summary>
+/// Controla o Health System (adiciona/subtrai vida, seta a vida máxima, etc)
+/// </summary>
 public class HealthSystem : MonoBehaviour
 {
 
@@ -38,17 +41,29 @@ public class HealthSystem : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Set a quantidade de vida
+    /// </summary>
+    /// <param name="newAmount">Nova quantidade de vida</param>
     public static void SetHealth(int newAmount)
     {
 		s_health = newAmount;
 		HealthUpdate();
 	}
+
+    /// <summary>
+    /// Aumenta a quantidade de vida por um valor
+    /// </summary>
+    /// <param name="increase">Valor para aumentar/diminuir da vida atual</param>
 	public static void ChangeHealth(int increase)
     {
 		s_health += increase;
 		HealthUpdate();
 	}
 
+    /// <summary>
+    /// Atualiza os Hearts ao mudar o valor da vida
+    /// </summary>
 	private static void HealthUpdate()
     {
         for(int i = 0; i < s_healthMax; i++)
@@ -58,6 +73,10 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Setar vida máxima
+    /// </summary>
+    /// <param name="value">Quantidade de vida máxima</param>
     public static void SetMaxHealth(int value)
     {
         s_healthMax = value;

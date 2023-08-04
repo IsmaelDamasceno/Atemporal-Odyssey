@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Classe assimilada a todos os objetos largados no chão, os quais são pegáveis
+/// </summary>
 public class DroppedItem : MonoBehaviour, IInteractable
 {
 	[SerializeField] private Item _item;
@@ -45,6 +48,10 @@ public class DroppedItem : MonoBehaviour, IInteractable
         }
     }
 
+	/// <summary>
+	/// Timer para desativar a física do Item
+	/// </summary>
+	/// <returns></returns>
     private IEnumerator StopPhysics()
     {
         yield return new WaitForSeconds(Random.Range(0.35f, 1.3f));
@@ -53,6 +60,10 @@ public class DroppedItem : MonoBehaviour, IInteractable
         _pickable = true;
     }
 
+	/// <summary>
+	/// Executa ao pegar esse Item
+	/// </summary>
+	/// <returns></returns>
 	public bool Interact()
 	{
 		if (_pickable)

@@ -2,14 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Controla o movimento e restrições da cãmera
+/// </summary>
 public class CameraMovement : MonoBehaviour
 {
-
 	[SerializeField] private float _lerpT;
 
+	/// <summary>
+	/// Struct que repreenta as bordas da fase, as quais a câmera não pode passar
+	/// </summary>
 	private Bounds _camBounds;
+
 	private Transform _playerTrs;
 
+	/// <summary>
+	/// Dimensões da câmera
+	/// </summary>
 	private float _camWidth;
 	private float _camHeight;
 

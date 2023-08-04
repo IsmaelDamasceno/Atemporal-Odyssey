@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// Gerencia ações e armazenamento de Slots individuais no Inventory System
+/// </summary>
 public class Slot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private bool _hovered;
@@ -27,6 +30,10 @@ public class Slot : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IP
 		}
 	}
 
+	/// <summary>
+	/// Ativa/desativa o Slot
+	/// </summary>
+	/// <param name="val">True: ativa o slot, false: desativa o slot</param>
     public void SetActive(bool val)
     {
 		_selected = val;
