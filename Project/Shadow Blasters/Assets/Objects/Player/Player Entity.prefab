@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 764251212}
   - component: {fileID: 764251213}
   m_Layer: 7
-  m_Name: DashOrgan
+  m_Name: Dash Member
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 8082379111555332933}
   - component: {fileID: 8082379111555332931}
   m_Layer: 7
-  m_Name: PlayerEntity
+  m_Name: Player Entity
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ Transform:
   - {fileID: 8082379111688789565}
   - {fileID: 8082379112158910666}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8082379111555332935
 SpriteRenderer:
@@ -209,9 +209,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8082379111688789565}
-  - component: {fileID: 8082379111688789564}
+  - component: {fileID: 817090895136160769}
   m_Layer: 7
-  m_Name: InputOrgan
+  m_Name: Input Member
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,7 +236,7 @@ Transform:
   m_Father: {fileID: 8082379111555332934}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8082379111688789564
+--- !u!114 &817090895136160769
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8082379111688789566}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f15be235317891443927f703403c43d4, type: 3}
+  m_Script: {fileID: 11500000, guid: 74ca616755c31bd47bf3ec64427ee216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   MoveInput: 0
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 8082379111697017829}
   - component: {fileID: 8082379111697017828}
   m_Layer: 7
-  m_Name: MoveOrgan
+  m_Name: Move Member
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,7 +310,7 @@ GameObject:
   - component: {fileID: 8082379111742549422}
   - component: {fileID: 8082379111742549421}
   m_Layer: 7
-  m_Name: JumpOrgan
+  m_Name: Jump Member
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,7 +459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 528516376017094446, guid: e571c5356907f5b488f2d586398a6040, type: 3}
       propertyPath: m_Name
-      value: AttackOrgan
+      value: Attack Member
       objectReference: {fileID: 0}
     - target: {fileID: 528516376017094446, guid: e571c5356907f5b488f2d586398a6040, type: 3}
       propertyPath: m_Layer

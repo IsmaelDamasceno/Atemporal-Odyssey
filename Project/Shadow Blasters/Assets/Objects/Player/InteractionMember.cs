@@ -4,27 +4,27 @@ using UnityEngine;
 
 namespace Player
 {
-	public class InteractionOrgan : BaseOrgan
+	public class InteractionMember : BaseMember
 	{
 		[SerializeField] private float _interactionDistance;
 		[SerializeField] private LayerMask _interactionMask;
-		private InputOrgan _inputOrgan;
+		private InputMember _inputMember;
 
 		private bool _interactingLastFrame = false;
 
 		void Awake()
 		{
-			_inputOrgan = transform.parent.GetComponent<InputOrgan>();
-			_inputOrgan.RegisterChild("Interaction", this);
+			_inputMember = transform.parent.GetComponent<InputMember>();
+			_inputMember.RegisterChild("Interaction", this);
 		}
 
 		void Update()
 		{
-			if (_inputOrgan.InteractInput && !_interactingLastFrame)
+			if (_inputMember.InteractInput && !_interactingLastFrame)
 			{
 				Interact();
 			}
-			_interactingLastFrame = _inputOrgan.InteractInput;
+			_interactingLastFrame = _inputMember.InteractInput;
 		}
 
 		void Interact()

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Player
 {
-	public class DashOrgan : BaseOrgan
+	public class DashMember : BaseMember
 	{
 		[HideInInspector] public bool Dashing;
 
@@ -12,10 +12,10 @@ namespace Player
 		[SerializeField] private float _dashTime;
 		[SerializeField] private float _dashCooldown;
 
-		private InputOrgan _inputOrgan;
+		private InputMember _inputMember;
 		private bool _ableToDash = true;
 		private bool _dashingLastFrame = false;
-		private MoveOrgan _moveOrgan;
+		private MoveMember _moveMember;
 		private Rigidbody2D _rb;
 		private float _dashDirection;
 		private float _originalGravScale;
@@ -25,7 +25,7 @@ namespace Player
 			yield return new WaitForSeconds(_dashTime);
 			
 			Dashing = false;
-			_moveOrgan.enabled = true;
+			_moveMember.enabled = true;
 			_rb.gravityScale = _originalGravScale;
 
 			StartCoroutine(PerformCooldown());
@@ -39,12 +39,12 @@ namespace Player
 
 		private void Awake()
 		{
-			_inputOrgan = transform.parent.GetComponent<InputOrgan>();
-			_inputOrgan.RegisterChild("Dash", this);
+			_inputMember = transform.parent.GetComponent<InputMember>();
+			_inputMember.RegisterChild("Dash", this);
 		}
 		void Start()
 		{
-			_moveOrgan = _inputOrgan.GetChild("Move") as MoveOrgan;
+			_moveMember = _inputMember.GetChild("Move") as MoveMember;
 
 			_rb = GetRoot().GetComponent<Rigidbody2D>();
 			_originalGravScale = _rb.gravityScale;
@@ -52,13 +52,13 @@ namespace Player
 
 		void Update()
 		{
-			bool dashInput = _inputOrgan.DashingInput;
+			bool dashInput = _inputMember.DashingInput;
 			if (dashInput && !_dashingLastFrame && _ableToDash)
 			{
 				Dashing = true;
-				_moveOrgan.enabled = false;
+				_moveMember.enabled = false;
 				_rb.gravityScale = 0f;
-				_dashDirection = _inputOrgan.Direction;
+				_dashDirection = _inputMember.Direction;
 				_ableToDash = false;
 				StartCoroutine(PerformDash());
 			}

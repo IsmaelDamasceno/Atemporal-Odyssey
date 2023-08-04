@@ -4,23 +4,23 @@ using UnityEngine;
 
 namespace Player
 {
-	public class MoveOrgan : BaseOrgan
+	public class MoveMember : BaseMember
 	{
 
 		[SerializeField] private float _moveSpeed;
 
 		private Vector2 _originalPlayerScale;
-		private InputOrgan _inputOrgan;
+		private InputMember _inputMember;
 		private Rigidbody2D _rigidbody;
 
 		private GameObject _root;
 		private PropertiesCore _propsCore;
-		private DashOrgan _dashOrgan;
+		private DashMember _dashMember;
 
 		private void Awake()
 		{
-			_inputOrgan = transform.parent.GetComponent<InputOrgan>();
-			_inputOrgan.RegisterChild("Move", this);
+			_inputMember = transform.parent.GetComponent<InputMember>();
+			_inputMember.RegisterChild("Move", this);
 		}
 		void Start()
 		{
@@ -30,19 +30,19 @@ namespace Player
 			_rigidbody = _root.GetComponent<Rigidbody2D>();
 			_originalPlayerScale = _root.transform.localScale;
 
-			_dashOrgan = _inputOrgan.GetChild("Dash") as DashOrgan;
+			_dashMember = _inputMember.GetChild("Dash") as DashMember;
 		}
 
 		private void Update()
 		{
-			if (_inputOrgan.MoveInput != 0f && !_propsCore.Attacking && !_dashOrgan.Dashing)
+			if (_inputMember.MoveInput != 0f && !_propsCore.Attacking && !_dashMember.Dashing)
 			{
-				_root.transform.localScale = new Vector2(_inputOrgan.MoveInput * _originalPlayerScale.x, _originalPlayerScale.y);
+				_root.transform.localScale = new Vector2(_inputMember.MoveInput * _originalPlayerScale.x, _originalPlayerScale.y);
 			}
 		}
 		void FixedUpdate()
 		{
-			_rigidbody.velocity = new Vector2(_moveSpeed * _inputOrgan.MoveInput, _rigidbody.velocity.y);
+			_rigidbody.velocity = new Vector2(_moveSpeed * _inputMember.MoveInput, _rigidbody.velocity.y);
 		}
 	}
 

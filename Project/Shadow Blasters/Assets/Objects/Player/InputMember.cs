@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Player
 {
-	public class InputOrgan : BaseOrgan
+	public class InputMember : BaseMember
 	{
 		private PlayerControls _controls;
 

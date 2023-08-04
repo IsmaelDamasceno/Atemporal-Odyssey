@@ -4,9 +4,8 @@ using UnityEngine;
 
 namespace Player
 {
-	public class PropertiesCore : BaseOrgan
+	public class PropertiesCore : BaseMember
 	{
-
 		[HideInInspector] public Rigidbody2D Rigidbody;
 		[HideInInspector] public BoxCollider2D Collider;
 		[HideInInspector] public BoxCollider2D FeetCollider;

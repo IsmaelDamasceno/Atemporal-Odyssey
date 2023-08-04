@@ -4,21 +4,21 @@ using UnityEngine;
 
 namespace Player
 {
-	public class JumpOrgan : BaseOrgan
+	public class JumpMember : BaseMember
 	{
 		[SerializeField] private float _jumpStrenght;
 		[SerializeField] private LayerMask _groundMask;
 
 		private BoxCollider2D _feetCollider;
-		private InputOrgan _inputOrgan;
+		private InputMember _inputMember;
 		private Rigidbody2D _rb;
 
 		private float _initialY;
 
 		private void Awake()
 		{
-			_inputOrgan = transform.parent.GetComponent<InputOrgan>();
-			_inputOrgan.RegisterChild("Jump", this);
+			_inputMember = transform.parent.GetComponent<InputMember>();
+			_inputMember.RegisterChild("Jump", this);
 		}
 		void Start()
 		{
@@ -28,7 +28,7 @@ namespace Player
 
 		void Update()
 		{
-			if (_inputOrgan.JumpingInput)
+			if (_inputMember.JumpingInput)
 			{
 				if (OnFloor() && _rb.velocity.y <= .03f)
 				{

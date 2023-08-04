@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Player
 {
-	public class AttackOrgan : BaseOrgan
+	public class AttackMember : BaseMember
 	{
 		/// <summary>
 		/// Tells if the player is able to attack
@@ -15,7 +15,7 @@ namespace Player
 		/// <summary>
 		/// Create a Restrict Property To tell if the player is attacking or not, wich can be modified only by the FinishAttack class
 		/// </summary>
-		private RestrictProp<bool> _attackingProp = new RestrictProp<bool>(false, typeof(AttackOrgan), typeof(FinishAttack));
+		private RestrictProp<bool> _attackingProp = new RestrictProp<bool>(false, typeof(AttackMember), typeof(FinishAttack));
 		/// <returns>Wheter or not the player is attacking</returns>
 		public bool GetAttacking()
 		{
@@ -70,9 +70,9 @@ namespace Player
 		private Animator _playerAnimator;
 
 		/// <summary>
-		/// Input Organ
+		/// Input Member
 		/// </summary>
-		private InputOrgan _inputOrgan;
+		private InputMember _inputMember;
 
 		/// <summary>
 		/// Root entity
@@ -92,14 +92,14 @@ namespace Player
 			#endregion
 
 			#region Attack Controls
-			_inputOrgan = transform.parent.GetComponent<InputOrgan>();
+			_inputMember = transform.parent.GetComponent<InputMember>();
 			#endregion
 		}
 
 		private void Update()
 		{
 			// One frame activation for the Attack method
-			bool attacking = _inputOrgan.AttackInput;
+			bool attacking = _inputMember.AttackInput;
 			if (attacking && !_attackingLastFrame)
 			{
 				Attack();
@@ -125,7 +125,7 @@ namespace Player
 				return;
 			}
 
-			SetAttacking(true, typeof(AttackOrgan));
+			SetAttacking(true, typeof(AttackMember));
 			CanAttack = false;
 
 			StartCoroutine(Cooldown());

@@ -11,7 +11,7 @@ public class FinishAttack : StateMachineBehaviour
 		renderer.enabled = false;
 
 		// Set Attacking to false
-		Player.AttackOrgan attack = animator.GetComponent<Player.AttackOrgan>();
+		Player.AttackMember attack = animator.GetComponent<Player.AttackMember>();
 		attack.SetAttacking(false, typeof(FinishAttack));
 	}
 	
