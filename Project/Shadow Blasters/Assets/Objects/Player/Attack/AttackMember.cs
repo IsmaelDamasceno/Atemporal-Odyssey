@@ -29,7 +29,7 @@ namespace Player
 		}
 
 		[SerializeField] private float _damage;
-		[SerializeField] private float _cooldown;
+		[SerializeField] public float _cooldown;
 		private bool _attackingLastFrame;
 
 		private SpriteRenderer _sprRenderer;
@@ -43,6 +43,7 @@ namespace Player
 		void Awake()
 		{
 			_root = GetRoot();
+			_root.GetComponent<BaseMember>().RegisterChild("Attack",this);
 
 			#region Animation Setup
 			_sprRenderer = GetComponent<SpriteRenderer>();

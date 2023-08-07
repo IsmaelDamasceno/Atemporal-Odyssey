@@ -15,6 +15,7 @@ namespace Player
 		[SerializeField] private float _dashTime;
 		[SerializeField] private float _dashCooldown;
 
+		private GameObject _root;
 		private InputMember _inputMember;
 		private bool _ableToDash = true;
 		private bool _dashingLastFrame = false;
@@ -47,7 +48,8 @@ namespace Player
 		}
 		void Start()
 		{
-			_moveMember = _inputMember.GetChild("Move") as MoveMember;
+			_root = GetRoot();
+			_moveMember = _root.GetComponent<BaseMember>().GetChild("Move") as MoveMember;
 
 			_rb = GetRoot().GetComponent<Rigidbody2D>();
 			_originalGravScale = _rb.gravityScale;
