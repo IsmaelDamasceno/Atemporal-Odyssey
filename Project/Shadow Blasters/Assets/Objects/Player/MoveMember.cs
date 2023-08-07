@@ -10,7 +10,7 @@ namespace Player
 	public class MoveMember : BaseMember
 	{
 
-		[SerializeField] private float _moveSpeed;
+		[SerializeField] public float MoveSpeed;
 
 		private Vector2 _originalPlayerScale;
 		private InputMember _inputMember;
@@ -22,12 +22,13 @@ namespace Player
 
 		private void Awake()
 		{
-			_inputMember = transform.parent.GetComponent<InputMember>();
-			_inputMember.RegisterChild("Move", this);
+            _root = GetRoot();
+            _inputMember = transform.parent.GetComponent<InputMember>();
+			_root.GetComponent<BaseMember>().RegisterChild("Move", this);
 		}
 		void Start()
 		{
-			_root = GetRoot();
+		
 			_propsCore = _root.GetComponent<PropertiesCore>();
 
 			_rigidbody = _root.GetComponent<Rigidbody2D>();
@@ -45,7 +46,7 @@ namespace Player
 		}
 		void FixedUpdate()
 		{
-			_rigidbody.velocity = new Vector2(_moveSpeed * _inputMember.MoveInput, _rigidbody.velocity.y);
+			_rigidbody.velocity = new Vector2(MoveSpeed * _inputMember.MoveInput, _rigidbody.velocity.y);
 		}
 	}
 
