@@ -36,7 +36,7 @@ namespace Player
 		{
 			if (_inputMember.MoveInput != 0f && !_propsCore.Attacking && !_dashMember.Dashing)
 			{
-				_root.transform.localScale = new Vector2(_inputMember.MoveInput * _originalPlayerScale.x, _originalPlayerScale.y);
+				transform.localScale = new Vector2(_inputMember.MoveInput * _originalPlayerScale.x, _originalPlayerScale.y);
 			}
 		}
 		void FixedUpdate()

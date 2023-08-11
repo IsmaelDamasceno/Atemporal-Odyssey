@@ -21,7 +21,6 @@ namespace Player
 		void Awake()
 		{
 			Direction = 1f;
-			transform.parent.GetComponent<PropertiesCore>().RegisterChild("Input", this);
 
 			#region Controls
 			_controls = Globals.InitiateControls();

@@ -23,7 +23,7 @@ namespace Player
 			bool couldSet = _attackingProp.TrySet(value, classType);
 			if (couldSet)
 			{
-				_root.GetComponent<PropertiesCore>().Attacking = _attackingProp.Value;
+				GetComponent<PropertiesCore>().Attacking = _attackingProp.Value;
 			}
 			return couldSet;
 		}
@@ -38,17 +38,13 @@ namespace Player
 		private Animator _playerAnimator;
 
 		private InputMember _inputMember;
-		private GameObject _root;
 
 		void Awake()
 		{
-			_root = GetRoot();
-			_root.GetComponent<BaseMember>().RegisterChild("Attack",this);
-
 			#region Animation Setup
 			_sprRenderer = GetComponent<SpriteRenderer>();
 			_selfAnimator = GetComponent<Animator>();
-			_playerAnimator = _root.GetComponent<Animator>();
+			_playerAnimator = GetComponent<Animator>();
 
 			CanAttack = true;
 			#endregion
