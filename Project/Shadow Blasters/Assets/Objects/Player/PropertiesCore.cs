@@ -8,7 +8,7 @@ namespace Player
 	/// <summary>
 	/// Guarda referência de Components importados do jogador (rigidbody, colliders, etc)
 	/// </summary>
-	public class PropertiesCore : MonoBehaviour
+	public class PropertiesCore : BaseMember
 	{
 		[HideInInspector] public Rigidbody2D Rigidbody;
 		[HideInInspector] public BoxCollider2D Collider;

@@ -10,6 +10,7 @@ public class FireRateUp : PowerUpEffect
 
     public override void Apply(GameObject target)
     {
-        target.GetComponent<AttackMember>()._cooldown = amount;
+        AttackMember plAttackMember = target.GetComponent<PropertiesCore>().GetMember("Attack") as Player.AttackMember;
+		plAttackMember.Cooldown = amount;
     }
 }
