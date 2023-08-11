@@ -50,7 +50,7 @@ namespace Player
 			#endregion
 
 			#region Attack Controls
-			_inputMember = transform.parent.GetComponent<InputMember>();
+			_inputMember = GetComponent<InputMember>();
 			#endregion
 		}
 
