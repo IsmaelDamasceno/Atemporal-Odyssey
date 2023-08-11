@@ -8,8 +8,6 @@ public class SpeedUp : PowerUpEffect
 {
     public float amount;
 
-    public override string member { get => "Move"; set => throw new System.NotImplementedException(); }
-
     public override void Apply(GameObject target)
     {
         target.GetComponent<MoveMember>().MoveSpeed = amount;
