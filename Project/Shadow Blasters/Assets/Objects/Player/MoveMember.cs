@@ -16,25 +16,20 @@ namespace Player
 		private InputMember _inputMember;
 		private Rigidbody2D _rigidbody;
 
-		private GameObject _root;
 		private PropertiesCore _propsCore;
 		private DashMember _dashMember;
 
 		private void Awake()
 		{
-            _root = GetRoot();
-            _inputMember = transform.parent.GetComponent<InputMember>();
-			_root.GetComponent<BaseMember>().RegisterChild("Move", this);
+            _inputMember = GetComponent<InputMember>();
 		}
 		void Start()
 		{
-		
-			_propsCore = _root.GetComponent<PropertiesCore>();
+			_propsCore = GetComponent<PropertiesCore>();
+			_dashMember = GetComponent<DashMember>();
 
-			_rigidbody = _root.GetComponent<Rigidbody2D>();
-			_originalPlayerScale = _root.transform.localScale;
-
-			_dashMember = _inputMember.GetChild("Dash") as DashMember;
+			_rigidbody = GetComponent<Rigidbody2D>();
+			_originalPlayerScale = transform.localScale;
 		}
 
 		private void Update()

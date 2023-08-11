@@ -9,43 +9,27 @@ using UnityEngine;
 public class BaseMember : MonoBehaviour
 {
 	/// <summary>
-	/// Método que procura pela Entity associada ao chamador do método
+	/// Retona um Component desse Member
 	/// </summary>
-	/// <returns>Referência ao Entity GameObject</returns>
-	public GameObject GetRoot()
-	{
-		if (transform.parent != null)
-		{
-			if (transform.parent.TryGetComponent(out BaseMember baseMember))
-			{
-				return baseMember.GetRoot();
-			}
-		}
-		return gameObject;
-	}
-
-	/// <summary>
-	/// Retorna um Member na hierarquia do dono do método
-	/// </summary>
-	/// <param name="name">Nome do Member da hierarquia</param>
+	/// <param name="name">Nome do Component para rotornar</param>
 	/// <returns>Referência ao Member</returns>
-	public BaseMember GetChild(string name)
+	public MonoBehaviour GetMember(string name)
 	{
 		return _children[name];
 	}
 
 	/// <summary>
-	/// Registra um Member na Hierarquia do dono do método
+	/// Regista um component nesse Member
 	/// </summary>
-	/// <param name="name">Nome do Member</param>
-	/// <param name="member">Referência ao objeto do Member a ser registrado na hierarquia</param>
-	public void RegisterChild(string name, BaseMember member)
+	/// <param name="name">Nome do Component</param>
+	/// <param name="member">Referência ao objeto do Component a ser registrado nesse Member</param>
+	public void RegisterMember(string name, MonoBehaviour member)
 	{
 		_children[name] = member;
 	}
 
 	/// <summary>
-	/// Lista de Members na hierarquia desse objeto
+	/// Lista de Components desse objeto
 	/// </summary>
-	private Dictionary<string, BaseMember> _children = new Dictionary<string, BaseMember>();
+	private Dictionary<string, MonoBehaviour> _children = new();
 }
