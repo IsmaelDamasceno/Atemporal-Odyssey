@@ -60,7 +60,7 @@ namespace Player
 
 			if (Input.GetKeyDown(KeyCode.Tab))
 			{
-				InventoryManager.SetInventory();
+				BUffUIManager.SetBuffUI();
 			}
 		}
 	}
