@@ -14,10 +14,7 @@ public class BuffUIAnimations : MonoBehaviour
 
     private float _invInitialY;
 
-    private Image _backgroundImage;
-    private float _backgroundAlpha = .85f;
-
-    private static ScrollRect s_scrollRect;
+    
     private static bool s_inAnimation = false;
 
     void Start()
@@ -27,9 +24,6 @@ public class BuffUIAnimations : MonoBehaviour
             s_Instance = this;
 
             _invInitialY = transform.localPosition.y;
-
-            _backgroundImage = transform.GetChild(0).GetComponent<Image>();
-            s_scrollRect = GetComponent<ScrollRect>();
         }
         else
         {
@@ -50,7 +44,7 @@ public class BuffUIAnimations : MonoBehaviour
         }
         else
         {
-			s_scrollRect.verticalNormalizedPosition = 1f;
+            BUffUIManager.ResetScroll();
 
 			s_inAnimation = true;
 			while ((val == 1) ? transform.localPosition.y < -5f : transform.localPosition.y > _invInitialY + 5f)
@@ -63,24 +57,9 @@ public class BuffUIAnimations : MonoBehaviour
 				transform.localPosition = newPos;
 				#endregion
 
-				/*
-				 #region Background Opacity
-				float newAlpha = Mathf.Lerp(_backgroundImage.color.a, val * _backgroundAlpha, time);
-				Color newColor = _backgroundImage.color;
-				newColor.a = newAlpha;
-				_backgroundImage.color = newColor;
-				#endregion
-				 */
-
 				yield return null;
 			}
 			transform.localPosition = (val == 1) ? Vector3.zero : Vector3.up * _invInitialY;
-
-			/*
-			 Color finalColor = _backgroundImage.color;
-			finalColor.a = (val == 1) ? _backgroundAlpha : 0f;
-			_backgroundImage.color = finalColor;
-			 */
 
 			s_inAnimation = false;
 		}

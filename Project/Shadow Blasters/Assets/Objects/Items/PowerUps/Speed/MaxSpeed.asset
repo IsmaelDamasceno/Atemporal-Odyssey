@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: MaxSpeed
   m_EditorClassIdentifier: 
   amount: 16
+  UIBuffItem: {fileID: 8130859096148994565, guid: f479557aaa7437444b707d3b7889d1df, type: 3}
