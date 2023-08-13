@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
 
 /// <summary>
@@ -15,6 +14,60 @@ public class InventoryManager : MonoBehaviour
 
     private static HotbarManager _hotbar;
     private static List<Slot> s_invSlotList = new();
+
+
+	/// <summary>
+	/// Seta o estado do baú (aberto/fechado)
+	/// </summary>
+	/// <param name="val">Novo estado: false (fechado), true (aberto)</param>
+	public static void SetInventory(bool val)
+	{
+		if (val)
+		{
+			OpenInventory();
+		}
+		else
+		{
+			CloseInventory();
+		}
+	}
+
+	/// <summary>
+	/// Inverte o estado do baú (se aberto, fecha, se fechado, abre)
+	/// </summary>
+	public static void SetInventory()
+	{
+		if (Open)
+		{
+			CloseInventory();
+		}
+		else
+		{
+			OpenInventory();
+		}
+	}
+
+	/// <summary>
+	/// Abre o inventário
+	/// </summary>
+	public static void OpenInventory()
+	{
+		InventoryAnimations.s_Instance.StartCoroutine(InventoryAnimations.s_Instance.OpenCloseCoroutine(1));
+		Open = true;
+
+		HotbarManager.GetSelectedSlot().SetActive(false);
+	}
+
+	/// <summary>
+	/// Fecha o inventário
+	/// </summary>
+	public static void CloseInventory()
+	{
+		InventoryAnimations.s_Instance.StartCoroutine(InventoryAnimations.s_Instance.OpenCloseCoroutine(0));
+		Open = false;
+
+		HotbarManager.GetSelectedSlot().SetActive(true);
+	}
 
     void Start()
     {

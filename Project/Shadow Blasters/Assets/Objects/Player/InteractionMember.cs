@@ -17,8 +17,7 @@ namespace Player
 
 		void Awake()
 		{
-			_inputMember = transform.parent.GetComponent<InputMember>();
-			_inputMember.RegisterChild("Interaction", this);
+			_inputMember = GetComponent<InputMember>();
 		}
 
 		void Update()

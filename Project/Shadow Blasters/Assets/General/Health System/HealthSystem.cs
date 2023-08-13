@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Controla o Health System (adiciona/subtrai vida, seta a vida máxima, etc)
@@ -11,20 +13,27 @@ public class HealthSystem : MonoBehaviour
 
     private static int s_health;
 	private static int s_healthMax;
+    private static GridLayoutGroup s_layoutGroup;
 
-    private static List<GameObject> s_heartList;
-
-    public static HealthSystem s_Entity;
+    public static HealthSystem s_Instance;
 
     [SerializeField] private GameObject _heartPrefab;
-    [SerializeField] private float _spacing;
+
+    /// <summary>
+    /// Quantidade máxima de corações por linha
+    /// </summary>
+    /// <param name="newValue">Nova quantidade máxima</param>
+    public static void SetHartPerRow(int newValue)
+    {
+        s_layoutGroup.constraintCount = newValue;
+    }
 
     private void Awake()
     {
-        if (s_Entity == null)
+        if (s_Instance == null)
         {
-            s_Entity = this;
-			s_heartList = new List<GameObject>();
+			s_Instance = this;
+            s_layoutGroup = s_Instance.GetComponent<GridLayoutGroup>();
         }
         else
         {
@@ -33,12 +42,7 @@ public class HealthSystem : MonoBehaviour
     }
     void Start()
     {
-		SetMaxHealth(10);
-    }
-
-    void Update()
-    {
-        
+        SetMaxHealth(transform.childCount);
     }
 
     /// <summary>
@@ -68,7 +72,7 @@ public class HealthSystem : MonoBehaviour
     {
         for(int i = 0; i < s_healthMax; i++)
         {
-            HealthController controller = s_heartList[i].GetComponent<HealthController>();
+            HealthController controller = s_Instance.transform.GetChild(i).GetComponent<HealthController>();
             controller.ChangeHeart(i < s_health);
         }
     }
@@ -79,24 +83,29 @@ public class HealthSystem : MonoBehaviour
     /// <param name="value">Quantidade de vida máxima</param>
     public static void SetMaxHealth(int value)
     {
+        int oldMaxHealth = s_healthMax;
         s_healthMax = value;
-        if (s_heartList.Count < value)
+
+        if (s_healthMax == s_Instance.transform.childCount)
         {
-			for (int i = s_heartList.Count; i < value; i++)
-            {
-                GameObject instance = Instantiate(s_Entity._heartPrefab, s_Entity.transform);
-                instance.transform.localPosition = new Vector2(i * s_Entity._spacing, 0f);
-				s_heartList.Add(instance);
-            }
-			ChangeHealth(value);
-		}
-		else if (s_heartList.Count > value)
-        {
-            for(int i = s_heartList.Count-1; i >= value; i--)
-            {
-                Destroy(s_heartList[i]);
-                s_heartList.RemoveAt(i);
-            }
+            return;
         }
+
+        if (oldMaxHealth < value)
+        {
+			for (int i = oldMaxHealth; i < value; i++)
+            {
+                Instantiate(s_Instance._heartPrefab, s_Instance.transform);
+            }
+			SetHealth(value);
+		}
+		else if (oldMaxHealth > value)
+        {
+			for (int i = value; i < s_Instance.transform.childCount; i++)
+			{
+                Destroy(s_Instance.transform.GetChild(i).gameObject);
+			}
+			SetHealth(value);
+		}
     }
 }

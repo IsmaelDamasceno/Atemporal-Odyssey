@@ -37,39 +37,12 @@ public class InventoryAnimations : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        
-    }
-
-    /// <summary>
-    /// Inicia a animação de abertura do baú
-    /// </summary>
-    public static void OpenInventory()
-    {
-        s_Instance.StartCoroutine(s_Instance.OpenCloseCoroutine(1));
-        InventoryManager.Open = true;
-
-        HotbarManager.GetSelectedSlot().SetActive(false);
-    }
-
-	/// <summary>
-	/// Inicia a animação de fechamento do baú
-	/// </summary>
-	public static void CloseInventory()
-    {
-		s_Instance.StartCoroutine(s_Instance.OpenCloseCoroutine(0));
-		InventoryManager.Open = false;
-
-		HotbarManager.GetSelectedSlot().SetActive(true);
-	}
-
     /// <summary>
     /// Executa a animação
     /// </summary>
     /// <param name="val">Define a animação: fechar (0), ou abrir (1)</param>
     /// <returns></returns>
-    private IEnumerator OpenCloseCoroutine(int val)
+    public IEnumerator OpenCloseCoroutine(int val)
     {
         if (s_inAnimation)
         {

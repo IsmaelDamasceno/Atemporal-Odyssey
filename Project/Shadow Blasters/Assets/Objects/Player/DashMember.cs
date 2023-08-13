@@ -7,7 +7,7 @@ namespace Player
 	/// <summary>
 	/// Controla o sistema de Dash do jogador
 	/// </summary>
-	public class DashMember : BaseMember
+	public class DashMember : MonoBehaviour
 	{
 		[HideInInspector] public bool Dashing;
 
@@ -42,14 +42,13 @@ namespace Player
 
 		private void Awake()
 		{
-			_inputMember = transform.parent.GetComponent<InputMember>();
-			_inputMember.RegisterChild("Dash", this);
+			_inputMember = GetComponent<InputMember>();
 		}
 		void Start()
 		{
-			_moveMember = _inputMember.GetChild("Move") as MoveMember;
+			_moveMember = GetComponent<MoveMember>();
 
-			_rb = GetRoot().GetComponent<Rigidbody2D>();
+			_rb = GetComponent<Rigidbody2D>();
 			_originalGravScale = _rb.gravityScale;
 		}
 

@@ -8,7 +8,7 @@ namespace Player
 	/// <summary>
 	/// Controla o Slash ao atacar
 	/// </summary>
-	public class AttackMember : BaseMember
+	public class AttackMember : MonoBehaviour
 	{
 		public bool CanAttack { get; set; }
 
@@ -23,13 +23,13 @@ namespace Player
 			bool couldSet = _attackingProp.TrySet(value, classType);
 			if (couldSet)
 			{
-				_root.GetComponent<PropertiesCore>().Attacking = _attackingProp.Value;
+				transform.parent.GetComponent<PropertiesCore>().Attacking = _attackingProp.Value;
 			}
 			return couldSet;
 		}
 
 		[SerializeField] private float _damage;
-		[SerializeField] private float _cooldown;
+		public float Cooldown;
 		private bool _attackingLastFrame;
 
 		private SpriteRenderer _sprRenderer;
@@ -38,16 +38,14 @@ namespace Player
 		private Animator _playerAnimator;
 
 		private InputMember _inputMember;
-		private GameObject _root;
 
 		void Awake()
 		{
-			_root = GetRoot();
-
+			transform.parent.GetComponent<PropertiesCore>().RegisterMember("Attack", this);
 			#region Animation Setup
 			_sprRenderer = GetComponent<SpriteRenderer>();
 			_selfAnimator = GetComponent<Animator>();
-			_playerAnimator = _root.GetComponent<Animator>();
+			_playerAnimator = transform.parent.GetComponent<Animator>();
 
 			CanAttack = true;
 			#endregion
@@ -67,9 +65,9 @@ namespace Player
 			_attackingLastFrame = attacking;
 		}
 
-		private IEnumerator Cooldown()
+		private IEnumerator CooldownWait()
 		{
-			yield return new WaitForSeconds(_cooldown);
+			yield return new WaitForSeconds(Cooldown);
 
 			CanAttack = true;
 		}
@@ -84,7 +82,7 @@ namespace Player
 			SetAttacking(true, typeof(AttackMember));
 			CanAttack = false;
 
-			StartCoroutine(Cooldown());
+			StartCoroutine(CooldownWait());
 
 			_sprRenderer.enabled = true;
 			_selfAnimator.Play("Base Layer.Attack Anim");

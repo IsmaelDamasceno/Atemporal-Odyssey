@@ -21,7 +21,6 @@ namespace Player
 		void Awake()
 		{
 			Direction = 1f;
-			transform.parent.GetComponent<PropertiesCore>().RegisterChild("Input", this);
 
 			#region Controls
 			_controls = Globals.InitiateControls();
@@ -61,14 +60,7 @@ namespace Player
 
 			if (Input.GetKeyDown(KeyCode.Tab))
 			{
-				if (InventoryManager.Open)
-				{
-					InventoryAnimations.CloseInventory();
-				}
-				else
-				{
-					InventoryAnimations.OpenInventory();
-				}
+				BUffUIManager.SetBuffUI();
 			}
 		}
 	}

@@ -20,13 +20,12 @@ namespace Player
 
 		private void Awake()
 		{
-			_inputMember = transform.parent.GetComponent<InputMember>();
-			_inputMember.RegisterChild("Jump", this);
+			_inputMember = GetComponent<InputMember>();
 		}
 		void Start()
 		{
-			_rb = GetRoot().GetComponent<Rigidbody2D>();
-			_feetCollider = GetRoot().GetComponent<PropertiesCore>().FeetCollider;
+			_rb = GetComponent<Rigidbody2D>();
+			_feetCollider = GetComponent<PropertiesCore>().FeetCollider;
 		}
 
 		void Update()

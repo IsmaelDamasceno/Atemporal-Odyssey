@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Player
@@ -13,18 +14,25 @@ namespace Player
 		[HideInInspector] public BoxCollider2D Collider;
 		[HideInInspector] public BoxCollider2D FeetCollider;
 
+		public static GameObject Player;
+
 		[HideInInspector] public bool Attacking = false;
 
 		void Awake()
 		{
-			Rigidbody = GetComponent<Rigidbody2D>();
-			Collider = GetComponent<BoxCollider2D>();
-			FeetCollider = transform.GetChild(1).GetComponent<BoxCollider2D>();
-		}
+			if (Player == null)
+			{
+				Player = gameObject;
 
-		void Update()
-		{
-
+				Rigidbody = GetComponent<Rigidbody2D>();
+				Collider = GetComponent<BoxCollider2D>();
+				FeetCollider = transform.GetChild(0).GetComponent<BoxCollider2D>();
+			}
+			else
+			{
+				Destroy(gameObject);
+				throw new UnityException("Só é permitida uma instância do Player por cena");
+			}
 		}
 	}
 }
