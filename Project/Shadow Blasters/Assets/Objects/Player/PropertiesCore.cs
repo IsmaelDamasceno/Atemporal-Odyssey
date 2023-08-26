@@ -69,6 +69,8 @@ namespace Player
 			s_Instance.transform.position += Vector3.up * 0.1f;
 			s_Instance.Rigidbody.velocity = Vector2.zero;
 			s_Instance.Rigidbody.AddForce(forceToApply, ForceMode2D.Impulse);
+
+			s_Instance.StartCoroutine(s_Instance.ImpactCoroutine());
 		}
 
 		public static void SetIvulnerable()
@@ -83,6 +85,13 @@ namespace Player
 			yield return new WaitForSeconds(s_IvulnerableTime);
 			Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
 			s_Ivulnerable = false;
+		}
+
+		private IEnumerator ImpactCoroutine()
+		{
+			yield return new WaitForSeconds(0.5f);
+			_moveMember.enabled = true;
+			_jumpMember.JumpControl = true;
 		}
 	}
 }
