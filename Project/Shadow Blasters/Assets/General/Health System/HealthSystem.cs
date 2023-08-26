@@ -43,6 +43,7 @@ public class HealthSystem : MonoBehaviour
     void Start()
     {
         SetMaxHealth(transform.childCount);
+        SetHealth(transform.childCount);
     }
 
     /// <summary>
