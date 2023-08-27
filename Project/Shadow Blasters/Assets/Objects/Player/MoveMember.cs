@@ -14,11 +14,21 @@ namespace Player
 
 		private InputMember _inputMember;
 		private Rigidbody2D _rigidbody;
+		private SpriteRenderer _sprRenderer;
 
 		private void Awake()
 		{
             _inputMember = GetComponent<InputMember>();
 			_rigidbody = GetComponent<Rigidbody2D>();
+			_sprRenderer = GetComponent<SpriteRenderer>();
+		}
+
+		private void Update()
+		{
+			if (_inputMember.MoveInput != 0f)
+			{
+				_sprRenderer.flipX = (_inputMember.MoveInput < 0f) ? true : false;
+			}
 		}
 
 		void FixedUpdate()
