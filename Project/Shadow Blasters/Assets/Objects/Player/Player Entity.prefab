@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _cooldown: 0.5
+  Cooldown: 0
 --- !u!1 &8082379111555332984
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,6 +160,7 @@ GameObject:
   - component: {fileID: 2033764057}
   - component: {fileID: 2033764055}
   - component: {fileID: 2033764060}
+  - component: {fileID: 1731813850}
   m_Layer: 7
   m_Name: Player Entity
   m_TagString: Player
@@ -355,6 +356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 8
+  _inputMember: {fileID: 0}
 --- !u!114 &2033764057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,6 +373,7 @@ MonoBehaviour:
   _groundMask:
     serializedVersion: 2
     m_Bits: 8
+  JumpControl: 1
 --- !u!114 &2033764055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -403,6 +406,18 @@ MonoBehaviour:
   _interactionMask:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &1731813850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8082379111555332984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8496aea0f03a71b4b95258d80c5770d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8082379112158910667
 GameObject:
   m_ObjectHideFlags: 0

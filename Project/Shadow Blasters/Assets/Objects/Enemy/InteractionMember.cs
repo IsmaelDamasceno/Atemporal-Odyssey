@@ -21,7 +21,7 @@ namespace Enemy
 		{
 			if (collision.CompareTag("Player"))
 			{
-				if (Player.PropertiesCore.s_Ivulnerable)
+				if (Player.DamageMember.s_Ivulnerable)
 				{
 					return;
 				}
@@ -29,9 +29,9 @@ namespace Enemy
 				Vector2 playerPos = collision.gameObject.transform.position;
 				int direction = Math.Sign(playerPos.x - transform.position.x);
 
-				Player.PropertiesCore.ApplyForce(new Vector2(5f * direction, 6f));
+				Player.DamageMember.ApplyForce(new Vector2(5f * direction, 6f));
 				HealthSystem.ChangeHealth(-1);
-				Player.PropertiesCore.SetIvulnerable();
+				Player.DamageMember.SetIvulnerable();
 			}
 		}
 	}
