@@ -12,13 +12,23 @@ namespace Player
 
 		public float MoveSpeed;
 
-		[SerializeField] private InputMember _inputMember;
+		private InputMember _inputMember;
 		private Rigidbody2D _rigidbody;
+		private SpriteRenderer _sprRenderer;
 
 		private void Awake()
 		{
-			_rigidbody = GetComponent<Rigidbody2D>();
 			_inputMember = GetComponent<InputMember>();
+			_rigidbody = GetComponent<Rigidbody2D>();
+			_sprRenderer = GetComponent<SpriteRenderer>();
+		}
+
+		private void Update()
+		{
+			if (_inputMember.MoveInput != 0f)
+			{
+				_sprRenderer.flipX = (_inputMember.MoveInput < 0f) ? true : false;
+			}
 		}
 
 		void FixedUpdate()
@@ -26,5 +36,4 @@ namespace Player
 			_rigidbody.velocity = new Vector2(MoveSpeed * _inputMember.MoveInput, _rigidbody.velocity.y);
 		}
 	}
-
 }
