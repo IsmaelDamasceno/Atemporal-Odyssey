@@ -16,6 +16,7 @@ namespace Player
 		private BoxCollider2D _feetCollider;
 		private InputMember _inputMember;
 		private Rigidbody2D _rb;
+		private Animator _animator;
 		public bool JumpControl = true;
 
 		private float _initialY;
@@ -25,6 +26,7 @@ namespace Player
 		private void Awake()
 		{
 			_inputMember = GetComponent<InputMember>();
+			_animator = GetComponent<Animator>();
 		}
 		void Start()
 		{
@@ -39,9 +41,10 @@ namespace Player
 				return;
 			}
 
-			if (_inputMember.JumpingInput)
+            bool grounded = OnFloor();
+            if (_inputMember.JumpingInput)
 			{
-				if (OnFloor() && _rb.velocity.y <= .03f)
+				if (grounded && _rb.velocity.y <= .03f)
 				{
 					_rb.velocity = new Vector2(_rb.velocity.x, _jumpStrenght);
 					_initialY = transform.position.y;
@@ -52,7 +55,7 @@ namespace Player
 			}
 			else
 			{
-				bool grounded = OnFloor();
+				
 				float yDiff = transform.position.y - _initialY;
 				if (!grounded && yDiff >= 1.4f && _rb.velocity.y >= 0f && _startedJump)
 				{
@@ -64,6 +67,9 @@ namespace Player
 					_startedJump = false;
 				}
 			}
+
+			_animator.SetFloat("YSpeed", _rb.velocity.y);
+			_animator.SetBool("Grounded", grounded);
 		}
 
 		public bool OnFloor()

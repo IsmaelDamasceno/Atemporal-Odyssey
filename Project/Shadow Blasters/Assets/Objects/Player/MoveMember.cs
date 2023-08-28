@@ -16,11 +16,14 @@ namespace Player
 		private Rigidbody2D _rigidbody;
 		private SpriteRenderer _sprRenderer;
 
+		private Animator _animator;
+
 		private void Awake()
 		{
 			_inputMember = GetComponent<InputMember>();
 			_rigidbody = GetComponent<Rigidbody2D>();
 			_sprRenderer = GetComponent<SpriteRenderer>();
+			_animator = GetComponent<Animator>();
 		}
 
 		private void Update()
@@ -29,6 +32,8 @@ namespace Player
 			{
 				_sprRenderer.flipX = (_inputMember.MoveInput < 0f) ? true : false;
 			}
+
+			_animator.SetBool("Moving", _inputMember.MoveInput != 0f);
 		}
 
 		void FixedUpdate()

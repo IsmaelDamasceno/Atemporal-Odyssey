@@ -14,7 +14,7 @@ namespace Player
 		[HideInInspector] public BoxCollider2D Collider;
 		[HideInInspector] public BoxCollider2D FeetCollider;
 
-		public static GameObject Player;
+        public static GameObject Player;
 		public static PropertiesCore s_Instance;
 
 		[HideInInspector] public bool Attacking = false;
