@@ -87,7 +87,7 @@ namespace Player
 			_sprRenderer.enabled = true;
 			_selfAnimator.Play("Base Layer.Attack Anim");
 
-			_playerAnimator.SetBool("Attacking", true);
+            _playerAnimator.Play("Base Layer.Attack");
 		}
 	}
 }
