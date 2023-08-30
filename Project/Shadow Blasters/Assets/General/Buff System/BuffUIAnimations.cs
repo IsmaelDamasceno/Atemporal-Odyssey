@@ -30,10 +30,12 @@ public class BuffUIAnimations : MonoBehaviour
 
             _backgroundImage = transform.GetChild(0).GetComponent<Image>();
             s_scrollRect = GetComponent<ScrollRect>();
+
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 

@@ -32,11 +32,12 @@ namespace Player
 				FeetCollider = transform.GetChild(0).GetComponent<BoxCollider2D>();
 
 				Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("EnemySolid"), true);
+
+				DontDestroyOnLoad(gameObject);
 			}
 			else
 			{
 				Destroy(gameObject);
-				throw new UnityException("Só é permitida uma instância do Player por cena");
 			}
 		}
 	}

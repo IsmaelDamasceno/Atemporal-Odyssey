@@ -27,7 +27,7 @@ namespace Player {
 			}
 			else
 			{
-				Destroy(this);
+				Destroy(gameObject);
 			}
 		}
 
