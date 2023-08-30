@@ -24,9 +24,17 @@ public class SceneTeleport : MonoBehaviour
     {
 		if (collision.CompareTag("Player"))
 		{
-			Debug.Log("Changing scene");
-			SceneManager.LoadScene(_targetScene.name);
-			Player.PropertiesCore.Player.transform.position = _targetPosition;
+            StartCoroutine(LoadLevelCoroutine());
 		}
+	}
+
+    private IEnumerator LoadLevelCoroutine()
+    {
+		TransitionController.s_Animator.SetTrigger("Start");
+
+		yield return new WaitForSeconds(TransitionController.s_TransitionTime);
+
+		SceneManager.LoadScene(_targetScene.name);
+		Player.PropertiesCore.Player.transform.position = _targetPosition;
 	}
 }
