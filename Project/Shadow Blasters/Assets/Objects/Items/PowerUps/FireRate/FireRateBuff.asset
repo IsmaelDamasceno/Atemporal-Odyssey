@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29d191923c30ab4397b17f4428ea651, type: 3}
   m_Name: FireRateBuff
   m_EditorClassIdentifier: 
+  UIBuffItem: {fileID: 6741128636958140218, guid: b45188d94fc314446b7a858ef262a1a3, type: 3}
   amount: 0.2
