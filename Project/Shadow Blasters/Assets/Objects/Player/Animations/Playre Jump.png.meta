@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2d6b8e3e333a6aa45b7edd39e87e5745
+guid: f027b15e212806c4cb01d7299b77a0d2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -107,7 +107,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player Walk_0
+      name: Playre Jump_0
       rect:
         serializedVersion: 2
         x: 0
@@ -121,14 +121,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eda497055316d574db8c71503554ac23
-      internalID: 910035633
+      spriteID: 90bf882990eb10d4eabd1dfe76f93e71
+      internalID: 512833949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Walk_1
+      name: Playre Jump_1
       rect:
         serializedVersion: 2
         x: 32
@@ -142,14 +142,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba0217367d35d0546b1fb39e6e99fdb3
-      internalID: 343750576
+      spriteID: b4d60a87e54f03245b212b4d9a66bf06
+      internalID: -306674079
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player Walk_2
+      name: Playre Jump_2
       rect:
         serializedVersion: 2
         x: 64
@@ -163,71 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae5655d946e4cd64d9c7012ef3b36039
-      internalID: -1259141240
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player Walk_3
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4f6c6dd321c6fef4da104b026d3cb61a
-      internalID: 484183137
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player Walk_4
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0cd807a1ea76b7843b1a245e177e525d
-      internalID: 2142702608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player Walk_5
-      rect:
-        serializedVersion: 2
-        x: 160
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c4a8105c425c9a64fb76fc310d8e9352
-      internalID: 1344155051
+      spriteID: f794a43537cfb0e4aad63f0f32bd8fc7
+      internalID: -1944389631
       vertices: []
       indices: 
       edges: []
@@ -243,12 +180,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player Walk_1: 343750576
-      Player Walk_5: 1344155051
-      Player Walk_3: 484183137
-      Player Walk_4: 2142702608
-      Player Walk_2: -1259141240
-      Player Walk_0: 910035633
+      Playre Jump_2: -1944389631
+      Playre Jump_1: -306674079
+      Playre Jump_0: 512833949
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

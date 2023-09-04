@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d5d4a954ef90c3445822e9f5d0940e55
+guid: aba171b6779a87e4d88dc66804e91117
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,8 +121,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e889ab9aa9cb1ac45b971bd5e70c831d
-      internalID: -1267450741
+      spriteID: bfaae2e742bab0a4fb445d7b75afdf22
+      internalID: 1960303543
       vertices: []
       indices: 
       edges: []
@@ -142,8 +142,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 651022e785c80824e83736ad49dd1d8a
-      internalID: 476751956
+      spriteID: 88b3e6900c982e443be0b61724bfb13a
+      internalID: 2132804285
       vertices: []
       indices: 
       edges: []
@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b38504d4dca6b6e41bc943159be26509
-      internalID: -1005458362
+      spriteID: 0a9a1b50c44a28f45a64c83feec3200b
+      internalID: -1837154709
       vertices: []
       indices: 
       edges: []
@@ -180,9 +180,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player Fall_2: -1005458362
-      Player Fall_0: -1267450741
-      Player Fall_1: 476751956
+      Player Fall_2: -1837154709
+      Player Fall_0: 1960303543
+      Player Fall_1: 2132804285
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
