@@ -13,7 +13,7 @@ public class HealthSystem : MonoBehaviour
 {
 
     private static int s_health;
-	private static int s_healthMax;
+    private static int s_healthMax;
     private static GridLayoutGroup s_layoutGroup;
 
     public static HealthSystem s_Instance;
@@ -35,15 +35,14 @@ public class HealthSystem : MonoBehaviour
         {
 			s_Instance = this;
             s_layoutGroup = s_Instance.GetComponent<GridLayoutGroup>();
-
-            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this);
         }
     }
-    void Start()
+
+    private void Start()
     {
         SetMaxHealth(transform.childCount);
         SetHealth(transform.childCount);

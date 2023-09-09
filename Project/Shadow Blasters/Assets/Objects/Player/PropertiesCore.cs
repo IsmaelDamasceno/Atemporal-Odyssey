@@ -19,7 +19,6 @@ namespace Player
 
 		[HideInInspector] public bool Attacking = false;
 
-
 		void Awake()
 		{
 			if (Player == null)
