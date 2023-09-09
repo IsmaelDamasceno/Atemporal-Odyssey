@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Player {
-	public class DamageMember : MonoBehaviour
+	public class DamageMember : MonoBehaviour, IDamage
 	{
-		private static DamageMember s_instance;
+		public static DamageMember s_Instance;
 
 		private MoveMember _moveMember;
 		private JumpMember _jumpMember;
@@ -17,9 +17,9 @@ namespace Player {
 
 		void Awake()
 		{
-			if (s_instance == null)
+			if (s_Instance == null)
 			{
-				s_instance = this;
+				s_Instance = this;
 
 				_moveMember = GetComponent<MoveMember>();
 				_jumpMember = GetComponent<JumpMember>();
@@ -45,21 +45,21 @@ namespace Player {
 
 		public static void ApplyForce(Vector2 forceToApply)
 		{
-			s_instance._moveMember.enabled = false;
-			s_instance._jumpMember.JumpControl = false;
+			s_Instance._moveMember.enabled = false;
+			s_Instance._jumpMember.JumpControl = false;
 
-			s_instance.transform.position += Vector3.up * 0.1f;
-			s_instance._rb.velocity = Vector2.zero;
-			s_instance._rb.AddForce(forceToApply, ForceMode2D.Impulse);
+			s_Instance.transform.position += Vector3.up * 0.1f;
+			s_Instance._rb.velocity = Vector2.zero;
+			s_Instance._rb.AddForce(forceToApply, ForceMode2D.Impulse);
 
-			s_instance.StartCoroutine(s_instance.ImpactCoroutine());
+			s_Instance.StartCoroutine(s_Instance.ImpactCoroutine());
 		}
 
 		public static void SetIvulnerable()
 		{
 			Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
 			s_Ivulnerable = true;
-			s_instance.StartCoroutine(s_instance.VulnerabilityCoroutine());
+			s_Instance.StartCoroutine(s_Instance.VulnerabilityCoroutine());
 		}
 
 		private IEnumerator VulnerabilityCoroutine()
@@ -74,6 +74,13 @@ namespace Player {
 			yield return new WaitForSeconds(s_ImpactUncontrolTime);
 			_moveMember.enabled = true;
 			_jumpMember.JumpControl = true;
+		}
+
+		public void ApplyDamage(Vector2 impact, int amount)
+		{
+			ApplyForce(impact);
+			HealthSystem.ChangeHealth(-amount);
+			SetIvulnerable();
 		}
 	}
 }

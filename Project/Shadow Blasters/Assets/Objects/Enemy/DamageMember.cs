@@ -1,16 +1,16 @@
 
 using Player;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Enemy
 {
-    public class DamageMember : MonoBehaviour
+    public class DamageMember : MonoBehaviour, IDamage
     {
-        private MoveMember _moveMember;
-        private JumpMember _jumpMember;
         private Rigidbody2D _rb;
+        private EnemyBehaviour _behaviour;
+        [HideInInspector] public WallDetection WallDetection;
+		[HideInInspector] public GroundDetection GroundDetection;
 
         public static float s_IvulnerableTime = 1.25f;
         public static float s_ImpactUncontrolTime = 0.25f;
@@ -18,27 +18,15 @@ namespace Enemy
 
         void Awake()
         {
-            _moveMember = GetComponent<MoveMember>();
-            _jumpMember = GetComponent<JumpMember>();
-            _rb = GetComponent<Rigidbody2D>();
-        }
-
-        void Update()
-        {
-            if (!_moveMember.enabled)
-            {
-                if (_jumpMember.OnFloor())
-                {
-                    _moveMember.enabled = true;
-                    _jumpMember.JumpControl = true;
-                }
-            }
+			_behaviour = GetComponent<EnemyBehaviour>();
+			_rb = GetComponent<Rigidbody2D>();
         }
 
         public void ApplyForce(Vector2 forceToApply)
         {
-            _moveMember.enabled = false;
-            _jumpMember.JumpControl = false;
+			_behaviour.enabled = false;
+			WallDetection.enabled = false;
+			GroundDetection.enabled = false;
 
             transform.position += Vector3.up * 0.1f;
             _rb.velocity = Vector2.zero;
@@ -49,7 +37,7 @@ namespace Enemy
 
         public void SetIvulnerable()
         {
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerAttack"), LayerMask.NameToLayer("EnemySolid"), true);
             s_Ivulnerable = true;
             StartCoroutine(VulnerabilityCoroutine());
         }
@@ -57,15 +45,22 @@ namespace Enemy
         private IEnumerator VulnerabilityCoroutine()
         {
             yield return new WaitForSeconds(s_IvulnerableTime);
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
+            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerAttack"), LayerMask.NameToLayer("EnemySolid"), false);
             s_Ivulnerable = false;
         }
 
         private IEnumerator ImpactCoroutine()
         {
             yield return new WaitForSeconds(s_ImpactUncontrolTime);
-            _moveMember.enabled = true;
-            _jumpMember.JumpControl = true;
-        }
+			_behaviour.enabled = true;
+			WallDetection.enabled = true;
+			GroundDetection.enabled = true;
+		}
+
+        public void ApplyDamage(Vector2 impact, int amount)
+        {
+			ApplyForce(impact);
+			SetIvulnerable();
+		}
     }
 }

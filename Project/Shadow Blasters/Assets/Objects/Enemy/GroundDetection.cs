@@ -1,3 +1,4 @@
+using Enemy;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,6 +11,8 @@ public class GroundDetection : MonoBehaviour
     void Start()
     {
         _behaviour = transform.parent.GetComponent<EnemyBehaviour>();
+        DamageMember damageMember = transform.parent.GetComponent<DamageMember>();
+        damageMember.GroundDetection = this;
 	}
 
     private void OnTriggerExit2D(Collider2D collision)

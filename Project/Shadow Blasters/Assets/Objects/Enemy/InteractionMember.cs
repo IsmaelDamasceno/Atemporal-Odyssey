@@ -29,9 +29,7 @@ namespace Enemy
 				Vector2 playerPos = collision.gameObject.transform.position;
 				int direction = Math.Sign(playerPos.x - transform.position.x);
 
-				Player.DamageMember.ApplyForce(new Vector2(5f * direction, 6f));
-				HealthSystem.ChangeHealth(-1);
-				Player.DamageMember.SetIvulnerable();
+				Player.DamageMember.s_Instance.ApplyDamage(new Vector2(5f * direction, 6f), 1);
 			}
 		}
 	}

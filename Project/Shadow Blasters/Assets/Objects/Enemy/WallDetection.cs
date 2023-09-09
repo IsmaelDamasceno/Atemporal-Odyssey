@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using Enemy;
 using UnityEngine;
 
 public class WallDetection : MonoBehaviour
@@ -9,6 +8,8 @@ public class WallDetection : MonoBehaviour
 	void Start()
 	{
 		_behaviour = transform.parent.GetComponent<EnemyBehaviour>();
+		DamageMember damageMember = transform.parent.GetComponent<DamageMember>();
+		damageMember.WallDetection = this;
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)

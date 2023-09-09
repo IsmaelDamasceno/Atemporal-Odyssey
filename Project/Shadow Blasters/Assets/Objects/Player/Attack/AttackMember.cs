@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Player
@@ -93,6 +94,12 @@ namespace Player
 			_selfAnimator.Play("Base Layer.Attack Anim");
 
             _playerAnimator.Play("Base Layer.Attack");
+		}
+
+		private void OnTriggerEnter2D(Collider2D collision)
+		{
+			Debug.Log("HIT");
+			collision.GetComponent<IDamage>().ApplyDamage(new Vector2(10, 10), 1);
 		}
 	}
 }
