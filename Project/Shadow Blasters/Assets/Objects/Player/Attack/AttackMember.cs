@@ -63,6 +63,11 @@ namespace Player
 				Attack();
 			}
 			_attackingLastFrame = attacking;
+
+			if (_inputMember.MoveInput != 0f)
+			{
+				_sprRenderer.flipX = (_inputMember.MoveInput < 0f);
+			}
 		}
 
 		private IEnumerator CooldownWait()

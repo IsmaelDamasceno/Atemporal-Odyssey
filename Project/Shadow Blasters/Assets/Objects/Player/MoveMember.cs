@@ -30,7 +30,7 @@ namespace Player
 		{
 			if (_inputMember.MoveInput != 0f)
 			{
-				_sprRenderer.flipX = (_inputMember.MoveInput < 0f) ? true : false;
+				_sprRenderer.flipX = (_inputMember.MoveInput < 0f);
 			}
 
 			_animator.SetBool("Moving", _inputMember.MoveInput != 0f);
