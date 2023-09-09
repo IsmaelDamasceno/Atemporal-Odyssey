@@ -24,10 +24,17 @@ public class BuffUIAnimations : MonoBehaviour
             s_Instance = this;
 
             _invInitialY = transform.localPosition.y;
+
+			/*
+             _backgroundImage = transform.GetChild(0).GetComponent<Image>();
+            s_scrollRect = GetComponent<ScrollRect>();
+             */
+
+			DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 

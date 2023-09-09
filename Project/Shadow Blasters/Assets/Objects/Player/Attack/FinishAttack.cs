@@ -13,6 +13,9 @@ public class FinishAttack : StateMachineBehaviour
 		// Diz que o jogador não está mais atacando
 		Player.AttackMember attack = animator.GetComponent<Player.AttackMember>();
 		attack.SetAttacking(false, typeof(FinishAttack));
-	}
+
+		Animator playerAnimator = animator.transform.parent.GetComponent<Animator>();
+        playerAnimator.SetBool("Attacking", false);
+    }
 	
 }

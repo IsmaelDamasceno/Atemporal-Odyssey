@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -34,10 +35,12 @@ public class HealthSystem : MonoBehaviour
         {
 			s_Instance = this;
             s_layoutGroup = s_Instance.GetComponent<GridLayoutGroup>();
+
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
     void Start()
@@ -71,6 +74,11 @@ public class HealthSystem : MonoBehaviour
     /// </summary>
 	private static void HealthUpdate()
     {
+        if (s_health <= 0)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         for(int i = 0; i < s_healthMax; i++)
         {
             HealthController controller = s_Instance.transform.GetChild(i).GetComponent<HealthController>();
