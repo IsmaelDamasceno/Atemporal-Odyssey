@@ -15,11 +15,6 @@ public class EnemyBehaviour : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         float yVel = _rb.velocity.y;

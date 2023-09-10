@@ -25,7 +25,7 @@ namespace Enemy
 
         void Update()
         {
-            if (Feet.OnFloor && !_behaviour.enabled)
+            if (Feet.OnFloor && !_behaviour.enabled && _rb.velocity.y <= 0.05f)
             {
 				_behaviour.enabled = true;
 				WallDetection.enabled = true;

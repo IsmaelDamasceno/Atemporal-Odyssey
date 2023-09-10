@@ -41,10 +41,11 @@ namespace Player
 		private Animator _playerAnimator;
 
 		private InputMember _inputMember;
-
+		private float _scale;
 		void Awake()
 		{
 			transform.parent.GetComponent<PropertiesCore>().RegisterMember("Attack", this);
+			_scale = transform.localScale.x;
 			#region Animation Setup
 			_sprRenderer = GetComponent<SpriteRenderer>();
 			_selfAnimator = GetComponent<Animator>();
@@ -69,7 +70,7 @@ namespace Player
 
 			if (_inputMember.MoveInput != 0f)
 			{
-				_sprRenderer.flipX = (_inputMember.MoveInput < 0f);
+				transform.localScale = new Vector2(_scale * _inputMember.MoveInput, transform.localScale.y);
 			}
 		}
 

@@ -5457,7 +5457,7 @@ GameObject:
   - component: {fileID: 82278471}
   - component: {fileID: 82278472}
   - component: {fileID: 82278473}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Enemy Feet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5511,7 +5511,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.45508477}
+  m_Offset: {x: 0, y: -0.45365083}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5522,7 +5522,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9897957, y: 0.11023873}
+  m_Size: {x: 0.9897957, y: 0.10737085}
   m_EdgeRadius: 0
 --- !u!114 &82278473
 MonoBehaviour:
@@ -5782,8 +5782,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 3
-  Direction: 1
   OnFloor: 0
+  Direction: 1
 --- !u!114 &511729429
 MonoBehaviour:
   m_ObjectHideFlags: 0
