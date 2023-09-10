@@ -12,6 +12,7 @@ namespace Player
 	public class AttackMember : MonoBehaviour
 	{
 		public bool CanAttack { get; set; }
+		public bool Attacking = false;
 
 		private RestrictProp<bool> _attackingProp = new RestrictProp<bool>(false, typeof(AttackMember), typeof(FinishAttack));
 		public bool GetAttacking()
@@ -29,7 +30,8 @@ namespace Player
 			return couldSet;
 		}
 
-		[SerializeField] private float _damage;
+		[SerializeField] private int _damage;
+		[SerializeField] private float _impact;
 		public float Cooldown;
 		private bool _attackingLastFrame;
 
@@ -87,6 +89,7 @@ namespace Player
 
 			SetAttacking(true, typeof(AttackMember));
 			CanAttack = false;
+			Attacking = true;
 
 			StartCoroutine(CooldownWait());
 
@@ -98,8 +101,11 @@ namespace Player
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
-			Debug.Log("HIT");
-			collision.GetComponent<IDamage>().ApplyDamage(new Vector2(10, 10), 1);
+			if (Attacking)
+			{
+				int direction = Math.Sign(collision.transform.position.x - transform.position.x);
+				collision.GetComponent<IDamage>().ApplyDamage(new Vector2(_impact * direction, 3), _damage);
+			}
 		}
 	}
 }

@@ -14,8 +14,10 @@ public class WallDetection : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		Debug.Log("Entrando Parede");
-		_behaviour.Direction *= -1;
-		transform.parent.localScale = new Vector2(_behaviour.Direction * transform.parent.localScale.x, transform.parent.localScale.y);
+		if (_behaviour.OnFloor)
+		{
+			_behaviour.Direction *= -1;
+			transform.parent.localScale = new Vector2(_behaviour.Direction * transform.parent.localScale.x, transform.parent.localScale.y);
+		}
 	}
 }

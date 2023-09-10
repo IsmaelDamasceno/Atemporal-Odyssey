@@ -66,7 +66,6 @@ public class HotbarManager : MonoBehaviour
 				return slot;
 			}
 		}
-		Debug.LogWarning("No Slot available found in the hotbar");
 		return null;
 	}
 }

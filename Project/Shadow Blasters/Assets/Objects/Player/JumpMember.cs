@@ -50,7 +50,6 @@ namespace Player
 					_initialY = transform.position.y;
 					_startedJump = true;
 
-					Debug.Log("Setting Y by direct jump");
 				}
 			}
 			else
@@ -59,7 +58,6 @@ namespace Player
 				float yDiff = transform.position.y - _initialY;
 				if (!grounded && yDiff >= 1.4f && _rb.velocity.y >= 0f && _startedJump)
 				{
-					Debug.Log("Setting Y by variable jump");
 					_rb.velocity = new Vector2(_rb.velocity.x, Mathf.Abs(_rb.velocity.y * 0.4f));
 				}
 				else if (grounded)

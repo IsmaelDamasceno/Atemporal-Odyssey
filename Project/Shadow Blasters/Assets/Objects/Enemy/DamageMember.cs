@@ -11,6 +11,7 @@ namespace Enemy
         private EnemyBehaviour _behaviour;
         [HideInInspector] public WallDetection WallDetection;
 		[HideInInspector] public GroundDetection GroundDetection;
+        [HideInInspector] public EnemyFeet Feet;
 
         public static float s_IvulnerableTime = 1.25f;
         public static float s_ImpactUncontrolTime = 0.25f;
@@ -22,6 +23,16 @@ namespace Enemy
 			_rb = GetComponent<Rigidbody2D>();
         }
 
+        void Update()
+        {
+            if (Feet.OnFloor && !_behaviour.enabled)
+            {
+				_behaviour.enabled = true;
+				WallDetection.enabled = true;
+				GroundDetection.enabled = true;
+			}
+		}
+
         public void ApplyForce(Vector2 forceToApply)
         {
 			_behaviour.enabled = false;
@@ -31,8 +42,6 @@ namespace Enemy
             transform.position += Vector3.up * 0.1f;
             _rb.velocity = Vector2.zero;
             _rb.AddForce(forceToApply, ForceMode2D.Impulse);
-
-            StartCoroutine(ImpactCoroutine());
         }
 
         public void SetIvulnerable()
@@ -49,18 +58,13 @@ namespace Enemy
             s_Ivulnerable = false;
         }
 
-        private IEnumerator ImpactCoroutine()
-        {
-            yield return new WaitForSeconds(s_ImpactUncontrolTime);
-			_behaviour.enabled = true;
-			WallDetection.enabled = true;
-			GroundDetection.enabled = true;
-		}
-
         public void ApplyDamage(Vector2 impact, int amount)
         {
-			ApplyForce(impact);
-			SetIvulnerable();
+			if (!s_Ivulnerable)
+            {
+				ApplyForce(impact);
+				SetIvulnerable();
+			}
 		}
     }
 }

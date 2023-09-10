@@ -128,7 +128,6 @@ public class InventoryManager : MonoBehaviour
 				return slot;
 			}
 		}
-		Debug.LogWarning("No Slot available found in Inventory");
 		return null;
 		#endregion
 	}

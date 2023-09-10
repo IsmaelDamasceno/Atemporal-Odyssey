@@ -34,7 +34,6 @@ public class ChestController : MonoBehaviour, IInteractable
         {
             foreach(GameObject item in _itemStorage)
             {
-                Debug.Log($"Instantiating {item}");
                 Instantiate(item, transform.position, Quaternion.Euler(Vector3.zero));
             }
             _itemStorage = null;

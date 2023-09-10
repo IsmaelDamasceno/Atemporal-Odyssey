@@ -1,3 +1,4 @@
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class FinishAttack : StateMachineBehaviour
 		// Diz que o jogador não está mais atacando
 		Player.AttackMember attack = animator.GetComponent<Player.AttackMember>();
 		attack.SetAttacking(false, typeof(FinishAttack));
+		AttackMember attackMember = animator.GetComponent<AttackMember>();
+		attackMember.Attacking = false;
 
 		Animator playerAnimator = animator.transform.parent.GetComponent<Animator>();
         playerAnimator.SetBool("Attacking", false);

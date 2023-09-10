@@ -17,8 +17,10 @@ public class GroundDetection : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Saindo Chão");
-		_behaviour.Direction *= -1;
-        transform.parent.localScale = new Vector2(_behaviour.Direction * Mathf.Abs(transform.parent.localScale.x), transform.parent.localScale.y);
+		if (_behaviour.OnFloor)
+        {
+			_behaviour.Direction *= -1;
+			transform.parent.localScale = new Vector2(_behaviour.Direction * Mathf.Abs(transform.parent.localScale.x), transform.parent.localScale.y);
+		}
     }
 }
