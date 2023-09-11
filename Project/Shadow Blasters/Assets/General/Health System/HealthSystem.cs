@@ -35,6 +35,8 @@ public class HealthSystem : MonoBehaviour
         {
 			s_Instance = this;
             s_layoutGroup = s_Instance.GetComponent<GridLayoutGroup>();
+
+            SceneManager.sceneLoaded += OnLoad;
         }
         else
         {
@@ -42,7 +44,7 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void OnLoad(Scene scene, LoadSceneMode mode)
     {
         SetMaxHealth(transform.childCount);
         SetHealth(transform.childCount);
