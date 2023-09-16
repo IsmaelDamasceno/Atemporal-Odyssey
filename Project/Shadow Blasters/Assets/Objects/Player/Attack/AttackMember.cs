@@ -105,7 +105,7 @@ namespace Player
 			if (Attacking)
 			{
 				int direction = Math.Sign(collision.transform.position.x - transform.position.x);
-				collision.GetComponent<IDamage>().ApplyDamage(new Vector2(_impact * direction, 3), _damage);
+				collision.GetComponent<IDamage>().ApplyDamage(new Vector2(_impact * direction, 0), _damage);
 			}
 		}
 	}

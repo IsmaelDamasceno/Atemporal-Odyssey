@@ -13,9 +13,8 @@ namespace Enemy
 		[HideInInspector] public GroundDetection GroundDetection;
         [HideInInspector] public EnemyFeet Feet;
 
-        public static float s_IvulnerableTime = 1.25f;
-        public static float s_ImpactUncontrolTime = 0.25f;
-        public static bool s_Ivulnerable = false;
+        public static float s_StunTime = .25f;
+        public static bool s_Stunned = false;
 
         void Awake()
         {
@@ -25,46 +24,51 @@ namespace Enemy
 
         void Update()
         {
-            if (Feet.OnFloor && !_behaviour.enabled && _rb.velocity.y <= 0.05f)
+			/*
+             if (Feet.OnFloor && !_behaviour.enabled && _rb.velocity.y <= 0.05f)
             {
 				_behaviour.enabled = true;
 				WallDetection.enabled = true;
 				GroundDetection.enabled = true;
 			}
+             */
 		}
 
-        public void ApplyForce(Vector2 forceToApply)
+		public void ApplyForce(Vector2 forceToApply)
         {
 			_behaviour.enabled = false;
 			WallDetection.enabled = false;
 			GroundDetection.enabled = false;
 
-            transform.position += Vector3.up * 0.1f;
+			/*
+             transform.position += Vector3.up * 0.1f;
             _rb.velocity = Vector2.zero;
             _rb.AddForce(forceToApply, ForceMode2D.Impulse);
-        }
-
-        public void SetIvulnerable()
+             */
+		}
+        private IEnumerator StunCoroutine()
         {
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerAttack"), LayerMask.NameToLayer("EnemySolid"), true);
-            s_Ivulnerable = true;
-            StartCoroutine(VulnerabilityCoroutine());
-        }
+			Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerAttack"), LayerMask.NameToLayer("EnemySolid"), true);
+			s_Stunned = true;
 
-        private IEnumerator VulnerabilityCoroutine()
-        {
-            yield return new WaitForSeconds(s_IvulnerableTime);
-            Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerAttack"), LayerMask.NameToLayer("EnemySolid"), false);
-            s_Ivulnerable = false;
-        }
+			yield return new WaitForSeconds(s_StunTime);
+
+			Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerAttack"), LayerMask.NameToLayer("EnemySolid"), false);
+			s_Stunned = false;
+
+			_behaviour.enabled = true;
+			WallDetection.enabled = true;
+			GroundDetection.enabled = true;
+		}
 
         public void ApplyDamage(Vector2 impact, int amount)
         {
-			if (!s_Ivulnerable)
-            {
-				ApplyForce(impact);
-				SetIvulnerable();
-			}
+			_behaviour.enabled = false;
+			WallDetection.enabled = false;
+			GroundDetection.enabled = false;
+			_rb.AddForce(impact, ForceMode2D.Impulse);
+
+            StartCoroutine(StunCoroutine());
 		}
     }
 }
