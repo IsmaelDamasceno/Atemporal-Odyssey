@@ -1,9 +1,7 @@
-
-using Player;
 using System.Collections;
 using UnityEngine;
 
-namespace Enemy
+namespace CrystalBot
 {
     public class DamageMember : MonoBehaviour, IDamage
     {
