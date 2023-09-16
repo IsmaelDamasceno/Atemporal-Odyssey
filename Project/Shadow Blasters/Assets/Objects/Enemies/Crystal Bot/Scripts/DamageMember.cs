@@ -47,6 +47,12 @@ namespace CrystalBot
 				StartCoroutine(StunCoroutine());
 
 				gameObject.AddComponent<FlashWhite>().Init(s_StunTime, s_StunTime, GetComponent<SpriteRenderer>());
+
+				int l = Random.Range(1, 4);
+				for (int i = 0; i < l; i++)
+				{
+					Instantiate(Resources.Load<GameObject>("Attack Hit"), transform.position, Quaternion.identity);
+				}
 			}
 		}
     }
