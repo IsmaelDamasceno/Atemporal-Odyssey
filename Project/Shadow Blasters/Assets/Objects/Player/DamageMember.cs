@@ -10,6 +10,7 @@ namespace Player {
 		private MoveMember _moveMember;
 		private JumpMember _jumpMember;
 		private Rigidbody2D _rb;
+		private Animator _animator;
 
 		public static float s_IvulnerableTime = 1.25f;
 		public static float s_ImpactUncontrolTime = 0.25f;
@@ -23,6 +24,7 @@ namespace Player {
 
 				_moveMember = GetComponent<MoveMember>();
 				_jumpMember = GetComponent<JumpMember>();
+				_animator = GetComponent<Animator>();
 				_rb = GetComponent<Rigidbody2D>();
 			}
 			else
@@ -39,6 +41,7 @@ namespace Player {
 				{
 					_moveMember.enabled = true;
 					_jumpMember.JumpControl = true;
+					_animator.SetBool("Damaged", false);
 				}
 			}
 		}
@@ -47,6 +50,7 @@ namespace Player {
 		{
 			s_Instance._moveMember.enabled = false;
 			s_Instance._jumpMember.JumpControl = false;
+			s_Instance._animator.SetBool("Damaged", true);
 
 			s_Instance.transform.position += Vector3.up * 0.1f;
 			s_Instance._rb.velocity = Vector2.zero;
@@ -74,6 +78,7 @@ namespace Player {
 			yield return new WaitForSeconds(s_ImpactUncontrolTime);
 			_moveMember.enabled = true;
 			_jumpMember.JumpControl = true;
+			_animator.SetBool("Damaged", false);
 		}
 
 		public void ApplyDamage(Vector2 impact, int amount)
