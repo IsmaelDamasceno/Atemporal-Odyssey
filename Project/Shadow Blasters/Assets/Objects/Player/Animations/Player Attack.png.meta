@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0c2a4a67eddbc52459e6b9aa5348850b
+guid: f668f6f0584ab58478f3c690ca9b3ab7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -121,8 +121,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14b086494f45a0442b78787d128b82bd
-      internalID: 2102339914
+      spriteID: 59f6d265553d99d458decaff062459e7
+      internalID: -1597219107
       vertices: []
       indices: 
       edges: []
@@ -142,8 +142,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3e8444776545af49b1e691f5df11a3b
-      internalID: -36622376
+      spriteID: ee38b51a3d10f6445b4f07dd2b4eba53
+      internalID: 1775767062
       vertices: []
       indices: 
       edges: []
@@ -163,8 +163,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83b1ff33c4be75941ac32e630f16d1b7
-      internalID: 903185809
+      spriteID: 568e8c2d6a662a54cbb16d1efb12d1d3
+      internalID: -258182396
       vertices: []
       indices: 
       edges: []
@@ -184,8 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e7b4715e904a9c647a6de18225f0af7d
-      internalID: -1017063450
+      spriteID: 9ec3f113585bc0748bd1758e1763d3a1
+      internalID: 1943693177
       vertices: []
       indices: 
       edges: []
@@ -205,8 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ef4341d1f3271642a911ca037a9989c
-      internalID: -1916418567
+      spriteID: 6ae5ff5fdcbd43d468aa1a4fd1199118
+      internalID: -49500208
       vertices: []
       indices: 
       edges: []
@@ -222,11 +222,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player Attack_4: -1916418567
-      Player Attack_3: -1017063450
-      Player Attack_2: 903185809
-      Player Attack_1: -36622376
-      Player Attack_0: 2102339914
+      Player Attack_4: -49500208
+      Player Attack_3: 1943693177
+      Player Attack_2: -258182396
+      Player Attack_1: 1775767062
+      Player Attack_0: -1597219107
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

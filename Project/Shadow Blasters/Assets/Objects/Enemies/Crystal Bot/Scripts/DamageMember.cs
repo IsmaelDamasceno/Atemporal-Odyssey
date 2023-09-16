@@ -37,14 +37,17 @@ namespace CrystalBot
 
         public void ApplyDamage(Vector2 impact, int amount)
         {
-			_behaviour.enabled = false;
-			WallDetection.enabled = false;
-			GroundDetection.enabled = false;
-			_rb.AddForce(impact, ForceMode2D.Impulse);
+			if (!s_Stunned)
+            {
+				_behaviour.enabled = false;
+				WallDetection.enabled = false;
+				GroundDetection.enabled = false;
+				_rb.AddForce(impact, ForceMode2D.Impulse);
 
-            StartCoroutine(StunCoroutine());
+				StartCoroutine(StunCoroutine());
 
-			gameObject.AddComponent<FlashWhite>().Init(s_StunTime, s_StunTime, GetComponent<SpriteRenderer>());
+				gameObject.AddComponent<FlashWhite>().Init(s_StunTime, s_StunTime, GetComponent<SpriteRenderer>());
+			}
 		}
     }
 }
