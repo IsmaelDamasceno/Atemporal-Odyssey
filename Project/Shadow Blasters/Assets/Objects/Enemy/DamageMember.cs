@@ -22,30 +22,6 @@ namespace Enemy
 			_rb = GetComponent<Rigidbody2D>();
         }
 
-        void Update()
-        {
-			/*
-             if (Feet.OnFloor && !_behaviour.enabled && _rb.velocity.y <= 0.05f)
-            {
-				_behaviour.enabled = true;
-				WallDetection.enabled = true;
-				GroundDetection.enabled = true;
-			}
-             */
-		}
-
-		public void ApplyForce(Vector2 forceToApply)
-        {
-			_behaviour.enabled = false;
-			WallDetection.enabled = false;
-			GroundDetection.enabled = false;
-
-			/*
-             transform.position += Vector3.up * 0.1f;
-            _rb.velocity = Vector2.zero;
-            _rb.AddForce(forceToApply, ForceMode2D.Impulse);
-             */
-		}
         private IEnumerator StunCoroutine()
         {
 			Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerAttack"), LayerMask.NameToLayer("EnemySolid"), true);
