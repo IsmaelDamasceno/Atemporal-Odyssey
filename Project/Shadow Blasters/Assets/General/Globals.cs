@@ -19,4 +19,9 @@ public static class Globals
 		}
         return _playerControls;
     }
+
+    public static Material GetFlashMaterial()
+    {
+        return Resources.Load<Material>("Damage Matt");
+    }
 }

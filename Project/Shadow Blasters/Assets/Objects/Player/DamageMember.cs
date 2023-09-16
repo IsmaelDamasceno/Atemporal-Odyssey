@@ -86,6 +86,8 @@ namespace Player {
 			ApplyForce(impact);
 			HealthSystem.ChangeHealth(-amount);
 			SetIvulnerable();
+
+			gameObject.AddComponent<FlashWhite>().Init(s_IvulnerableTime, 0.15f, GetComponent<SpriteRenderer>());
 		}
 	}
 }

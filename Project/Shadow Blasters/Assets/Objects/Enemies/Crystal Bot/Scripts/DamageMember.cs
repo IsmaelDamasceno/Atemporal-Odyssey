@@ -43,6 +43,8 @@ namespace CrystalBot
 			_rb.AddForce(impact, ForceMode2D.Impulse);
 
             StartCoroutine(StunCoroutine());
+
+			gameObject.AddComponent<FlashWhite>().Init(s_StunTime, s_StunTime, GetComponent<SpriteRenderer>());
 		}
     }
 }
