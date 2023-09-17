@@ -49,7 +49,6 @@ namespace Player
 					_rb.velocity = new Vector2(_rb.velocity.x, _jumpStrenght);
 					_initialY = transform.position.y;
 					_startedJump = true;
-
 				}
 			}
 			else

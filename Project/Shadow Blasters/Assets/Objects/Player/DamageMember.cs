@@ -35,7 +35,7 @@ namespace Player {
 
 		void Update()
 		{
-			if (!_moveMember.enabled)
+			if (!_moveMember.enabled && _animator.GetBool("Damaged"))
 			{
 				if (_jumpMember.OnFloor())
 				{
