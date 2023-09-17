@@ -77,6 +77,7 @@ public class HealthSystem : MonoBehaviour
     {
         if (s_health <= 0)
         {
+            Player.PropertiesCore.Player.transform.position = GameController.savePos;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 

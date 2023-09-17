@@ -21,6 +21,7 @@ namespace CrystalBot
 		{
 			if (feet.OnFloor)
 			{
+				Debug.Log(collision.gameObject.name);
 				_behaviour.Direction *= -1;
 				transform.parent.localScale = new Vector2(
 					_behaviour.Direction * Mathf.Abs(transform.parent.localScale.x), transform.parent.localScale.y);
