@@ -14,10 +14,13 @@ namespace CrystalBot
         public static float s_StunTime = .25f;
         public static bool s_Stunned = false;
 
+		private IPropertiesCore propertiesCore;
+
         void Awake()
         {
 			_behaviour = GetComponent<EnemyBehaviour>();
 			_rb = GetComponent<Rigidbody2D>();
+			propertiesCore = GetComponent<IPropertiesCore>();
         }
 
         private IEnumerator StunCoroutine()
@@ -30,18 +33,14 @@ namespace CrystalBot
 			Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerAttack"), LayerMask.NameToLayer("EnemySolid"), false);
 			s_Stunned = false;
 
-			_behaviour.enabled = true;
-			WallDetection.enabled = true;
-			GroundDetection.enabled = true;
+			propertiesCore.ChangeState(EnemyState.Patrol);
 		}
 
-        public void ApplyDamage(Vector2 impact, int amount)
-        {
+		public void ApplyDamage(Transform hitTransform, Vector2 impact, int amount)
+		{
 			if (!s_Stunned)
             {
-				_behaviour.enabled = false;
-				WallDetection.enabled = false;
-				GroundDetection.enabled = false;
+				propertiesCore.ChangeState(EnemyState.Damage);
 				_rb.AddForce(impact, ForceMode2D.Impulse);
 
 				StartCoroutine(StunCoroutine());

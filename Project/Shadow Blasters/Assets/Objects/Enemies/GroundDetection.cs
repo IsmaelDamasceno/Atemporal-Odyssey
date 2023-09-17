@@ -8,17 +8,18 @@ namespace CrystalBot
 	public class GroundDetection : MonoBehaviour
 	{
 		private EnemyBehaviour _behaviour;
+		private EnemyFeet feet;
 
 		void Start()
 		{
 			_behaviour = transform.parent.GetComponent<EnemyBehaviour>();
 			DamageMember damageMember = transform.parent.GetComponent<DamageMember>();
-			damageMember.GroundDetection = this;
+			feet = transform.parent.GetComponentInChildren<EnemyFeet>();
 		}
 
 		private void OnTriggerExit2D(Collider2D collision)
 		{
-			if (_behaviour.OnFloor)
+			if (feet.OnFloor)
 			{
 				_behaviour.Direction *= -1;
 				transform.parent.localScale = new Vector2(

@@ -14,19 +14,16 @@ namespace CrystalBot
 		void Start()
 		{
 			transform.parent.GetComponent<DamageMember>().Feet = this;
-			_behaviour = transform.parent.GetComponent<EnemyBehaviour>();
 		}
 
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
 			OnFloor = true;
-			_behaviour.OnFloor = true;
 
 		}
 		private void OnTriggerExit2D(Collider2D collision)
 		{
 			OnFloor = false;
-			_behaviour.OnFloor = true;
 		}
 	}
 }

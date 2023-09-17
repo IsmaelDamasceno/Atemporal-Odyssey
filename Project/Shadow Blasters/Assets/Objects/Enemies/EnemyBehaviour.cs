@@ -8,7 +8,6 @@ namespace CrystalBot
 	{
 
 		[SerializeField] private float _moveSpeed;
-		[HideInInspector] public bool OnFloor;
 		public int Direction;
 		private Rigidbody2D _rb;
 

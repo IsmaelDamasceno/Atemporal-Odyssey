@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -81,9 +82,16 @@ namespace Player {
 			_animator.SetBool("Damaged", false);
 		}
 
-		public void ApplyDamage(Vector2 impact, int amount)
+		public void ApplyDamage(Transform hitTransform, Vector2 impact, int amount)
 		{
-			ApplyForce(impact);
+			if (s_Ivulnerable)
+			{
+				return;
+			}
+
+			int direction = Math.Sign(transform.position.x - hitTransform.position.x);
+
+			ApplyForce(new Vector2(impact.x * direction, impact.y));
 			HealthSystem.ChangeHealth(-amount);
 			SetIvulnerable();
 
