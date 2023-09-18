@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6300392136736490778
 SpriteRenderer:
@@ -143,4 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a76d947fea85e040b22a3b48060dfd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powerUpEffect: {fileID: 11400000, guid: d83b230e188424748b45b91fd34d7331, type: 2}
+  powerUpEffect: {fileID: 11400000, guid: 9840ca7dfb5c6114387f1fc284c311f1, type: 2}
