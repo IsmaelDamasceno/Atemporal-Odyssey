@@ -11,41 +11,47 @@ namespace CrystalBot
 		[HideInInspector] public GroundDetection GroundDetection;
         [HideInInspector] public EnemyFeet Feet;
 
-        public static float s_StunTime = .25f;
-        public static bool s_Stunned = false;
+        public float stunTime = .25f;
+        public bool stunned = false;
 
-		private IPropertiesCore propertiesCore;
+		private BasePropertiesCore propertiesCore;
 
         void Awake()
         {
 			_behaviour = GetComponent<EnemyBehaviour>();
 			_rb = GetComponent<Rigidbody2D>();
-			propertiesCore = GetComponent<IPropertiesCore>();
+			propertiesCore = GetComponent<BasePropertiesCore>();
         }
 
         private IEnumerator StunCoroutine()
         {
 			Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerAttack"), LayerMask.NameToLayer("EnemySolid"), true);
-			s_Stunned = true;
+			stunned = true;
 
-			yield return new WaitForSeconds(s_StunTime);
+			yield return new WaitForSeconds(stunTime);
 
 			Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("PlayerAttack"), LayerMask.NameToLayer("EnemySolid"), false);
-			s_Stunned = false;
+			stunned = false;
 
 			propertiesCore.ChangeState(EnemyState.Patrol);
 		}
 
 		public void ApplyDamage(Transform hitTransform, Vector2 impact, int amount)
 		{
-			if (!s_Stunned)
+			if (!stunned)
             {
+				propertiesCore.health -= amount;
+				if (propertiesCore.health <= 0)
+				{
+					Destroy(gameObject);
+				}
+
 				propertiesCore.ChangeState(EnemyState.Damage);
 				_rb.AddForce(impact, ForceMode2D.Impulse);
 
 				StartCoroutine(StunCoroutine());
 
-				gameObject.AddComponent<FlashWhite>().Init(s_StunTime, s_StunTime, GetComponent<SpriteRenderer>());
+				gameObject.AddComponent<FlashWhite>().Init(stunTime, stunTime, GetComponent<SpriteRenderer>());
 
 				int l = Random.Range(1, 4);
 				for (int i = 0; i < l; i++)

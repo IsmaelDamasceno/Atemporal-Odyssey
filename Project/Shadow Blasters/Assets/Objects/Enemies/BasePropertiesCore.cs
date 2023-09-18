@@ -11,7 +11,8 @@ public enum EnemyState
 	Attack
 }
 
-public interface IPropertiesCore
+public abstract class BasePropertiesCore: MonoBehaviour
 {
-	public void ChangeState(EnemyState newState);
+	public int health;
+	public abstract void ChangeState(EnemyState newState);
 }

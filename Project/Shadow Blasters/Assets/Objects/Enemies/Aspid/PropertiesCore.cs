@@ -5,10 +5,11 @@ using UnityEngine;
 
 namespace Aspid
 {
-	public class PropertiesCore : MonoBehaviour, IPropertiesCore
+	public class PropertiesCore : BasePropertiesCore
 	{
 
 		[SerializeField] private Vector2 walkTime;
+
 		private Animator animator;
 		private EnemyBehaviour behaviour;
 		private WallDetection wallDetection;
@@ -42,7 +43,7 @@ namespace Aspid
 			StartCoroutine(AttackCoroutine());
 		}
 
-		public void ChangeState(EnemyState newState)
+		public override void ChangeState(EnemyState newState)
 		{
 			currentState = newState;
 			switch(currentState)

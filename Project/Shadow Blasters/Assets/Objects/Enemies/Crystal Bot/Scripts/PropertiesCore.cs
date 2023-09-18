@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 namespace CrstalBot
 {
-	public class PropertiesCore : MonoBehaviour, IPropertiesCore
+	public class PropertiesCore : BasePropertiesCore
 	{
 		public EnemyState currentState;
 		private EnemyBehaviour behaviour;
@@ -28,7 +28,7 @@ namespace CrstalBot
 
 		}
 
-		public void ChangeState(EnemyState newState)
+		public override void ChangeState(EnemyState newState)
 		{
 			currentState = newState;
 
