@@ -28,14 +28,18 @@ public class FlashWhite : MonoBehaviour
     private IEnumerator TotalTimeCoroutine()
     {
         yield return new WaitForSeconds(_totalTime);
-
-		_targetSprRenderer.material = _originalMaterial;
-		Destroy(this);
-    }
+        EndComponent();
+	}
     private IEnumerator FlashCoroutine(bool active)
     {
         _targetSprRenderer.material = active? _flashMaterial: _originalMaterial;
         yield return new WaitForSeconds(_flashInterval);
         StartCoroutine(FlashCoroutine(!active));
     }
+
+    public void EndComponent()
+    {
+		_targetSprRenderer.material = _originalMaterial;
+		Destroy(this);
+	}
 }

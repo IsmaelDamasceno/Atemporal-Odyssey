@@ -15,8 +15,6 @@ public class GameController : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-
-            savePos = Player.PropertiesCore.Player.transform.position;
         }
         else
         {
@@ -24,13 +22,13 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        
-    }
-
     public static void RestartPlayer()
     {
         Player.PropertiesCore.Player.transform.position = savePos;
+    }
+
+    public static void SavePlayerInitialPos(GameObject playerObj)
+    {
+        savePos = playerObj.transform.position;
     }
 }

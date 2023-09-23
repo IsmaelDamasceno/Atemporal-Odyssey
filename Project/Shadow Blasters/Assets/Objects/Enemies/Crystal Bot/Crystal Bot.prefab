@@ -40,7 +40,7 @@ Transform:
   - {fileID: 8742068536897660329}
   - {fileID: 8742068536048680482}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8742068535677409643
 SpriteRenderer:
@@ -198,6 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1306f432529537a499c5e52202b9a26f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 3
+  currentState: 0
 --- !u!114 &8742068535677409649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +213,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 2
-  OnFloor: 0
   Direction: 1
 --- !u!114 &8742068535677409648
 MonoBehaviour:
@@ -228,6 +229,8 @@ MonoBehaviour:
   WallDetection: {fileID: 0}
   GroundDetection: {fileID: 0}
   Feet: {fileID: 0}
+  stunTime: 0.25
+  stunned: 0
 --- !u!1 &8742068536048680483
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +279,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2039
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -364,10 +367,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1921
+    m_Bits: 2039
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -454,10 +457,10 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1921
+    m_Bits: 2039
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2

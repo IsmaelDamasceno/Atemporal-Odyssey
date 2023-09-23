@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1575998675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1575998676}
+  - component: {fileID: 1575998677}
+  m_Layer: 0
+  m_Name: Projectile Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1575998676
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575998675}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.596, y: -0.068, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 831318189367410368}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1575998677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575998675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6c47ed71f86d674fb1cfff04dd94802, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &831318188926130323
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,9 +238,10 @@ GameObject:
   - component: {fileID: 831318189367410370}
   - component: {fileID: 831318189367410375}
   - component: {fileID: 831318189367410374}
-  - component: {fileID: 831318189367410395}
   - component: {fileID: 831318189367410372}
   - component: {fileID: 831318189367410394}
+  - component: {fileID: 506923346}
+  - component: {fileID: 506923347}
   m_Layer: 9
   m_Name: Aspid
   m_TagString: Untagged
@@ -220,6 +265,7 @@ Transform:
   - {fileID: 831318188996173268}
   - {fileID: 831318190417071974}
   - {fileID: 831318188926130322}
+  - {fileID: 1575998676}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -365,20 +411,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &831318189367410395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831318189367410371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1306f432529537a499c5e52202b9a26f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &831318189367410372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -408,6 +442,35 @@ MonoBehaviour:
   WallDetection: {fileID: 0}
   GroundDetection: {fileID: 0}
   Feet: {fileID: 0}
+  stunTime: 0.25
+  stunned: 0
+--- !u!114 &506923346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831318189367410371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7489b996afe096f4f99292cb701dc55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 2
+  walkTime: {x: 3, y: 6}
+--- !u!114 &506923347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831318189367410371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6273315d7f8705044a97f90164a2df08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 6632700671855242647, guid: 9a8360c9ca548d84e99e2e41437a2695, type: 3}
 --- !u!1 &831318190118871970
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +626,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.85981965, y: -0.48340368}
+  m_Offset: {x: 0.88293076, y: -0.5173907}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -574,7 +637,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15008163, y: 0.10106516}
+  m_Size: {x: 0.19630384, y: 0.16903925}
   m_EdgeRadius: 0
 --- !u!114 &831318190417071972
 MonoBehaviour:

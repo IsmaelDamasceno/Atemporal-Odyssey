@@ -14,9 +14,10 @@ public class Estalactite : MonoBehaviour
 {
 
     [SerializeField] private LayerMask contactLayers;
+    [SerializeField] private float interactionDistance;
     private Rigidbody2D rb;
 
-    private EstalactiteMode currentMode = EstalactiteMode.Asleep;
+	[SerializeField] private EstalactiteMode currentMode = EstalactiteMode.Asleep;
 
     void Start()
     {
@@ -28,7 +29,7 @@ public class Estalactite : MonoBehaviour
     {
 		if (currentMode == EstalactiteMode.Asleep)
         {
-			if (Physics2D.BoxCast(transform.position, transform.localScale, 0f, Vector2.down, 10f, contactLayers))
+			if (Physics2D.BoxCast(transform.position, transform.localScale, 0f, Vector2.down, interactionDistance, contactLayers))
 			{
 				rb.isKinematic = false;
                 currentMode = EstalactiteMode.Falling;
@@ -38,7 +39,7 @@ public class Estalactite : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+		if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") && currentMode == EstalactiteMode.Falling)
 		{
 			rb.velocity = Vector2.zero;
 			rb.isKinematic = true;

@@ -95,6 +95,10 @@ namespace Player {
 			HealthSystem.ChangeHealth(-amount);
 			SetIvulnerable();
 
+			if (TryGetComponent<FlashWhite>(out var component))
+			{
+				component.EndComponent();
+			}
 			gameObject.AddComponent<FlashWhite>().Init(s_IvulnerableTime, 0.15f, GetComponent<SpriteRenderer>());
 		}
 	}

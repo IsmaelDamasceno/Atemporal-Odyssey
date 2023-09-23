@@ -47,7 +47,7 @@ public class Elevator : MonoBehaviour
         rb.velocity = new Vector2(0f, direction * elevatorSpeed);
         if (direction != 0)
         {
-			if ((direction == 1 && transform.position.y > points[currentPoint]) ||
+            if ((direction == 1 && transform.position.y > points[currentPoint]) ||
                 (direction == -1 && transform.position.y < points[currentPoint]))
 			{
                 direction = 0;
