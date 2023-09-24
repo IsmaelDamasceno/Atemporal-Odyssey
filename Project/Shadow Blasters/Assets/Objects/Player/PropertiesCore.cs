@@ -13,8 +13,8 @@ namespace Player
 		[HideInInspector] public Rigidbody2D Rigidbody;
 		[HideInInspector] public BoxCollider2D Collider;
 		[HideInInspector] public BoxCollider2D FeetCollider;
+		[HideInInspector] public static bool swimming = false;
 		
-
         public static GameObject Player;
 		public static PropertiesCore s_Instance;
 
@@ -45,13 +45,23 @@ namespace Player
 			}
 		}
 
-		private void OnTriggerStay2D(Collider2D collision)
+		private void OnTriggerEnter2D(Collider2D collision)
 		{
-			Debug.Log(LayerMask.LayerToName(collision.gameObject.layer));
 			if (collision.gameObject.layer == LayerMask.NameToLayer("Water"))
 			{
 				animator.SetBool("Swimming", true);
+				GetComponent<SwimComponent>().enabled = true;
 				animator.Play("Base Layer.Swim");
+				swimming = true;
+			}
+		}
+		private void OnTriggerExit2D(Collider2D collision)
+		{
+			if (collision.gameObject.layer == LayerMask.NameToLayer("Water"))
+			{
+				animator.SetBool("Swimming", false);
+				GetComponent<SwimComponent>().enabled = false;
+				swimming = false;
 			}
 		}
 	}
