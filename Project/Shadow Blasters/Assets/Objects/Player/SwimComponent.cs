@@ -13,6 +13,8 @@ namespace Player
 	}
 	public class SwimComponent : MonoBehaviour
 	{
+		[SerializeField] private float waterInitialDistance;
+
 		[Header("Fall")]
 		[SerializeField] private AnimationCurve fallCurve;
 		[SerializeField] private float fallTimeScale;
@@ -27,6 +29,7 @@ namespace Player
 		private float time = 0;
 		private float yVel;
 		private JumpMember jumpMember;
+		private BoxCollider2D collider;
 
 		private SwimState currentState = SwimState.Sinking;
 
@@ -34,6 +37,7 @@ namespace Player
 		{
 			rb = GetComponent<Rigidbody2D>();
 			jumpMember = GetComponent<JumpMember>();
+			collider = GetComponent<BoxCollider2D>();
 		}
 
 		private void OnEnable()
@@ -41,6 +45,14 @@ namespace Player
 			originalGravScale = rb.gravityScale;
 			rb.gravityScale = 0f;
 			yVel = rb.velocity.y;
+
+			int waterMask = LayerMask.NameToLayer("Water");
+			RaycastHit2D hitInfo =
+				Physics2D.BoxCast(transform.position + (Vector3)collider.offset - Vector3.up, collider.size, 0f, Vector2.down, 3f, waterMask);
+			transform.position = new Vector2(transform.position.x, hitInfo.point.y + waterInitialDistance);
+
+			Debug.Log(
+				$"yPos: {transform.position.y}");
 		}
 		private void OnDisable()
 		{
