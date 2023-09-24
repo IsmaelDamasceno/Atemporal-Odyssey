@@ -49,6 +49,8 @@ namespace Player
 		{
 			if (collision.gameObject.layer == LayerMask.NameToLayer("Water"))
 			{
+				GetComponent<JumpMember>()._startedJump = false;
+
 				animator.SetBool("Swimming", true);
 				GetComponent<SwimComponent>().enabled = true;
 				animator.Play("Base Layer.Swim");

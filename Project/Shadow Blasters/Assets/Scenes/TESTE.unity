@@ -5001,7 +5001,7 @@ Tilemap:
       - {fileID: 332452947, guid: f862879c68bbbc345afd32eeb372bfb6, type: 3}
       - {fileID: -851007669, guid: f862879c68bbbc345afd32eeb372bfb6, type: 3}
       - {fileID: -1591047114, guid: f862879c68bbbc345afd32eeb372bfb6, type: 3}
-      m_AnimationSpeed: 3
+      m_AnimationSpeed: 3.0000002
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 42, y: -15, z: 0}
@@ -6563,7 +6563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5900901795150154038, guid: 35a70af2ea1092345b5870ecdc6e897f, type: 3}
       propertyPath: fallCurve.m_Curve.Array.data[0].value
-      value: -8
+      value: -7
       objectReference: {fileID: 0}
     - target: {fileID: -5900901795150154038, guid: 35a70af2ea1092345b5870ecdc6e897f, type: 3}
       propertyPath: fallCurve.m_Curve.Array.data[1].value

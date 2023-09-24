@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -8,7 +9,6 @@ namespace Player
 	enum SwimState
 	{
 		Sinking,
-		Splashing,
 		Floating
 	}
 	public class SwimComponent : MonoBehaviour
@@ -26,12 +26,14 @@ namespace Player
 		private float originalGravScale;
 		private float time = 0;
 		private float yVel;
+		private JumpMember jumpMember;
 
 		private SwimState currentState = SwimState.Sinking;
 
 		void Awake()
 		{
 			rb = GetComponent<Rigidbody2D>();
+			jumpMember = GetComponent<JumpMember>();
 		}
 
 		private void OnEnable()
@@ -43,10 +45,17 @@ namespace Player
 		private void OnDisable()
 		{
 			rb.gravityScale = originalGravScale;
+			currentState = SwimState.Sinking;
+			time = 0f;
 		}
 
 		private void FixedUpdate()
 		{
+			if (jumpMember._startedJump)
+			{
+				enabled = false;
+			}
+
 			switch(currentState)
 			{
 				case SwimState.Sinking:

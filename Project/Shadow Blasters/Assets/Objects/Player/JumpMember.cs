@@ -21,7 +21,7 @@ namespace Player
 
 		private float _initialY;
 
-		private bool _startedJump = false;
+		public bool _startedJump = false;
 
 		private void Awake()
 		{
