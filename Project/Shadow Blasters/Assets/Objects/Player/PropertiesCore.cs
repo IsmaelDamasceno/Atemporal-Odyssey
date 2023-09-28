@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace Player
 {
@@ -13,7 +15,10 @@ namespace Player
 		[HideInInspector] public Rigidbody2D Rigidbody;
 		[HideInInspector] public BoxCollider2D Collider;
 		[HideInInspector] public BoxCollider2D FeetCollider;
+
 		[HideInInspector] public static bool swimming = false;
+		[HideInInspector] public static bool swimJump = false;
+		private static Coroutine swimJumpCoroutine;
 		
         public static GameObject Player;
 		public static PropertiesCore s_Instance;
@@ -45,6 +50,16 @@ namespace Player
 			}
 		}
 
+		private IEnumerator SwimJumpCoroutine()
+		{
+			swimJump = false;
+			yield return new WaitForSeconds(1f);
+			if (swimming)
+			{
+				swimJump = true;
+			}
+		}
+
 		private void OnTriggerEnter2D(Collider2D collision)
 		{
 			if (collision.gameObject.layer == LayerMask.NameToLayer("Water"))
@@ -52,9 +67,9 @@ namespace Player
 				GetComponent<JumpMember>()._startedJump = false;
 
 				animator.SetBool("Swimming", true);
-				GetComponent<SwimComponent>().enabled = true;
 				animator.Play("Base Layer.Swim");
 				swimming = true;
+				StartCoroutine(SwimJumpCoroutine());
 			}
 		}
 		private void OnTriggerExit2D(Collider2D collision)
@@ -62,8 +77,8 @@ namespace Player
 			if (collision.gameObject.layer == LayerMask.NameToLayer("Water"))
 			{
 				animator.SetBool("Swimming", false);
-				GetComponent<SwimComponent>().enabled = false;
 				swimming = false;
+				swimJump = false;
 			}
 		}
 	}

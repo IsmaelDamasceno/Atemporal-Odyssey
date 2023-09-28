@@ -44,7 +44,7 @@ namespace Player
             bool grounded = OnFloor();
             if (_inputMember.JumpingInput)
 			{
-				if (grounded || PropertiesCore.swimming)
+				if (grounded || PropertiesCore.swimJump)
 				{
 					_rb.velocity = new Vector2(_rb.velocity.x, _jumpStrenght);
 					_initialY = transform.position.y;
