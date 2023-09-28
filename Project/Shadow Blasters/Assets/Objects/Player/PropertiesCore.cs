@@ -53,7 +53,7 @@ namespace Player
 		private IEnumerator SwimJumpCoroutine()
 		{
 			swimJump = false;
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(.25f);
 			if (swimming)
 			{
 				swimJump = true;
