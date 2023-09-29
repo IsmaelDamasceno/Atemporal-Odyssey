@@ -2,13 +2,19 @@ using Player;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class LadderMember : MonoBehaviour
 {
 
+	[SerializeField] private float ladderSpeed;
+	[SerializeField] private LayerMask groundMask;
+
 	private Rigidbody2D rb;
 	private float originalGravScale;
+	private BoxCollider2D collider;
 
 	private Vector3 ladderPos;
 	private InputMember inputMember;
@@ -18,6 +24,7 @@ public class LadderMember : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody2D>();
 		inputMember = GetComponent<InputMember>();
+		collider = GetComponent<BoxCollider2D>();
 	}
 
 	public void StartLadder(Vector2 contactPos)
@@ -40,6 +47,14 @@ public class LadderMember : MonoBehaviour
 		lerping = true;
 	}
 
+
+	private void Update()
+	{
+		if (JumpMember.grounded && inputMember.MoveInput != 0f)
+		{
+			PropertiesCore.ExitLadder();
+		}
+	}
 	private void FixedUpdate()
 	{
 		if (lerping)
@@ -54,6 +69,40 @@ public class LadderMember : MonoBehaviour
 				lerping = false;
 			}
 		}
-		rb.velocity = new Vector2(0f, inputMember.LadderInput * 5f);
+
+		float ySpeed = inputMember.LadderInput * ladderSpeed;
+		if (ySpeed != 0f)
+		{
+			RaycastHit2D hitInfo = Physics2D.BoxCast(transform.position + (Vector3)collider.offset, new Vector2(collider.size.x * 0.5f, collider.size.y), 0f, Vector2.up * Math.Sign(ySpeed), ySpeed * Time.fixedDeltaTime * 2f, groundMask);
+
+			if (hitInfo.transform == null)
+			{
+				rb.velocity = new Vector2(0f, ySpeed);
+			}
+			else
+			{
+				rb.velocity = new Vector2(0f, 0f);
+			}
+		}
+		else
+		{
+			rb.velocity = new Vector2(0f, 0f);
+		}
 	}
+
+	/*
+	 void OnDrawGizmos()
+	{
+		Gizmos.color = Color.blue;
+
+		Vector3 pos = transform.position + (Vector3)collider.offset;
+
+		float ySpeed = inputMember.LadderInput * ladderSpeed * Time.fixedDeltaTime * 2f;
+
+		Gizmos.DrawSphere(new Vector3(pos.x-collider.size.x / 2f, pos.y + collider.size.y / 2f + ySpeed, 0f), 0.1f);
+		Gizmos.DrawSphere(new Vector3(pos.x + collider.size.x / 2f, pos.y + collider.size.y / 2f + ySpeed, 0f), 0.1f);
+		Gizmos.DrawSphere(new Vector3(pos.x - collider.size.x / 2f, pos.y - collider.size.y / 2f + ySpeed, 0f), 0.1f);
+		Gizmos.DrawSphere(new Vector3(pos.x + collider.size.x / 2f, pos.y - collider.size.y / 2f + ySpeed, 0f), 0.1f);
+	}
+	 */
 }

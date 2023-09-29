@@ -104,7 +104,8 @@ namespace Player
 		public static void EnterLadder(Collider2D collision)
 		{
 			ladder = true;
-			s_Instance.Collider.excludeLayers = (int)Mathf.Pow(2, LayerMask.NameToLayer("Ground"));
+			s_Instance.Collider.excludeLayers = (int)Mathf.Pow(2, LayerMask.NameToLayer("Ground")) +
+				(int)Mathf.Pow(2, LayerMask.NameToLayer("WoodFloor"));
 			s_Instance.GetComponent<LadderMember>().enabled = true;
 			s_Instance.GetComponent<LadderMember>().StartLadder(new Vector2(collision.transform.position.x, collision.ClosestPoint(s_Instance.transform.position).y));
 			s_Instance.GetComponent<MoveMember>().enabled = false;
