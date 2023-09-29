@@ -12,6 +12,7 @@ namespace Player
 		private PlayerControls _controls;
 
 		[HideInInspector] public float MoveInput;
+		[HideInInspector] public float LadderInput;
 		[HideInInspector] public bool JumpingInput;
 		[HideInInspector] public bool DashingInput;
 		[HideInInspector] public bool InteractInput;
@@ -44,6 +45,10 @@ namespace Player
 			#region Interact Input
 			_controls.Player.Interact.performed += (_) => { InteractInput = true; };
 			_controls.Player.Interact.canceled += (_) => { InteractInput = false; };
+			#endregion
+			#region Ladder Input
+			_controls.Player.Ladder.performed += (ctx) => { LadderInput = ctx.ReadValue<float>(); };
+			_controls.Player.Ladder.canceled += (_) => { LadderInput = 0f; };
 			#endregion
 			#endregion
 		}

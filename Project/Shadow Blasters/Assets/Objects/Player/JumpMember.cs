@@ -18,6 +18,7 @@ namespace Player
 		private Rigidbody2D _rb;
 		private Animator _animator;
 		public bool JumpControl = true;
+		public static bool grounded = false;
 
 		private float _initialY;
 
@@ -41,11 +42,12 @@ namespace Player
 				return;
 			}
 
-            bool grounded = OnFloor();
+            grounded = OnFloor();
             if (_inputMember.JumpingInput)
 			{
-				if (grounded || PropertiesCore.swimJump)
+				if (grounded || PropertiesCore.swimJump || PropertiesCore.ladder)
 				{
+					PropertiesCore.ExitLadder();
 					_rb.velocity = new Vector2(_rb.velocity.x, _jumpStrenght);
 					_initialY = transform.position.y;
 					_startedJump = true;

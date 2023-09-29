@@ -71,6 +71,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ladder"",
+                    ""type"": ""Button"",
+                    ""id"": ""91c126a7-9ac7-44be-abac-8ea0a326ad36"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -183,6 +192,39 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WS"",
+                    ""id"": ""d760d8d0-ff68-4f30-9ce3-0f1cfe30e7c3"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ladder"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""c876037e-31a7-45a5-8bab-1482fc507824"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ladder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""7ce06c5b-8767-4420-9a12-18a0b9974d27"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ladder"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -208,6 +250,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_Ladder = m_Player.FindAction("Ladder", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -272,6 +315,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_Ladder;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -281,6 +325,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @Ladder => m_Wrapper.m_Player_Ladder;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -305,6 +350,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteract;
+                @Ladder.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLadder;
+                @Ladder.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLadder;
+                @Ladder.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLadder;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -324,6 +372,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Ladder.started += instance.OnLadder;
+                @Ladder.performed += instance.OnLadder;
+                @Ladder.canceled += instance.OnLadder;
             }
         }
     }
@@ -344,5 +395,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnLadder(InputAction.CallbackContext context);
     }
 }

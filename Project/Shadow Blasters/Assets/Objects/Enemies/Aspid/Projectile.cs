@@ -8,9 +8,20 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float speed;
     public int direction;
 
+    private void Awake()
+    {
+        StartCoroutine(DestroyCoroutine());
+	}
+
     void Update()
     {
         transform.Translate(new Vector3(speed * direction * Time.deltaTime, 0f, 0f));
+    }
+
+    private IEnumerator DestroyCoroutine()
+    {
+        yield return new WaitForSeconds(10f);
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
