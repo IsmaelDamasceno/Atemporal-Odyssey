@@ -105,7 +105,7 @@ namespace Player
 		{
 			if (Attacking)
 			{
-				collision.GetComponent<IDamage>().ApplyDamage(transform, Vector2.zero, 1);
+				collision.GetComponent<IDamage>().ApplyDamage(transform, new Vector2(5f, 5f), 1);
 			}
 		}
 	}

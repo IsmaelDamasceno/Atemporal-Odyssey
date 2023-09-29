@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace CrystalBot
 {
@@ -47,7 +49,9 @@ namespace CrystalBot
 				}
 
 				propertiesCore.ChangeState(EnemyState.Damage);
-				_rb.AddForce(impact, ForceMode2D.Impulse);
+
+				int direction = Math.Sign(hitTransform.localScale.x);
+				_rb.AddForce(new Vector2(impact.x * direction, impact.y), ForceMode2D.Impulse);
 
 				StartCoroutine(StunCoroutine());
 
