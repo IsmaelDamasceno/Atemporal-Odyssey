@@ -41,7 +41,7 @@ public class CameraMovement : MonoBehaviour
 		destiny.y = Mathf.Clamp(
 			destiny.y, _camBounds.min.y + _camHeight * 0.5f, _camBounds.max.y - _camHeight * 0.5f);
 
-		destiny = Vector3.Lerp(transform.position, destiny, 1 - Mathf.Pow(_lerpT, Time.deltaTime));
+		destiny = Vector3.Lerp(transform.position, destiny, Mathf.Pow(1 - _lerpT, Time.deltaTime));
 
 		destiny.z = -10f;
 
