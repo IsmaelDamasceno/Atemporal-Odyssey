@@ -17,13 +17,13 @@ public class MiddleUpFireSetup : MonoBehaviour
     private int spawnned = 0;
     private int amountToSpawn;
     private int fireItr = 0;
+    private bool started = false;
 
     private List<GameObject> fireBallList = new();
 
     void Start()
     {
         amountToSpawn = Random.Range(fireBallSpawnAmount.x, fireBallSpawnAmount.y);
-        StartCoroutine(SpawnCoroutine());
     }
 
     public void InitRef(Transform boiTataTrs)
@@ -33,8 +33,12 @@ public class MiddleUpFireSetup : MonoBehaviour
 
     void Update()
     {
-        
-    }
+        if (BoiTataController.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !started)
+        {
+            started = true;
+			StartCoroutine(SpawnCoroutine());
+		}
+	}
 
     IEnumerator SpawnCoroutine()
     {
