@@ -24,4 +24,12 @@ public static class Globals
     {
         return Resources.Load<Material>("Damage Matt");
     }
+
+    public static Vector2 GetCamSize()
+    {
+		Camera cam = Camera.main;
+		float camHeight = 2f * cam.orthographicSize;
+		float camWidth = camHeight * cam.aspect;
+        return new Vector2(camWidth, camHeight);
+	}
 }

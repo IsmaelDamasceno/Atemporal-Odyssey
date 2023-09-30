@@ -7,8 +7,9 @@ public enum BoiTataState
 {
     Cooldown,
     SideTaleAttack,
-    MiddleFire,
-    MiddleFireBall,
+    MiddleDownFire,
+    MiddleUpFireBall,
+    MiddleDownFireBall,
     TopTaleTargetAttack,
     SpawnEnemies,
 }
@@ -18,15 +19,18 @@ public class BoiTataController : MonoBehaviour
     [Header("Attack Setups")]
     [SerializeField] private GameObject sideTaleAttackSetup;
     [SerializeField] private GameObject topTaleAttackSetup;
+    [SerializeField] private GameObject middleUpFireBallAttackSetup;
 
     private static Vector2 waitTime = new(.25f, 1f);
 
     private static BoiTataState curState = BoiTataState.Cooldown;
     public static List<BoiTataState> possibleStates = new();
     public static bool readyToAttack = true;
+    public static Animator animator;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         StartPhase1();
     }
 
@@ -35,7 +39,7 @@ public class BoiTataController : MonoBehaviour
         BoiTataState[] list = {
 			BoiTataState.SideTaleAttack,
 			//BoiTataState.MiddleFire,
-			//BoiTataState.MiddleFireBall,
+			BoiTataState.MiddleUpFireBall,
 			BoiTataState.TopTaleTargetAttack,
 			//BoiTataState.SpawnEnemies
 		};
@@ -58,7 +62,7 @@ public class BoiTataController : MonoBehaviour
         int nextAttack = Random.Range(0, possibleStates.Count);
         curState = possibleStates[nextAttack];
 
-        // curState = BoiTataState.TopTaleTargetAttack;
+        // curState = BoiTataState.MiddleUpFireBall;
 
         switch(curState)
         {
@@ -77,7 +81,12 @@ public class BoiTataController : MonoBehaviour
 					Instantiate(topTaleAttackSetup, spawnPos, Quaternion.identity);
 				}
                 break;
-
+            case BoiTataState.MiddleUpFireBall:
+                {
+                    animator.SetBool("Middle Up Fire", true);
+					Instantiate(middleUpFireBallAttackSetup).GetComponent<MiddleUpFireSetup>().InitRef(transform);
+				}
+				break;
 		}
     }
 }

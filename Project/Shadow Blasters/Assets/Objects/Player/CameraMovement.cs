@@ -19,8 +19,8 @@ public class CameraMovement : MonoBehaviour
 	/// <summary>
 	/// Dimensões da câmera
 	/// </summary>
-	private float _camWidth;
-	private float _camHeight;
+	public static float camWidth;
+	public static float camHeight;
 
 	void Start()
 	{
@@ -29,17 +29,17 @@ public class CameraMovement : MonoBehaviour
 			GameObject.FindGameObjectWithTag("Cam Bounds").GetComponent<BoxCollider2D>().bounds;
 
 		Camera cam = Camera.main;
-		_camHeight = 2f * cam.orthographicSize;
-		_camWidth = _camHeight * cam.aspect;
+		camHeight = 2f * cam.orthographicSize;
+		camWidth = camHeight * cam.aspect;
 	}
 
 	void Update()
 	{
 		Vector3 destiny = _playerTrs.position;
 		destiny.x = Mathf.Clamp(
-			destiny.x, _camBounds.min.x + _camWidth * 0.5f, _camBounds.max.x - _camWidth * 0.5f);
+			destiny.x, _camBounds.min.x + camWidth * 0.5f, _camBounds.max.x - camWidth * 0.5f);
 		destiny.y = Mathf.Clamp(
-			destiny.y, _camBounds.min.y + _camHeight * 0.5f, _camBounds.max.y - _camHeight * 0.5f);
+			destiny.y, _camBounds.min.y + camHeight * 0.5f, _camBounds.max.y - camHeight * 0.5f);
 
 		destiny = Vector3.Lerp(transform.position, destiny, Mathf.Pow(1 - _lerpT, Time.deltaTime));
 
