@@ -77,9 +77,8 @@ public class HealthSystem : MonoBehaviour
     {
         if (s_health <= 0)
         {
-            Player.PropertiesCore.Player.transform.position = GameController.savePos;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }
+			s_Instance.StartCoroutine(s_Instance.RestartCoroutine());
+		}
 
         for(int i = 0; i < s_healthMax; i++)
         {
@@ -87,6 +86,15 @@ public class HealthSystem : MonoBehaviour
             controller.ChangeHeart(i < s_health);
         }
     }
+    IEnumerator RestartCoroutine()
+    {
+		TransitionController.s_Animator.SetTrigger("Start");
+
+		yield return new WaitForSeconds(TransitionController.s_TransitionTime);
+
+		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		Player.PropertiesCore.Player.transform.position = GameController.savePos;
+	}
 
     /// <summary>
     /// Setar vida máxima

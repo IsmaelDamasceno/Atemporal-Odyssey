@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
 using Debug = UnityEngine.Debug;
 
 namespace Player
@@ -45,6 +44,11 @@ namespace Player
 				Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("EnemySolid"), true);
 
 				DontDestroyOnLoad(gameObject);
+
+				swimming = false;
+				swimJump = false;
+				ladder = false;
+				Attacking = false;
 
 				GameController.SavePlayerInitialPos(gameObject);
 			}

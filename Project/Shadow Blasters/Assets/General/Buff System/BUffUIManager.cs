@@ -20,6 +20,7 @@ public class BUffUIManager : MonoBehaviour
         {
             s_Instance = this;
             s_scrollRect = GetComponent<ScrollRect>();
+            s_Open = false;
         }
         else
         {

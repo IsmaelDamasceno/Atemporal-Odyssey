@@ -24,7 +24,8 @@ public class BuffUIAnimations : MonoBehaviour
             s_Instance = this;
 
             _invInitialY = transform.localPosition.y;
-        }
+            s_inAnimation = false;
+		}
         else
         {
             Destroy(this);

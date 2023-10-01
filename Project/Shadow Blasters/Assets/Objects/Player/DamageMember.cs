@@ -15,7 +15,7 @@ namespace Player {
 
 		public static float s_IvulnerableTime = 1.25f;
 		public static float s_ImpactUncontrolTime = 0.25f;
-		public static bool s_Ivulnerable = false;
+		public static bool s_Ivulnerable;
 
 		void Awake()
 		{
@@ -27,6 +27,7 @@ namespace Player {
 				_jumpMember = GetComponent<JumpMember>();
 				_animator = GetComponent<Animator>();
 				_rb = GetComponent<Rigidbody2D>();
+				s_Ivulnerable = false;
 			}
 			else
 			{

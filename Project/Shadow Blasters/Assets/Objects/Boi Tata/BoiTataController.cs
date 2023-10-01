@@ -21,15 +21,19 @@ public class BoiTataController : MonoBehaviour
     [SerializeField] private GameObject topTaleAttackSetup;
     [SerializeField] private GameObject middleUpFireBallAttackSetup;
 
-    private static Vector2 waitTime = new(.25f, 1f);
+    private static Vector2 waitTime;
 
-    private static BoiTataState curState = BoiTataState.Cooldown;
-    public static List<BoiTataState> possibleStates = new();
-    public static bool readyToAttack = true;
+    private static BoiTataState curState;
+    public static List<BoiTataState> possibleStates;
+    public static bool readyToAttack;
     public static Animator animator;
 
     void Start()
     {
+        waitTime = new(.25f, 1f);
+        curState = BoiTataState.Cooldown;
+        possibleStates = new();
+        readyToAttack = true;
         animator = GetComponent<Animator>();
         StartPhase1();
     }
