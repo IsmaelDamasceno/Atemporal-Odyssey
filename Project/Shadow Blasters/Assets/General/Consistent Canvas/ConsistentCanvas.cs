@@ -5,7 +5,7 @@ using UnityEngine;
 public class ConsistentCanvas : MonoBehaviour
 {
 
-    private static ConsistentCanvas s_instance;
+    public static ConsistentCanvas s_instance;
 
     private void Awake()
     {

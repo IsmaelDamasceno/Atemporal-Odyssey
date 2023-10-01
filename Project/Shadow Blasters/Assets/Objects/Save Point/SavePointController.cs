@@ -59,6 +59,9 @@ namespace SavePoint
 		IEnumerator ActivateParticles()
 		{
 			partSystem.Play();
+			Transform canvasTransform = ConsistentCanvas.s_instance.transform;
+			GameObject gameSavedText = Resources.Load<GameObject>("Game Saved");
+			Instantiate(gameSavedText, canvasTransform);
 			yield return new WaitForSeconds(2f);
 
 			animator.SetTrigger("Open");
