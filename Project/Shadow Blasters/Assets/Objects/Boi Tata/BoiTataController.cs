@@ -1,3 +1,4 @@
+using BoiTata;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -27,6 +28,7 @@ public class BoiTataController : MonoBehaviour
     public static List<BoiTataState> possibleStates;
     public static bool readyToAttack;
     public static Animator animator;
+    public static AudioPlayer audioPlayer;
 
     void Start()
     {
@@ -34,6 +36,7 @@ public class BoiTataController : MonoBehaviour
         curState = BoiTataState.Cooldown;
         possibleStates = new();
         readyToAttack = true;
+        audioPlayer = GetComponent<AudioPlayer>();
         animator = GetComponent<Animator>();
         StartPhase1();
     }

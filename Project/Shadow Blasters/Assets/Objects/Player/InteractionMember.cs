@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -14,20 +15,24 @@ namespace Player
 		private InputMember _inputMember;
 
 		private bool _interactingLastFrame = false;
+		private GameObject interactObject;
 
 		void Awake()
 		{
 			_inputMember = GetComponent<InputMember>();
+			SceneManager.sceneLoaded += OnSceneLoad;
+		}
+		void OnSceneLoad(Scene scene, LoadSceneMode mode)
+		{
+			interactObject = GameObject.FindGameObjectWithTag("Interact");
 		}
 
 		void Update()
 		{
-			// Executa ao pressionar o botão de interação
-			if (_inputMember.InteractInput && !_interactingLastFrame)
+			if (PropertiesCore.canInteract)
 			{
 				Interact();
 			}
-			_interactingLastFrame = _inputMember.InteractInput;
 		}
 
 		/// <summary>
@@ -41,16 +46,26 @@ namespace Player
 			// Caso algum objeto tenha sido encontrado
 			if (rayHitList.Length > 0)
 			{
-				// Passar por cada Objeto no raio para executar interação
-				foreach (RaycastHit2D raycastHit in rayHitList)
+				if (_inputMember.InteractInput && !_interactingLastFrame)
 				{
-					IInteractable interactable = raycastHit.collider.GetComponent<IInteractable>();
-					// Executa a interação, e cancela o loop caso essa tenha sido em sucedida
-					if (interactable.Interact())
+					// Passar por cada Objeto no raio para executar interação
+					foreach (RaycastHit2D raycastHit in rayHitList)
 					{
-						break;
+						IInteractable interactable = raycastHit.collider.GetComponent<IInteractable>();
+						// Executa a interação, e cancela o loop caso essa tenha sido em sucedida
+						if (interactable.Interact())
+						{
+							break;
+						}
 					}
 				}
+				_interactingLastFrame = _inputMember.InteractInput;
+
+				interactObject.SetActive(true);
+			}
+			else
+			{
+				interactObject.SetActive(false);
 			}
 		}
 	}

@@ -16,6 +16,7 @@ public class FinishAttack : StateMachineBehaviour
 		attack.SetAttacking(false, typeof(FinishAttack));
 		AttackMember attackMember = animator.GetComponent<AttackMember>();
 		attackMember.Attacking = false;
+		attackMember.StartCoroutine(attackMember.CooldownWait());
 
 		Animator playerAnimator = animator.transform.parent.GetComponent<Animator>();
         playerAnimator.SetBool("Attacking", false);

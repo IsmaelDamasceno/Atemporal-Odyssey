@@ -23,10 +23,13 @@ namespace Player
 		
         public static GameObject Player;
 		public static PropertiesCore s_Instance;
+		public static AudioPlayer audioPlayer;
 
 		[HideInInspector] public bool Attacking = false;
 		private static Animator animator;
 		private static InputMember inputMember;
+
+		public static bool canInteract = true;
 
 		void Awake()
 		{
@@ -34,12 +37,14 @@ namespace Player
 			{
 				Player = gameObject;
 				s_Instance = this;
+				canInteract = true;
 
 				Rigidbody = GetComponent<Rigidbody2D>();
 				Collider = GetComponent<BoxCollider2D>();
 				FeetCollider = transform.GetChild(0).GetComponent<BoxCollider2D>();
 				animator = GetComponent<Animator>();
 				inputMember = GetComponent<InputMember>();
+				audioPlayer = GetComponent<AudioPlayer>();
 
 				Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("EnemySolid"), true);
 

@@ -20,10 +20,10 @@ public class FireBall : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log($"{collision.name}: {falling}");
         if (collision.gameObject.layer == LayerMask.NameToLayer("Ground") && falling)
         {
             Instantiate(groundFIre, transform.position, Quaternion.identity);
+            BoiTataController.audioPlayer.PlayFireballTouchGround();
             Destroy(gameObject);
         }
     }

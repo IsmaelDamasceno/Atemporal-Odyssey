@@ -74,7 +74,7 @@ namespace Player
 			}
 		}
 
-		private IEnumerator CooldownWait()
+		public IEnumerator CooldownWait()
 		{
 			yield return new WaitForSeconds(Cooldown);
 
@@ -88,11 +88,10 @@ namespace Player
 				return;
 			}
 
+			PropertiesCore.audioPlayer.PlayAttack();
 			SetAttacking(true, typeof(AttackMember));
 			CanAttack = false;
 			Attacking = true;
-
-			StartCoroutine(CooldownWait());
 
 			_sprRenderer.enabled = true;
 			_selfAnimator.Play("Base Layer.Attack Anim");

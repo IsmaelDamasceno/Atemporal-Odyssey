@@ -34,7 +34,7 @@ public class HealthSystem : MonoBehaviour
         if (s_Instance == null)
         {
 			s_Instance = this;
-            s_layoutGroup = s_Instance.GetComponent<GridLayoutGroup>();
+            s_layoutGroup = GetComponent<GridLayoutGroup>();
 
             SceneManager.sceneLoaded += OnLoad;
         }

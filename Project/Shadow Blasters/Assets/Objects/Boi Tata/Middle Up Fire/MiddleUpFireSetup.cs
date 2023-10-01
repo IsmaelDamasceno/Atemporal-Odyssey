@@ -46,7 +46,8 @@ public class MiddleUpFireSetup : MonoBehaviour
         spawnned++;
 
         GameObject instance = Instantiate(fireBallPrefab, fireBallSpawnTrs.position, Quaternion.Euler(0f, 0f, Random.Range(-15f, 15f)));
-        fireBallList.Add(instance);
+        BoiTataController.audioPlayer.PlayFireball();
+		fireBallList.Add(instance);
 
         if (spawnned < amountToSpawn)
         {

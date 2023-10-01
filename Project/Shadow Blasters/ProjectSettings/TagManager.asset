@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Cam Bounds
   - Canvas
+  - Interact
   layers:
   - Default
   - TransparentFX

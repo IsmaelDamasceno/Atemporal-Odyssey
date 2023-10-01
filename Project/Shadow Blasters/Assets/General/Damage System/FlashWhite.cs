@@ -39,6 +39,7 @@ public class FlashWhite : MonoBehaviour
 
     public void EndComponent()
     {
+        StopAllCoroutines();
 		_targetSprRenderer.material = _originalMaterial;
 		Destroy(this);
 	}

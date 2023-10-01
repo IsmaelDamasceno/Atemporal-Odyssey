@@ -26,6 +26,7 @@ public class TopAttackController : MonoBehaviour
 	void Start()
 	{
 		taleTrs = transform.GetChild(0);
+		BoiTataController.audioPlayer.PlaySwingUpPrepare();
 	}
 
 	void Update()
@@ -51,6 +52,8 @@ public class TopAttackController : MonoBehaviour
 		{
 			attacking = true;
 			time = 0f;
+
+			BoiTataController.audioPlayer.PlaySwingUp();
 			return;
 		}
 
@@ -62,7 +65,6 @@ public class TopAttackController : MonoBehaviour
 		time += Time.deltaTime * attackTimeScale;
 		if (time >= 1f)
 		{
-			Debug.Log("Setting Ready To Attack");
 			BoiTataController.readyToAttack = true;
 			Destroy(gameObject);
 

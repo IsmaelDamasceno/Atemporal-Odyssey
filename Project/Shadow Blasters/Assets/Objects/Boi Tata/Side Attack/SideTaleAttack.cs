@@ -43,6 +43,7 @@ public class SideTaleAttack : MonoBehaviour
         {
             attacking = true;
             time = 0f;
+            BoiTataController.audioPlayer.PlaySwingSide();
             return;
         }
 
