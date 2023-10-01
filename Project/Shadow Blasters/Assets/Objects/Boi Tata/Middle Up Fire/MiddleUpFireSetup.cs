@@ -76,5 +76,9 @@ public class MiddleUpFireSetup : MonoBehaviour
         {
             StartCoroutine(FireCoroutine());
         }
+        else
+        {
+            Destroy(gameObject);
+        }
 	}
 }
