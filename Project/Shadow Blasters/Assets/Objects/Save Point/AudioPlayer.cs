@@ -22,20 +22,11 @@ namespace SavePoint {
 
 		public void PlaySaveSound()
 		{
-			StartCoroutine(PlayBurst());
-		}
+            source.PlayOneShot(burstClip);
+        }
 		public void PlaySaveEndSound()
 		{
 			source.PlayOneShot(saveClip);
-		}
-
-		IEnumerator PlayBurst()
-		{
-			for(int i = 0; i < 3; i++)
-			{
-				yield return new WaitForSeconds(0.5f);
-				source.PlayOneShot(burstClip);
-			}
 		}
 	}
 }

@@ -33,7 +33,6 @@ namespace SavePoint
 				return false;
 			}
 			inCycle = true;
-			audioPlayer.PlaySaveSound();
 			StartCoroutine(OpenDoor());
 			return true;
 		}
@@ -62,7 +61,8 @@ namespace SavePoint
 			Transform canvasTransform = ConsistentCanvas.s_instance.transform;
 			GameObject gameSavedText = Resources.Load<GameObject>("Game Saved");
 			Instantiate(gameSavedText, canvasTransform);
-			yield return new WaitForSeconds(2f);
+            audioPlayer.PlaySaveSound();
+            yield return new WaitForSeconds(2f);
 
 			animator.SetTrigger("Open");
 			light.enabled = false;
