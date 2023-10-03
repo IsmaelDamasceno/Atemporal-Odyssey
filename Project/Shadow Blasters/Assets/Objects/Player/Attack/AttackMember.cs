@@ -36,6 +36,7 @@ namespace Player
 		private bool _attackingLastFrame;
 
 		private SpriteRenderer _sprRenderer;
+		public BoxCollider2D attackCollider;
 
 		private Animator _selfAnimator;
 		private Animator _playerAnimator;
@@ -46,6 +47,9 @@ namespace Player
 		{
 			transform.parent.GetComponent<PropertiesCore>().RegisterMember("Attack", this);
 			_scale = transform.localScale.x;
+			attackCollider = GetComponent<BoxCollider2D>();
+			attackCollider.enabled = false;
+
 			#region Animation Setup
 			_sprRenderer = GetComponent<SpriteRenderer>();
 			_selfAnimator = GetComponent<Animator>();
@@ -92,6 +96,7 @@ namespace Player
 			SetAttacking(true, typeof(AttackMember));
 			CanAttack = false;
 			Attacking = true;
+			attackCollider.enabled = true;
 
 			_sprRenderer.enabled = true;
 			_selfAnimator.Play("Base Layer.Attack Anim");
