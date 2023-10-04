@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class LadderMember : MonoBehaviour
@@ -19,12 +18,14 @@ public class LadderMember : MonoBehaviour
 	private Vector3 ladderPos;
 	private InputMember inputMember;
 	private bool lerping = true;
+	private Animator animator;
 
 	private void Awake()
 	{
 		rb = GetComponent<Rigidbody2D>();
 		inputMember = GetComponent<InputMember>();
 		collider = GetComponent<BoxCollider2D>();
+		animator = GetComponent<Animator>();
 	}
 
 	public void StartLadder(Vector2 contactPos)
@@ -71,6 +72,7 @@ public class LadderMember : MonoBehaviour
 		}
 
 		float ySpeed = inputMember.LadderInput * ladderSpeed;
+		animator.SetFloat("Ladder Speed", Math.Abs(inputMember.LadderInput));
 		if (ySpeed != 0f)
 		{
 			RaycastHit2D hitInfo = Physics2D.BoxCast(transform.position + (Vector3)collider.offset, new Vector2(collider.size.x * 0.5f, collider.size.y), 0f, Vector2.up * Math.Sign(ySpeed), ySpeed * Time.fixedDeltaTime * 2f, groundMask);

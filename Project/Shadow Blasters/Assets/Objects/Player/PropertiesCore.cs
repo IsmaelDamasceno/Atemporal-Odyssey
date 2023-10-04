@@ -117,12 +117,14 @@ namespace Player
 				(int)Mathf.Pow(2, LayerMask.NameToLayer("WoodFloor"));
 			s_Instance.GetComponent<LadderMember>().enabled = true;
 			s_Instance.GetComponent<LadderMember>().StartLadder(new Vector2(collision.transform.position.x, collision.ClosestPoint(s_Instance.transform.position).y));
+			animator.SetBool("Ladder", true);
 			s_Instance.GetComponent<MoveMember>().enabled = false;
 		}
 		public static void ExitLadder()
 		{
 			ladder = false;
 			s_Instance.Collider.excludeLayers = 0;
+			animator.SetBool("Ladder", false);
 			s_Instance.GetComponent<LadderMember>().enabled = false;
 			s_Instance.GetComponent<MoveMember>().enabled = true;
 		}

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneTeleport : MonoBehaviour
 {
 
-    [SerializeField] private SceneAsset _targetScene;
+    [SerializeField] private Scene _targetScene;
     [SerializeField] private Vector2 _targetPosition;
 
     void Awake()
