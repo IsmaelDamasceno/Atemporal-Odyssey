@@ -1,4 +1,5 @@
 using CrystalBot;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +9,10 @@ namespace BoiTata
     public class DamageMember : MonoBehaviour, IDamage
     {
         [SerializeField] private float flashTime;
-        private bool stunned = false;
+        [SerializeField] private GameObject piecesPrefab;
 
+        private bool stunned = false;
+        public int health;
 
         IEnumerator StunCoroutine()
         {
@@ -21,6 +24,14 @@ namespace BoiTata
         {
             if (!stunned)
             {
+                if (health <= 0)
+                {
+                    Instantiate(piecesPrefab, transform.position, Quaternion.identity).GetComponent<DeathAudioPlayer>().PlayDeath();
+                    Destroy(gameObject);
+                    return;
+                }
+
+
 				if (TryGetComponent<FlashWhite>(out var component))
 				{
 					component.EndComponent();
@@ -29,6 +40,7 @@ namespace BoiTata
 
                 StopAllCoroutines();
                 StartCoroutine(StunCoroutine());
+                health--;
                 stunned = true;
 			}
         }

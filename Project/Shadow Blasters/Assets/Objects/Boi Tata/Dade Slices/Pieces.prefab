@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5692237884679855927}
   - component: {fileID: 5692237884679855922}
   - component: {fileID: 5692237884679855925}
-  - component: {fileID: 5692237884679855924}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -224,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.78266555, b: 0, a: 0.6156863}
+      maxColor: {r: 0.6226415, g: 0.61567336, b: 0.59033465, a: 0.42745098}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -288,8 +287,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.5
+      scalar: 2.5
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -4829,19 +4828,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &5692237884679855924
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5692237884679855926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfc4bdabe4f4e74419922ee3a24c023f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 3133590676548058624, guid: 1cf0be11490dff94c8c84f85bbe0c65e, type: 3}
 --- !u!1 &5692237884958843584
 GameObject:
   m_ObjectHideFlags: 0
@@ -4853,7 +4839,6 @@ GameObject:
   - component: {fileID: 5692237884958843585}
   - component: {fileID: 5692237884958843580}
   - component: {fileID: 5692237884958843583}
-  - component: {fileID: 5692237884958843582}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -5066,7 +5051,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.78266555, b: 0, a: 0.6156863}
+      maxColor: {r: 0.6226415, g: 0.61567336, b: 0.59033465, a: 0.42745098}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -5130,8 +5115,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.5
+      scalar: 2.5
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9671,19 +9656,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &5692237884958843582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5692237884958843584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfc4bdabe4f4e74419922ee3a24c023f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 3133590676548058624, guid: 1cf0be11490dff94c8c84f85bbe0c65e, type: 3}
 --- !u!1 &5692237885121280130
 GameObject:
   m_ObjectHideFlags: 0
@@ -9696,6 +9668,7 @@ GameObject:
   - component: {fileID: 5692237885121280131}
   - component: {fileID: 5692237885121280126}
   - component: {fileID: 5692237885121280129}
+  - component: {fileID: 4393583440902502053}
   m_Layer: 0
   m_Name: cauda
   m_TagString: Untagged
@@ -9855,6 +9828,19 @@ PolygonCollider2D:
       - {x: 1.4608469, y: 1.176363}
       - {x: 1.109911, y: 1.6749268}
   m_UseDelaunayMesh: 0
+--- !u!114 &4393583440902502053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692237885121280130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e287ad855677f94f90ef3b3a34a40fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalTime: {x: 3, y: 8}
 --- !u!1 &5692237885135832134
 GameObject:
   m_ObjectHideFlags: 0
@@ -9864,6 +9850,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5692237885135832135}
+  - component: {fileID: 5234022855140460639}
+  - component: {fileID: 438072259597418988}
   m_Layer: 0
   m_Name: Pieces
   m_TagString: Untagged
@@ -9891,8 +9879,117 @@ Transform:
   - {fileID: 5692237885352925782}
   - {fileID: 5692237886111665185}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5234022855140460639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692237885135832134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bffcec15b2de8884894d1b5b0bd7c4ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boitataDeathClip: {fileID: 8300000, guid: 36bbd9f9d5d108942950cc1767b724c6, type: 3}
+--- !u!82 &438072259597418988
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692237885135832134}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5692237885168659480
 GameObject:
   m_ObjectHideFlags: 0
@@ -9905,6 +10002,7 @@ GameObject:
   - component: {fileID: 5692237885168659481}
   - component: {fileID: 5692237885168659479}
   - component: {fileID: 5692237885168659476}
+  - component: {fileID: 8395109654981152475}
   m_Layer: 0
   m_Name: cauda2
   m_TagString: Untagged
@@ -10063,6 +10161,19 @@ PolygonCollider2D:
       - {x: 1.8308392, y: -0.39374924}
       - {x: 1.0019932, y: 0.93818665}
   m_UseDelaunayMesh: 0
+--- !u!114 &8395109654981152475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692237885168659480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e287ad855677f94f90ef3b3a34a40fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalTime: {x: 3, y: 8}
 --- !u!1 &5692237885176936208
 GameObject:
   m_ObjectHideFlags: 0
@@ -10075,6 +10186,7 @@ GameObject:
   - component: {fileID: 5692237885176936209}
   - component: {fileID: 5692237885176936207}
   - component: {fileID: 5692237885176936204}
+  - component: {fileID: 6511790540428765701}
   m_Layer: 0
   m_Name: cauda4
   m_TagString: Untagged
@@ -10230,6 +10342,19 @@ PolygonCollider2D:
       - {x: 1.59375, y: 0.6875}
       - {x: 0.71875, y: 1.3125}
   m_UseDelaunayMesh: 0
+--- !u!114 &6511790540428765701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692237885176936208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e287ad855677f94f90ef3b3a34a40fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalTime: {x: 3, y: 8}
 --- !u!1 &5692237885352925784
 GameObject:
   m_ObjectHideFlags: 0
@@ -10242,6 +10367,7 @@ GameObject:
   - component: {fileID: 5692237885352925785}
   - component: {fileID: 5692237885352925783}
   - component: {fileID: 5692237885352925780}
+  - component: {fileID: 399212535423768449}
   m_Layer: 0
   m_Name: cauda3
   m_TagString: Untagged
@@ -10397,6 +10523,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &399212535423768449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692237885352925784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e287ad855677f94f90ef3b3a34a40fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalTime: {x: 3, y: 8}
 --- !u!1 &5692237885382003255
 GameObject:
   m_ObjectHideFlags: 0
@@ -10408,7 +10547,6 @@ GameObject:
   - component: {fileID: 5692237885382003252}
   - component: {fileID: 5692237885382003251}
   - component: {fileID: 5692237885382003250}
-  - component: {fileID: 5692237885382003253}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -10621,7 +10759,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.78266555, b: 0, a: 0.6156863}
+      maxColor: {r: 0.6226415, g: 0.61567336, b: 0.59033465, a: 0.42745098}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -10685,8 +10823,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.5
+      scalar: 2.5
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -15226,19 +15364,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &5692237885382003253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5692237885382003255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfc4bdabe4f4e74419922ee3a24c023f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 3133590676548058624, guid: 1cf0be11490dff94c8c84f85bbe0c65e, type: 3}
 --- !u!1 &5692237885538595502
 GameObject:
   m_ObjectHideFlags: 0
@@ -15250,7 +15375,6 @@ GameObject:
   - component: {fileID: 5692237885538595503}
   - component: {fileID: 5692237885538595498}
   - component: {fileID: 5692237885538595501}
-  - component: {fileID: 5692237885538595500}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -15463,7 +15587,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.78266555, b: 0, a: 0.6156863}
+      maxColor: {r: 0.6226415, g: 0.61567336, b: 0.59033465, a: 0.42745098}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -15527,8 +15651,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.5
+      scalar: 2.5
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -20068,19 +20192,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &5692237885538595500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5692237885538595502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfc4bdabe4f4e74419922ee3a24c023f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 3133590676548058624, guid: 1cf0be11490dff94c8c84f85bbe0c65e, type: 3}
 --- !u!1 &5692237885723507021
 GameObject:
   m_ObjectHideFlags: 0
@@ -20092,7 +20203,6 @@ GameObject:
   - component: {fileID: 5692237885723507018}
   - component: {fileID: 5692237885723507017}
   - component: {fileID: 5692237885723507016}
-  - component: {fileID: 5692237885723507019}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -20305,7 +20415,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.78266555, b: 0, a: 0.6156863}
+      maxColor: {r: 0.6226415, g: 0.61567336, b: 0.59033465, a: 0.42745098}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -20369,8 +20479,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.5
+      scalar: 2.5
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -24910,19 +25020,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &5692237885723507019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5692237885723507021}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfc4bdabe4f4e74419922ee3a24c023f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 3133590676548058624, guid: 1cf0be11490dff94c8c84f85bbe0c65e, type: 3}
 --- !u!1 &5692237886111665187
 GameObject:
   m_ObjectHideFlags: 0
@@ -24935,6 +25032,7 @@ GameObject:
   - component: {fileID: 5692237886111665184}
   - component: {fileID: 5692237886111665183}
   - component: {fileID: 5692237886111665182}
+  - component: {fileID: 2418264462229542831}
   m_Layer: 0
   m_Name: cauda4 (1)
   m_TagString: Untagged
@@ -25091,6 +25189,19 @@ PolygonCollider2D:
       - {x: 1.408452, y: 0.5207559}
       - {x: 0.5685792, y: 1.2752061}
   m_UseDelaunayMesh: 0
+--- !u!114 &2418264462229542831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692237886111665187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e287ad855677f94f90ef3b3a34a40fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalTime: {x: 3, y: 8}
 --- !u!1 &5692237886252604422
 GameObject:
   m_ObjectHideFlags: 0
@@ -25103,6 +25214,7 @@ GameObject:
   - component: {fileID: 5692237886252604423}
   - component: {fileID: 5692237886252604418}
   - component: {fileID: 5692237886252604421}
+  - component: {fileID: 293123968543754964}
   m_Layer: 0
   m_Name: cauda (1)
   m_TagString: Untagged
@@ -25260,6 +25372,19 @@ PolygonCollider2D:
       - {x: 1.5671692, y: 0.6979122}
       - {x: 1.3358469, y: 1.3426695}
   m_UseDelaunayMesh: 0
+--- !u!114 &293123968543754964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692237886252604422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e287ad855677f94f90ef3b3a34a40fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalTime: {x: 3, y: 8}
 --- !u!1 &5692237886324676653
 GameObject:
   m_ObjectHideFlags: 0
@@ -25272,6 +25397,7 @@ GameObject:
   - component: {fileID: 5692237886324676650}
   - component: {fileID: 5692237886324676649}
   - component: {fileID: 5692237886324676648}
+  - component: {fileID: 7161020353176343442}
   m_Layer: 0
   m_Name: head
   m_TagString: Untagged
@@ -25430,6 +25556,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7161020353176343442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692237886324676653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e287ad855677f94f90ef3b3a34a40fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalTime: {x: 3, y: 8}
 --- !u!1 &5692237886549278972
 GameObject:
   m_ObjectHideFlags: 0
@@ -25441,7 +25580,6 @@ GameObject:
   - component: {fileID: 5692237886549278973}
   - component: {fileID: 5692237886549278971}
   - component: {fileID: 5692237886549278970}
-  - component: {fileID: 5692237886549278968}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -25654,7 +25792,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.78266555, b: 0, a: 0.6156863}
+      maxColor: {r: 0.6226415, g: 0.61567336, b: 0.59033465, a: 0.42745098}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -25718,8 +25856,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.5
+      scalar: 2.5
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -30259,19 +30397,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &5692237886549278968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5692237886549278972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfc4bdabe4f4e74419922ee3a24c023f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 3133590676548058624, guid: 1cf0be11490dff94c8c84f85bbe0c65e, type: 3}
 --- !u!1 &5692237886731388553
 GameObject:
   m_ObjectHideFlags: 0
@@ -30283,7 +30408,6 @@ GameObject:
   - component: {fileID: 5692237886731388550}
   - component: {fileID: 5692237886731388549}
   - component: {fileID: 5692237886731388548}
-  - component: {fileID: 5692237886731388551}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -30496,7 +30620,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 0.78266555, b: 0, a: 0.6156863}
+      maxColor: {r: 0.6226415, g: 0.61567336, b: 0.59033465, a: 0.42745098}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -30560,8 +30684,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
-      minScalar: 0.5
+      scalar: 2.5
+      minScalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -35101,16 +35225,3 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &5692237886731388551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5692237886731388553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bfc4bdabe4f4e74419922ee3a24c023f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 3133590676548058624, guid: 1cf0be11490dff94c8c84f85bbe0c65e, type: 3}

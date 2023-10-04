@@ -55,7 +55,6 @@ public class SideTaleAttack : MonoBehaviour
 		time += Time.deltaTime * attackTimeScale;
 		if (time >= 1f)
 		{
-            Debug.Log("Setting Ready To Attack");
             BoiTataController.readyToAttack = true;
             Destroy(gameObject);
 

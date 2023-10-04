@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneTeleport : MonoBehaviour
 {
 
-    [SerializeField] private Scene _targetScene;
+    [SerializeField] private int targetSceneIndex;
     [SerializeField] private Vector2 _targetPosition;
 
     void Awake()
@@ -31,10 +31,13 @@ public class SceneTeleport : MonoBehaviour
     private IEnumerator LoadLevelCoroutine()
     {
 		TransitionController.s_Animator.SetTrigger("Start");
+        Player.PropertiesCore.Player.SetActive(false);
 
 		yield return new WaitForSeconds(TransitionController.s_TransitionTime);
 
-		SceneManager.LoadScene(_targetScene.name);
+		SceneManager.LoadScene(targetSceneIndex);
+		Player.PropertiesCore.Player.SetActive(true);
 		Player.PropertiesCore.Player.transform.position = _targetPosition;
+		GameController.savePos = _targetPosition;
 	}
 }
