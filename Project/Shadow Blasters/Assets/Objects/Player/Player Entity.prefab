@@ -234,6 +234,7 @@ MonoBehaviour:
   _damage: 1
   _impact: 2.5
   Cooldown: 0.025
+  attackCollider: {fileID: 0}
 --- !u!61 &1019823174
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -325,7 +326,7 @@ Transform:
   - {fileID: 1795089509}
   - {fileID: 288584716}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8082379111555332935
 SpriteRenderer:
@@ -549,6 +550,7 @@ MonoBehaviour:
   _interactionMask:
     serializedVersion: 2
     m_Bits: 64
+  waterSplashParticles: {fileID: 2600746796947723193, guid: 35bddcb623a4751498e724247c58ec1e, type: 3}
 --- !u!114 &1731813850
 MonoBehaviour:
   m_ObjectHideFlags: 0

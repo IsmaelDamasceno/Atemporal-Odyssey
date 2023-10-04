@@ -12,6 +12,8 @@ namespace Player
 	{
 		[SerializeField] private float _interactionDistance;
 		[SerializeField] private LayerMask _interactionMask;
+		[SerializeField] private GameObject waterSplashParticles;
+
 		private InputMember _inputMember;
 
 		private bool _interactingLastFrame = false;
@@ -66,6 +68,25 @@ namespace Player
 			else
 			{
 				interactObject.SetActive(false);
+			}
+		}
+
+		private void OnTriggerEnter2D(Collider2D collision)
+		{
+			if (collision.gameObject.layer == LayerMask.NameToLayer("Water"))
+			{
+				Vector2 pos = PropertiesCore.s_Instance.FeetCollider.transform.position;
+				pos.y -= 0.2f;
+				Instantiate(waterSplashParticles, pos, Quaternion.identity);
+			}
+		}
+		private void OnTriggerExit2D(Collider2D collision)
+		{
+			if (collision.gameObject.layer == LayerMask.NameToLayer("Water"))
+			{
+				Vector2 pos = PropertiesCore.s_Instance.FeetCollider.transform.position;
+				pos.y -= 0.2f;
+				Instantiate(waterSplashParticles, pos, Quaternion.identity);
 			}
 		}
 	}
