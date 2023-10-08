@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Player
@@ -45,7 +42,7 @@ namespace Player
             grounded = OnFloor();
             if (_inputMember.JumpingInput)
 			{
-				if (grounded || PropertiesCore.swimJump || PropertiesCore.ladder)
+				if (grounded || PropertiesCore.CanJump())
 				{
 					PropertiesCore.ExitLadder();
 					_rb.velocity = new Vector2(_rb.velocity.x, _jumpStrenght);

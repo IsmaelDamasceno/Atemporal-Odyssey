@@ -30,7 +30,9 @@ public class LadderMember : MonoBehaviour
 
 	public void StartLadder(Vector2 contactPos)
 	{
-		ladderPos = new Vector3(
+        animator.SetBool("Ladder", true);
+
+        ladderPos = new Vector3(
 			contactPos.x,
 			Mathf.Round(contactPos.y) - 0.5f,
 			0f
@@ -41,6 +43,11 @@ public class LadderMember : MonoBehaviour
 
 		rb.gravityScale = 0f;
 	}
+
+	public void ExitLadder()
+	{
+        animator.SetBool("Ladder", false);
+    }
 
 	private void OnDisable()
 	{

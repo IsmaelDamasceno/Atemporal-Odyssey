@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,18 +18,18 @@ namespace Player
 		private InputMember _inputMember;
 		private bool _ableToDash = true;
 		private bool _dashingLastFrame = false;
-		private MoveMember _moveMember;
 		private Rigidbody2D _rb;
 		private float _dashDirection;
 		private float _originalGravScale;
 		private Animator animator;
+        private PropertiesCore propertiesCore;
 
-		private IEnumerator PerformDash()
+        private IEnumerator PerformDash()
 		{
 			yield return new WaitForSeconds(_dashTime);
-			
-			Dashing = false;
-			_moveMember.enabled = true;
+
+            propertiesCore.ChangeState(PlayerState.Free);
+            Dashing = false;
 			_rb.gravityScale = _originalGravScale;
 
 			StartCoroutine(PerformCooldown());
@@ -45,10 +44,10 @@ namespace Player
 		private void Awake()
 		{
 			_inputMember = GetComponent<InputMember>();
+			propertiesCore = GetComponent<PropertiesCore>();
 		}
 		void Start()
 		{
-			_moveMember = GetComponent<MoveMember>();
 			animator = GetComponent<Animator>();
 
 			_rb = GetComponent<Rigidbody2D>();
@@ -68,8 +67,8 @@ namespace Player
 			bool dashInput = _inputMember.DashingInput;
 			if (dashInput && !_dashingLastFrame && _ableToDash)
 			{
+				propertiesCore.ChangeState(PlayerState.Dash);
 				Dashing = true;
-				_moveMember.enabled = false;
 				_rb.gravityScale = 0f;
 				_dashDirection = _inputMember.Direction;
 				_ableToDash = false;

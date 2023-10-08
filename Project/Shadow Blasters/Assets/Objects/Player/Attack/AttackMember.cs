@@ -109,7 +109,12 @@ namespace Player
 		{
 			if (Attacking)
 			{
-				collision.GetComponent<IDamage>().ApplyDamage(transform, new Vector2(2f, 2f), 1);
+				IDamage attackedTarget = collision.GetComponent<IDamage>();
+				
+				if (attackedTarget != null)
+				{
+                    attackedTarget.ApplyDamage(transform, new Vector2(_impact * transform.localScale.x, _impact), _damage);
+                }
 			}
 		}
 	}

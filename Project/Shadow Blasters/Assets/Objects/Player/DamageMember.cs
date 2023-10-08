@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Player {
@@ -8,6 +7,7 @@ namespace Player {
 	{
 		public static DamageMember s_Instance;
 
+		private PropertiesCore propertiesCore;
 		private MoveMember _moveMember;
 		private JumpMember _jumpMember;
 		private Rigidbody2D _rb;
@@ -23,6 +23,7 @@ namespace Player {
 			{
 				s_Instance = this;
 
+				propertiesCore = GetComponent<PropertiesCore>();
 				_moveMember = GetComponent<MoveMember>();
 				_jumpMember = GetComponent<JumpMember>();
 				_animator = GetComponent<Animator>();
@@ -41,8 +42,7 @@ namespace Player {
 			{
 				if (_jumpMember.OnFloor())
 				{
-					_moveMember.enabled = true;
-					_jumpMember.JumpControl = true;
+					propertiesCore.ChangeState(PlayerState.Free);
 					_animator.SetBool("Damaged", false);
 				}
 			}
@@ -50,8 +50,7 @@ namespace Player {
 
 		public static void ApplyForce(Vector2 forceToApply)
 		{
-			s_Instance._moveMember.enabled = false;
-			s_Instance._jumpMember.JumpControl = false;
+			s_Instance.propertiesCore.ChangeState(PlayerState.Damage);
 			s_Instance._animator.SetBool("Damaged", true);
 
 			s_Instance.transform.position += Vector3.up * 0.1f;
@@ -78,8 +77,7 @@ namespace Player {
 		private IEnumerator ImpactCoroutine()
 		{
 			yield return new WaitForSeconds(s_ImpactUncontrolTime);
-			_moveMember.enabled = true;
-			_jumpMember.JumpControl = true;
+			propertiesCore.ChangeState(PlayerState.Free);
 			_animator.SetBool("Damaged", false);
 		}
 
