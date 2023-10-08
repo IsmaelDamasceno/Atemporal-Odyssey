@@ -17,16 +17,11 @@ namespace Player
 		private InputMember _inputMember;
 
 		private bool _interactingLastFrame = false;
-		private GameObject interactObject;
+		public static GameObject interactObject;
 
 		void Awake()
 		{
 			_inputMember = GetComponent<InputMember>();
-			SceneManager.sceneLoaded += OnSceneLoad;
-		}
-		void OnSceneLoad(Scene scene, LoadSceneMode mode)
-		{
-			interactObject = GameObject.FindGameObjectWithTag("Interact");
 		}
 
 		void Update()

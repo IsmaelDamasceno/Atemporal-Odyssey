@@ -42,7 +42,6 @@ public class MusicPlayer : MonoBehaviour
 	{
         if (playing == null)
         {
-            Debug.Log("Playing é null");
             Music musicToPlay = musicScenes[scene.name];
             playing = musicToPlay;
 
@@ -52,13 +51,10 @@ public class MusicPlayer : MonoBehaviour
         }
         else
         {
-            Debug.Log("Playing não é null");
             if (scene.name != lastScene)
             {
-                Debug.Log("Cena diferente");
 				if (playing.Value.musicPath != musicScenes[scene.name].musicPath)
                 {
-                    Debug.Log("Trocando musga");
 					Music musicToPlay = musicScenes[scene.name];
 					playing = musicToPlay;
 
@@ -68,12 +64,10 @@ public class MusicPlayer : MonoBehaviour
 				}
                 else
                 {
-                    Debug.Log("Mesma música de antes = fazer nada");
                 }
 			}
             else
             {
-                Debug.Log("Mesma cena de antes = fazer nada");
             }
 		}
 		lastScene = scene.name;

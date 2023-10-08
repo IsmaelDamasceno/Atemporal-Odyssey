@@ -35,8 +35,6 @@ public class HealthSystem : MonoBehaviour
         {
 			s_Instance = this;
             s_layoutGroup = GetComponent<GridLayoutGroup>();
-
-            SceneManager.sceneLoaded += OnLoad;
         }
         else
         {
@@ -44,17 +42,17 @@ public class HealthSystem : MonoBehaviour
         }
     }
 
-    public void OnLoad(Scene scene, LoadSceneMode mode)
+    private void Start()
     {
-        SetMaxHealth(transform.childCount);
-        SetHealth(transform.childCount);
-    }
+		SetMaxHealth(transform.childCount);
+		SetHealth(transform.childCount);
+	}
 
-    /// <summary>
-    /// Set a quantidade de vida
-    /// </summary>
-    /// <param name="newAmount">Nova quantidade de vida</param>
-    public static void SetHealth(int newAmount)
+	/// <summary>
+	/// Set a quantidade de vida
+	/// </summary>
+	/// <param name="newAmount">Nova quantidade de vida</param>
+	public static void SetHealth(int newAmount)
     {
 		s_health = newAmount;
 		HealthUpdate();
@@ -93,6 +91,8 @@ public class HealthSystem : MonoBehaviour
 		yield return new WaitForSeconds(TransitionController.s_TransitionTime);
 
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		SetMaxHealth(transform.childCount);
+		SetHealth(transform.childCount);
 		Player.PropertiesCore.Player.transform.position = GameController.savePos;
 	}
 
@@ -126,5 +126,9 @@ public class HealthSystem : MonoBehaviour
 			}
 			SetHealth(value);
 		}
+    }
+
+    private void Update()
+    {
     }
 }

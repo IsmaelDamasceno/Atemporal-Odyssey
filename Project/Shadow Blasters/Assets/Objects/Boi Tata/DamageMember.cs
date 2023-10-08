@@ -27,8 +27,9 @@ namespace BoiTata
                 if (health <= 0)
                 {
                     Instantiate(piecesPrefab, transform.position, Quaternion.identity).GetComponent<DeathAudioPlayer>().PlayDeath();
+                    Timer.playing = false;
                     Destroy(gameObject);
-                    return;
+					return;
                 }
 
 

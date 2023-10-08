@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -22,6 +23,7 @@ namespace Player
 		private Rigidbody2D _rb;
 		private float _dashDirection;
 		private float _originalGravScale;
+		private Animator animator;
 
 		private IEnumerator PerformDash()
 		{
@@ -47,9 +49,18 @@ namespace Player
 		void Start()
 		{
 			_moveMember = GetComponent<MoveMember>();
+			animator = GetComponent<Animator>();
 
 			_rb = GetComponent<Rigidbody2D>();
 			_originalGravScale = _rb.gravityScale;
+
+			SceneManager.sceneLoaded += OnLoad;
+		}
+		public void OnLoad(Scene scene, LoadSceneMode mode)
+		{
+			StopAllCoroutines();
+			_ableToDash = true;
+			Dashing = false;
 		}
 
 		void Update()
@@ -65,6 +76,8 @@ namespace Player
 				StartCoroutine(PerformDash());
 			}
 			_dashingLastFrame = dashInput;
+
+			animator.SetBool("Dashing", Dashing);
 		}
 
 		private void FixedUpdate()
