@@ -78,7 +78,7 @@ namespace Player {
 		{
 			yield return new WaitForSeconds(s_ImpactUncontrolTime);
 			propertiesCore.ChangeState(PlayerState.Free);
-			_animator.SetBool("Damaged", false);
+            _animator.SetBool("Damaged", false);
 		}
 
 		public void ApplyDamage(Transform hitTransform, Vector2 impact, int amount)

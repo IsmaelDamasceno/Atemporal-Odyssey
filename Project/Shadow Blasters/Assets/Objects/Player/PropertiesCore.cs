@@ -66,7 +66,7 @@ namespace Player
 				ladderMember = GetComponent<LadderMember>();
 				jumpMember = GetComponent<JumpMember>();
 				dashMember = GetComponent<DashMember>();
-				attackMember = GetComponent<AttackMember>();
+				attackMember = GetComponentInChildren<AttackMember>();
 				interactionMember = GetComponent<InteractionMember>();
 
 				Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("EnemySolid"), true);
@@ -149,11 +149,16 @@ namespace Player
                         moveMember.enabled = true;
 						jumpMember.JumpControl = true;
 						ladderMember.enabled = false;
+
+						dashMember.enabled = true;
+						attackMember.enabled = true;
                     }
                     break;
                 case PlayerState.Damage:
                     {
                         moveMember.enabled = false;
+						dashMember.enabled = false;
+						attackMember.enabled = false;
 						jumpMember.JumpControl = false;
                     }
                     break;
@@ -164,7 +169,6 @@ namespace Player
 					break;
 				case PlayerState.Attack:
 					{
-
 					}
 					break;
 				case PlayerState.Swim:
