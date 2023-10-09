@@ -38,12 +38,12 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Movement"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""b81b688f-bb70-4072-a80a-d83b1d3dfb4d"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Attack"",
@@ -172,7 +172,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""1D Axis"",
+                    ""name"": ""GamePad D-Pad"",
                     ""id"": ""b8909094-d54c-4666-8d84-b9fbc5e6678d"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
@@ -205,7 +205,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""1D Axis"",
+                    ""name"": ""GameGad Left Stick"",
                     ""id"": ""c16bfc8b-11eb-4168-bb47-ea281a69a911"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
