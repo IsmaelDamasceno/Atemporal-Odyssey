@@ -458,6 +458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   walkTime: {x: 3, y: 6}
+  attackTriggerDistance: 7
 --- !u!114 &506923347
 MonoBehaviour:
   m_ObjectHideFlags: 0

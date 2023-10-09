@@ -8,7 +8,7 @@ public class Spit: MonoBehaviour
 
     [SerializeField] private GameObject projectile;
 
-    public void Attack()
+	public void Attack()
     {
         GameObject gameObject = Instantiate(projectile, transform.GetComponentInChildren<ProjectileOffset>().transform.position, Quaternion.identity);
         gameObject.GetComponent<Projectile>().direction = GetComponent<EnemyBehaviour>().Direction;

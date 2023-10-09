@@ -1,6 +1,7 @@
 using CrystalBot;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace Aspid
@@ -9,11 +10,13 @@ namespace Aspid
 	{
 
 		[SerializeField] private Vector2 walkTime;
+		[SerializeField] private float attackTriggerDistance;
 
 		private Animator animator;
 		private EnemyBehaviour behaviour;
 		private WallDetection wallDetection;
 		private DamageMember damage;
+		private Spit spit;
 
 		EnemyState currentState;
 
@@ -24,6 +27,8 @@ namespace Aspid
 
 			wallDetection = GetComponentInChildren<WallDetection>();
 			damage = GetComponentInChildren<DamageMember>();
+
+			spit = GetComponent<Spit>();
 
 			currentState = EnemyState.Patrol;
 
@@ -39,7 +44,10 @@ namespace Aspid
 		{
 			yield return new WaitForSeconds(Random.Range(walkTime.x, walkTime.y));
 
-			ChangeState(EnemyState.Attack);
+			if (Vector3.Distance(transform.position, Player.PropertiesCore.Player.transform.position) <= attackTriggerDistance)
+			{
+				ChangeState(EnemyState.Attack);
+			}
 			StartCoroutine(AttackCoroutine());
 		}
 
@@ -70,5 +78,17 @@ namespace Aspid
 					break;
 			}
 		}
+
+#if UNITY_EDITOR
+		private void OnDrawGizmosSelected()
+		{
+			Gizmos.color = Color.white;
+
+
+			Gizmos.DrawWireSphere(transform.position, attackTriggerDistance);
+
+			Handles.Label(transform.position + Vector3.up, Vector3.Distance(transform.position, Player.PropertiesCore.Player.transform.position).ToString());
+		}
+#endif
 	}
 }
