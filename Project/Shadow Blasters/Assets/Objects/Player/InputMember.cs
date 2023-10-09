@@ -1,7 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 namespace Player
 {
@@ -27,8 +30,8 @@ namespace Player
 			#region Controls
 			_controls = Globals.InitiateControls();
 
-			#region Move Input
-			_controls.Player.Movement.performed += (ctx) => { MoveInput = Math.Sign(ctx.ReadValue<float>());};
+            #region Move Input
+            _controls.Player.Movement.performed += (ctx) => { MoveInput = Math.Sign(ctx.ReadValue<float>()); };
 			_controls.Player.Movement.canceled += (_) => { MoveInput = 0f; };
 			#endregion
 			#region Jump Input
