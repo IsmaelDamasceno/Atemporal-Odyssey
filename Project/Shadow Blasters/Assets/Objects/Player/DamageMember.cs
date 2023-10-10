@@ -88,6 +88,8 @@ namespace Player {
 				return;
 			}
 
+			PropertiesCore.audioPlayer.PlayDamage();
+
 			int direction = Math.Sign(transform.position.x - hitTransform.position.x);
 
 			ApplyForce(new Vector2(impact.x * direction, impact.y));

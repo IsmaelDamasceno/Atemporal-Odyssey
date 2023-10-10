@@ -26,7 +26,8 @@ namespace Player
 
         private IEnumerator PerformDash()
 		{
-			yield return new WaitForSeconds(_dashTime);
+            PropertiesCore.audioPlayer.PlayDash();
+            yield return new WaitForSeconds(_dashTime);
 
             propertiesCore.ChangeState(PlayerState.Free);
             Dashing = false;

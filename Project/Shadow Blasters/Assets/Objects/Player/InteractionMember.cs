@@ -14,6 +14,8 @@ namespace Player
 		[SerializeField] private LayerMask _interactionMask;
 		[SerializeField] private GameObject waterSplashParticles;
 
+		private bool waterSoundCooldown = false;
+
 		private InputMember _inputMember;
 
 		private bool _interactingLastFrame = false;
@@ -70,19 +72,29 @@ namespace Player
 		{
 			if (collision.gameObject.layer == LayerMask.NameToLayer("Water"))
 			{
-				Vector2 pos = PropertiesCore.s_Instance.FeetCollider.transform.position;
-				pos.y -= 0.2f;
-				Instantiate(waterSplashParticles, pos, Quaternion.identity);
-			}
+                ExecuteWaterSplashAnimation();
+            }
 		}
 		private void OnTriggerExit2D(Collider2D collision)
 		{
 			if (collision.gameObject.layer == LayerMask.NameToLayer("Water"))
 			{
-				Vector2 pos = PropertiesCore.s_Instance.FeetCollider.transform.position;
-				pos.y -= 0.2f;
-				Instantiate(waterSplashParticles, pos, Quaternion.identity);
+				ExecuteWaterSplashAnimation();
 			}
 		}
+
+		private void ExecuteWaterSplashAnimation()
+		{
+			if (!waterSoundCooldown)
+			{
+                waterSoundCooldown = true;
+                StartCoroutine(CoroutineUtils.DelaySeconds(() => waterSoundCooldown = false, 1f));
+            }
+
+            PropertiesCore.audioPlayer.PlayWaterSplash();
+            Vector2 pos = PropertiesCore.s_Instance.FeetCollider.transform.position;
+            pos.y -= 0.2f;
+            Instantiate(waterSplashParticles, pos, Quaternion.identity);
+        }
 	}
 }

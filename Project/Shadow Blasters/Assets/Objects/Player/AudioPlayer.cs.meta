@@ -3,7 +3,9 @@ guid: 06a106f3ecc615744bde92f8241da899
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - attackClip: {instanceID: 0}
+  - stepClip: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

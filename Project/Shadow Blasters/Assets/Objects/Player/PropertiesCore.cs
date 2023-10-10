@@ -33,9 +33,6 @@ namespace Player
 		private AttackMember attackMember;
 		private InteractionMember interactionMember;
 
-        [HideInInspector] public static bool swimming = false;
-		[HideInInspector] public static bool swimJump = false;
-		//[HideInInspector] public static bool ladder = false;
         [HideInInspector] public bool Attacking = false;
 
         public static GameObject Player;
@@ -73,8 +70,6 @@ namespace Player
 
 				DontDestroyOnLoad(gameObject);
 
-				swimming = false;
-				swimJump = false;
 				Attacking = false;
 
 				GameController.SavePlayerInitialPos(gameObject);
@@ -82,16 +77,6 @@ namespace Player
 			else
 			{
 				Destroy(gameObject);
-			}
-		}
-
-		private IEnumerator SwimJumpCoroutine()
-		{
-			swimJump = false;
-			yield return new WaitForSeconds(.25f);
-			if (swimming)
-			{
-				swimJump = true;
 			}
 		}
 
@@ -129,8 +114,7 @@ namespace Player
 			if (collision.gameObject.layer == LayerMask.NameToLayer("Water"))
 			{
 				animator.SetBool("Swimming", false);
-				swimming = false;
-				swimJump = false;
+				ChangeState(PlayerState.Free);
 			}
 			else if (collision.gameObject.layer == LayerMask.NameToLayer("Ladder"))
 			{
@@ -173,12 +157,12 @@ namespace Player
 					break;
 				case PlayerState.Swim:
 					{
-						jumpMember.enabled = false;
-					}
+                        dashMember.enabled = false;
+                    }
 					break;
 				case PlayerState.SwimFree:
 					{
-                        jumpMember.enabled = true;
+                        dashMember.enabled = false;
                     }
                     break;
 				case PlayerState.Interacting:
@@ -195,7 +179,7 @@ namespace Player
             }
         }
 
-		public static bool CanJump()
+        public static bool CanJump()
 		{
 			return s_Instance.currentState == PlayerState.SwimFree || 
 				s_Instance.currentState == PlayerState.Ladder;

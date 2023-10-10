@@ -271,7 +271,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 3, y: 3}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -443,7 +443,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 3, y: 3}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -467,6 +467,7 @@ MonoBehaviour:
   Rigidbody: {fileID: 0}
   Collider: {fileID: 0}
   FeetCollider: {fileID: 0}
+  currentState: 0
   Attacking: 0
 --- !u!114 &2033764059
 MonoBehaviour:
@@ -708,6 +709,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackClip: {fileID: 8300000, guid: cd22d6ab99304504597a325478b7e224, type: 3}
+  stepClip1: {fileID: 8300000, guid: d71731beacbca4b40a71397139577e93, type: 3}
+  stepClip2: {fileID: 8300000, guid: 425715cc57e501045b996babc17eae8a, type: 3}
 --- !u!1 &8082379112158910667
 GameObject:
   m_ObjectHideFlags: 0

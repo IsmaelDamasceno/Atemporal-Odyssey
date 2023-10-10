@@ -1,3 +1,4 @@
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class PowerUp : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            PropertiesCore.audioPlayer.PlayPowerUp();
 			Destroy(gameObject);
 			powerUpEffect.Apply(Player.PropertiesCore.Player);
 			BUffUIManager.CreateBuff(powerUpEffect.UIBuffItem);
