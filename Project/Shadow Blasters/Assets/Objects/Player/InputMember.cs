@@ -42,6 +42,9 @@ namespace Player
 			_controls.Player.Attack.performed += (_) => { AttackInput = true; };
 			_controls.Player.Attack.canceled += (_) => { AttackInput = false; };
 			#endregion
+			#region Save Pos Input
+			_controls.Player.SavePos.performed += GetComponent<SavePosMember>().Save;
+			#endregion
 			#region Dash Input
 			_controls.Player.Dash.performed += (_) => { DashingInput = true; };
 			_controls.Player.Dash.canceled += (_) => { DashingInput = false; };

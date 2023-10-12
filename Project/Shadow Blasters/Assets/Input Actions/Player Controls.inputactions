@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Save Pos",
+                    "type": "Button",
+                    "id": "b2ab0626-c458-4363-8852-82a3f183d4c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -379,6 +388,17 @@
                     "action": "Ladder",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "326d4830-e62d-4ba4-b0d6-a4fac1997c67",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Save Pos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

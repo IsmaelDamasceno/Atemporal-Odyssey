@@ -80,6 +80,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Save Pos"",
+                    ""type"": ""Button"",
+                    ""id"": ""b2ab0626-c458-4363-8852-82a3f183d4c8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -401,6 +410,17 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Ladder"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""326d4830-e62d-4ba4-b0d6-a4fac1997c67"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Save Pos"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -427,6 +447,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Ladder = m_Player.FindAction("Ladder", throwIfNotFound: true);
+        m_Player_SavePos = m_Player.FindAction("Save Pos", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -492,6 +513,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Ladder;
+    private readonly InputAction m_Player_SavePos;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -502,6 +524,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Ladder => m_Wrapper.m_Player_Ladder;
+        public InputAction @SavePos => m_Wrapper.m_Player_SavePos;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -529,6 +552,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Ladder.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLadder;
                 @Ladder.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLadder;
                 @Ladder.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLadder;
+                @SavePos.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSavePos;
+                @SavePos.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSavePos;
+                @SavePos.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSavePos;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -551,6 +577,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Ladder.started += instance.OnLadder;
                 @Ladder.performed += instance.OnLadder;
                 @Ladder.canceled += instance.OnLadder;
+                @SavePos.started += instance.OnSavePos;
+                @SavePos.performed += instance.OnSavePos;
+                @SavePos.canceled += instance.OnSavePos;
             }
         }
     }
@@ -572,5 +601,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnLadder(InputAction.CallbackContext context);
+        void OnSavePos(InputAction.CallbackContext context);
     }
 }
