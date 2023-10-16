@@ -80,6 +80,15 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Time Save"",
+                    ""type"": ""Button"",
+                    ""id"": ""75ef441b-3ba8-4267-9a6e-e36982b56d63"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -401,6 +410,28 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Ladder"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eeb539af-dcbf-4cfa-84c8-c579149788dc"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Time Save"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""793edfb6-add8-4705-a43a-eda494b1d8e5"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Time Save"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -427,6 +458,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Ladder = m_Player.FindAction("Ladder", throwIfNotFound: true);
+        m_Player_TimeSave = m_Player.FindAction("Time Save", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -492,6 +524,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Dash;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Ladder;
+    private readonly InputAction m_Player_TimeSave;
     public struct PlayerActions
     {
         private @PlayerControls m_Wrapper;
@@ -502,6 +535,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Ladder => m_Wrapper.m_Player_Ladder;
+        public InputAction @TimeSave => m_Wrapper.m_Player_TimeSave;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -529,6 +563,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Ladder.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLadder;
                 @Ladder.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLadder;
                 @Ladder.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLadder;
+                @TimeSave.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTimeSave;
+                @TimeSave.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTimeSave;
+                @TimeSave.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTimeSave;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -551,6 +588,9 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                 @Ladder.started += instance.OnLadder;
                 @Ladder.performed += instance.OnLadder;
                 @Ladder.canceled += instance.OnLadder;
+                @TimeSave.started += instance.OnTimeSave;
+                @TimeSave.performed += instance.OnTimeSave;
+                @TimeSave.canceled += instance.OnTimeSave;
             }
         }
     }
@@ -572,5 +612,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
         void OnDash(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnLadder(InputAction.CallbackContext context);
+        void OnTimeSave(InputAction.CallbackContext context);
     }
 }
