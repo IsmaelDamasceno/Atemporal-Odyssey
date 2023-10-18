@@ -60,9 +60,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Save Pos",
+                    "name": "Load Pos",
                     "type": "Button",
                     "id": "b2ab0626-c458-4363-8852-82a3f183d4c8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Save Pos",
+                    "type": "Button",
+                    "id": "eb07c231-d222-4e02-9051-eaa361d68f04",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -393,6 +402,17 @@
                     "name": "",
                     "id": "326d4830-e62d-4ba4-b0d6-a4fac1997c67",
                     "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Load Pos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c74c314a-1d1b-44a0-bc09-e556c8191849",
+                    "path": "<Keyboard>/h",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

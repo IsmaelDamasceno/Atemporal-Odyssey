@@ -31,6 +31,8 @@ namespace Player
 
             propertiesCore.ChangeState(PlayerState.Free);
             Dashing = false;
+			GetComponent<TrailRenderer>().emitting = false;
+
 			_rb.gravityScale = _originalGravScale;
 
 			StartCoroutine(PerformCooldown());
@@ -47,6 +49,7 @@ namespace Player
 			_inputMember = GetComponent<InputMember>();
 			propertiesCore = GetComponent<PropertiesCore>();
 		}
+
 		void Start()
 		{
 			animator = GetComponent<Animator>();
@@ -60,6 +63,8 @@ namespace Player
 		{
 			StopAllCoroutines();
 			_ableToDash = true;
+
+			GetComponent<TrailRenderer>().emitting = false;
 			Dashing = false;
 		}
 
@@ -70,6 +75,8 @@ namespace Player
 			{
 				propertiesCore.ChangeState(PlayerState.Dash);
 				Dashing = true;
+				GetComponent<TrailRenderer>().emitting = true;
+
 				_rb.gravityScale = 0f;
 				_dashDirection = _inputMember.Direction;
 				_ableToDash = false;

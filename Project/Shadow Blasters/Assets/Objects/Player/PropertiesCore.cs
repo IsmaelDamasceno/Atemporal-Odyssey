@@ -10,6 +10,7 @@ public enum PlayerState
 	Swim,
     SwimFree,
     Ladder,
+	LoadingPos,
 	Interacting,
 }
 
@@ -136,7 +137,11 @@ namespace Player
 
 						dashMember.enabled = true;
 						attackMember.enabled = true;
-                    }
+
+						dashMember.enabled = true;
+						damageMember.enabled = true;
+						Rigidbody.bodyType = RigidbodyType2D.Dynamic;
+					}
                     break;
                 case PlayerState.Damage:
                     {
@@ -174,6 +179,16 @@ namespace Player
 					{
 						moveMember.enabled = false;
 						ladderMember.enabled = true;
+					}
+					break;
+				case PlayerState.LoadingPos:
+					{
+						moveMember.enabled = false;
+						jumpMember.JumpControl = false;
+						dashMember.enabled = false;
+						damageMember.enabled = false;
+						attackMember.enabled = false;
+						Rigidbody.bodyType = RigidbodyType2D.Static;
 					}
 					break;
             }
