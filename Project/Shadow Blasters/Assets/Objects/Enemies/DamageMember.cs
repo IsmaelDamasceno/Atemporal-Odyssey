@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,6 +8,9 @@ namespace CrystalBot
 {
     public class DamageMember : MonoBehaviour, IDamage
     {
+
+		[SerializeField] private GameObject particles;
+
         private Rigidbody2D _rb;
         private EnemyBehaviour _behaviour;
         [HideInInspector] public WallDetection WallDetection;
@@ -48,13 +52,20 @@ namespace CrystalBot
 					Destroy(gameObject);
 				}
 
+				
+
 				propertiesCore.ChangeState(EnemyState.Damage);
 
 				int direction = Math.Sign(hitTransform.localScale.x);
-				Debug.Log(impact.x * direction);
 				_rb.AddForce(new Vector2(impact.x * direction, impact.y), ForceMode2D.Impulse);
 
-				StartCoroutine(StunCoroutine());
+                if (particles != null)
+                {
+                    GameObject gameObj = Instantiate(particles, transform.position, Quaternion.identity);
+                    gameObj.transform.localScale = new Vector3(direction, gameObj.transform.localScale.y, gameObj.transform.localScale.z);
+                }
+
+                StartCoroutine(StunCoroutine());
 
 				gameObject.AddComponent<FlashWhite>().Init(stunTime, stunTime, GetComponent<SpriteRenderer>());
 

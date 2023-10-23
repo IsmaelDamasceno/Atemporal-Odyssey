@@ -450,6 +450,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a346954a3810293438e6591148da0b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particles: {fileID: 4325592770306037774, guid: b2257d2d2e58eef4bac51c6951042425, type: 3}
   WallDetection: {fileID: 0}
   GroundDetection: {fileID: 0}
   Feet: {fileID: 0}
