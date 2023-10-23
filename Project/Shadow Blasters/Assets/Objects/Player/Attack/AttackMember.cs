@@ -113,7 +113,7 @@ namespace Player
 				
 				if (attackedTarget != null)
 				{
-                    attackedTarget.ApplyDamage(transform, new Vector2(_impact * transform.localScale.x, _impact), _damage);
+                    attackedTarget.ApplyDamage(transform, new Vector2(_impact, _impact), _damage);
                 }
 			}
 		}

@@ -51,6 +51,7 @@ namespace CrystalBot
 				propertiesCore.ChangeState(EnemyState.Damage);
 
 				int direction = Math.Sign(hitTransform.localScale.x);
+				Debug.Log(impact.x * direction);
 				_rb.AddForce(new Vector2(impact.x * direction, impact.y), ForceMode2D.Impulse);
 
 				StartCoroutine(StunCoroutine());
