@@ -15,6 +15,7 @@ public class Estalactite : MonoBehaviour
 
     [SerializeField] private LayerMask contactLayers;
     [SerializeField] private float interactionDistance;
+    [SerializeField] private GameObject particles;
     private Rigidbody2D rb;
 
 	[SerializeField] private EstalactiteMode currentMode = EstalactiteMode.Asleep;
@@ -33,6 +34,8 @@ public class Estalactite : MonoBehaviour
 			{
 				rb.isKinematic = false;
                 currentMode = EstalactiteMode.Falling;
+                GameObject obj = Instantiate(particles);
+                obj.transform.position = transform.position + Vector3.up;
 			}
 		}
     }
