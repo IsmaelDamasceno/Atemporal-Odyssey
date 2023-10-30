@@ -18,6 +18,7 @@ public class DialogueSystem : MonoBehaviour
     private static DialogueSystem instance;
 
     private static bool nextLine = false;
+    private static bool typing = false;
 
     public static void InitDialogue(string[] dialogueList)
     {
@@ -35,9 +36,18 @@ public class DialogueSystem : MonoBehaviour
     {
         if (instance.gameObject.activeSelf)
         {
-            instance.line++;
-            instance.text.text = "";
-            nextLine = true;
+            if (typing)
+            {
+                instance.text.text = dialogueList[instance.line];
+                nextLine = false;
+                typing = false;
+            }
+            else
+            {
+                instance.line++;
+                instance.text.text = "";
+                nextLine = true;
+            }
         }
     }
 
@@ -64,11 +74,17 @@ public class DialogueSystem : MonoBehaviour
     {
         do {
             nextLine = false;
+            typing = true;
             foreach (char c in dialogueList[line])
             {
+                if (nextLine || !typing)
+                {
+                    break;
+                }
                 instance.text.text += c;
                 yield return new WaitForSeconds(charDelay);
             }
+            typing = false;
 
             while(!nextLine)
             {
