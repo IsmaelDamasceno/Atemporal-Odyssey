@@ -16,12 +16,20 @@ public class LeverController : MonoBehaviour, IInteractable
 
     public bool Interact()
     {
-        if (elevator.direction == 0)
+        /*
+         if (elevator.direction == 0)
         {
 			elevator.GoToFloor(floorIndex);
 			animator.SetTrigger("Activate");
             return true;
 		}
         return false;
+         */
+        DialogueSystem.InitDialogue(new string[] { 
+            "Olá",
+            "Eu sou uma alavanca",
+            "Porra"
+        });
+        return true;
     }
 }

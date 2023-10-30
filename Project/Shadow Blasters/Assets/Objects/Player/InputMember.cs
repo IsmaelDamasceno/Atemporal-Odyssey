@@ -38,8 +38,11 @@ namespace Player
 			_controls.Player.Jump.performed += (_) => { JumpingInput = true; };
 			_controls.Player.Jump.canceled += (_) => { JumpingInput = false; };
 			#endregion
-			#region Attack Input
-			_controls.Player.Attack.performed += (_) => { AttackInput = true; };
+			#region Dialogue Input
+			_controls.Player.Jump.performed += DialogueSystem.SkipDialogue;
+            #endregion
+            #region Attack Input
+            _controls.Player.Attack.performed += (_) => { AttackInput = true; };
 			_controls.Player.Attack.canceled += (_) => { AttackInput = false; };
 			#endregion
 			#region Save Pos Input
