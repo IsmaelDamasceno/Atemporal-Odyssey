@@ -709,8 +709,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackClip: {fileID: 8300000, guid: cd22d6ab99304504597a325478b7e224, type: 3}
-  stepClip1: {fileID: 8300000, guid: d71731beacbca4b40a71397139577e93, type: 3}
-  stepClip2: {fileID: 8300000, guid: 425715cc57e501045b996babc17eae8a, type: 3}
+  stepsClips:
+  - {fileID: 8300000, guid: d71731beacbca4b40a71397139577e93, type: 3}
+  - {fileID: 8300000, guid: 425715cc57e501045b996babc17eae8a, type: 3}
+  dashClip: {fileID: 0}
+  waterSplashClip: {fileID: 0}
+  damageClip: {fileID: 0}
+  powerUpClip: {fileID: 0}
 --- !u!1 &8082379112158910667
 GameObject:
   m_ObjectHideFlags: 0

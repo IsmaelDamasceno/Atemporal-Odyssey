@@ -7,8 +7,7 @@ namespace Player
 	public class AudioPlayer : MonoBehaviour
 	{
 		[SerializeField] private AudioClip attackClip;
-        [SerializeField] private AudioClip stepClip1;
-        [SerializeField] private AudioClip stepClip2;
+        [SerializeField] private List<AudioClip> stepsClips;
         [SerializeField] private AudioClip dashClip;
         [SerializeField] private AudioClip waterSplashClip;
         [SerializeField] private AudioClip damageClip;
@@ -31,13 +30,14 @@ namespace Player
 			source.PlayOneShot(attackClip);
 		}
 
-        public void PlayStep(int step)
+        public void PlayStep()
         {
-			if (step == 1)
-				source.PlayOneShot(stepClip1);
-			else if (step == 2)
-				source.PlayOneShot(stepClip2);
-        }
+			if (!source.isPlaying)
+			{
+				source.clip = stepsClips[Random.Range(0, stepsClips.Count)];
+				source.Play();
+			}
+		}
 
 		public void PlayDash()
 		{

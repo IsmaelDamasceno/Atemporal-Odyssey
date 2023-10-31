@@ -31,6 +31,10 @@ namespace Player
 			if (_inputMember.MoveInput != 0f)
 			{
 				_sprRenderer.flipX = (_inputMember.MoveInput < 0f);
+				if (JumpMember.grounded)
+				{
+					PropertiesCore.audioPlayer.PlayStep();
+				}
 			}
 
 			_animator.SetBool("Moving", _inputMember.MoveInput != 0f);
