@@ -22,6 +22,11 @@ public class DialogueSystem : MonoBehaviour
 
     public static void InitDialogue(string[] dialogueList)
     {
+        if (instance.gameObject.activeInHierarchy)
+        {
+            return;
+        }
+
         instance.StopAllCoroutines();
         instance.line = 0;
         instance.gameObject.SetActive(true);

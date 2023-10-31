@@ -188,6 +188,8 @@ namespace Player
                         dashMember.enabled = false;
                         damageMember.enabled = false;
                         attackMember.enabled = false;
+						GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+						GetComponent<Animator>().SetBool("Moving", false);
                     }
                     break;
             }

@@ -34,36 +34,33 @@ namespace Player
 
 		void Update()
 		{
-			if (!JumpControl)
+			grounded = OnFloor();
+			if (JumpControl)
 			{
-				return;
-			}
-
-            grounded = OnFloor();
-            if (_inputMember.JumpingInput)
-			{
-				if (grounded || PropertiesCore.CanJump())
+				if (_inputMember.JumpingInput)
 				{
-					PropertiesCore.ExitLadder();
-					_rb.velocity = new Vector2(_rb.velocity.x, _jumpStrenght);
-					_initialY = transform.position.y;
-					_startedJump = true;
+					if (grounded || PropertiesCore.CanJump())
+					{
+						PropertiesCore.ExitLadder();
+						_rb.velocity = new Vector2(_rb.velocity.x, _jumpStrenght);
+						_initialY = transform.position.y;
+						_startedJump = true;
+					}
 				}
-			}
-			else
-			{
+				else
+				{
 				
-				float yDiff = transform.position.y - _initialY;
-				if (!grounded && yDiff >= 1.4f && _rb.velocity.y >= 0f && _startedJump)
-				{
-					_rb.velocity = new Vector2(_rb.velocity.x, Mathf.Abs(_rb.velocity.y * 0.4f));
-				}
-				else if (grounded)
-				{
-					_startedJump = false;
+					float yDiff = transform.position.y - _initialY;
+					if (!grounded && yDiff >= 1.4f && _rb.velocity.y >= 0f && _startedJump)
+					{
+						_rb.velocity = new Vector2(_rb.velocity.x, Mathf.Abs(_rb.velocity.y * 0.4f));
+					}
+					else if (grounded)
+					{
+						_startedJump = false;
+					}
 				}
 			}
-
 			_animator.SetFloat("YSpeed", _rb.velocity.y);
 			_animator.SetBool("Grounded", grounded);
 		}
