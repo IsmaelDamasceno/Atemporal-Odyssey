@@ -49,7 +49,6 @@ namespace Player
 				}
 				else
 				{
-				
 					float yDiff = transform.position.y - _initialY;
 					if (!grounded && yDiff >= 1.4f && _rb.velocity.y >= 0f && _startedJump)
 					{
@@ -57,7 +56,11 @@ namespace Player
 					}
 					else if (grounded)
 					{
-						_startedJump = false;
+						if (_startedJump)
+						{
+							PropertiesCore.audioPlayer.PlayStep();
+							_startedJump = false;
+						}
 					}
 				}
 			}

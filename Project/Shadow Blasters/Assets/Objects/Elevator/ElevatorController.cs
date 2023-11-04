@@ -1,10 +1,10 @@
+using Elevator;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
-public class Elevator : MonoBehaviour
+public class ElevatorController : MonoBehaviour
 {
     [SerializeField] private float elevatorSpeed;
     [SerializeField] private LayerMask playerMask;
@@ -18,8 +18,11 @@ public class Elevator : MonoBehaviour
     private Animator animator;
     private Light2D light;
 
+    public static AudioPlayer audioPlayer;
+
     void Start()
     {
+        audioPlayer = GetComponent<AudioPlayer>();
         rb = GetComponent<Rigidbody2D>();
         light = GetComponentInChildren<Light2D>();
         light.enabled = false;
@@ -50,6 +53,7 @@ public class Elevator : MonoBehaviour
 		currentPoint = (currentPoint + 1) % points.Count;
 		direction = Math.Sign(points[currentPoint] - transform.position.y);
 		animator.SetBool("Active", true);
+        audioPlayer.PlayEngine();
 		light.enabled = true;
 	}
     public void GoToFloor(int floor)
@@ -70,6 +74,7 @@ public class Elevator : MonoBehaviour
 			{
                 direction = 0;
                 animator.SetBool("Active", false);
+                audioPlayer.StopEngine();
                 light.enabled = false;
                 transform.position = new Vector2(transform.position.x, points[currentPoint]);
 			}

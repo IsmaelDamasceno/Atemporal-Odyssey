@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LeverController : MonoBehaviour, IInteractable
 {
-    [SerializeField] private Elevator elevator;
+    [SerializeField] private ElevatorController elevator;
     [SerializeField] private int floorIndex;
 
     private Animator animator;
