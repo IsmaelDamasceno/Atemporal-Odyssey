@@ -1,3 +1,4 @@
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,10 +17,23 @@ public class GameController : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+
+            SceneManager.sceneLoaded += LoadScene;
         }
         else
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void LoadScene(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.buildIndex == 1)
+        {
+            if (Player.PropertiesCore.Player.GetComponent<DashMember>().enabled)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("DashPowerUp"));
+            }
         }
     }
 

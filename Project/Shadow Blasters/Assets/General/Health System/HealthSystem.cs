@@ -90,7 +90,7 @@ public class HealthSystem : MonoBehaviour
 
 		yield return new WaitForSeconds(TransitionController.s_TransitionTime);
 
-		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
 		SetMaxHealth(transform.childCount);
 		SetHealth(transform.childCount);
 		Player.PropertiesCore.Player.transform.position = GameController.savePos;
