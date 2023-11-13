@@ -1,7 +1,9 @@
 using Player;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
@@ -10,6 +12,7 @@ public class GameController : MonoBehaviour
     public static GameController instance;
     public static int Score;
 
+    public static TextMeshProUGUI coinAmount;
     public static Vector2 savePos;
 
     void Awake()
@@ -27,8 +30,17 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public static void GetCoin(int amount, GameObject coin)
+    {
+        Score += amount;
+        Destroy(coin);
+        coinAmount.text = Score.ToString();
+    }
+
     private void LoadScene(Scene scene, LoadSceneMode mode)
     {
+        coinAmount = GameObject.FindGameObjectWithTag("Coin Amount").GetComponent<TextMeshProUGUI>();
+
         if (scene.buildIndex == 1)
         {
             if (Player.PropertiesCore.Player.GetComponent<DashMember>().enabled)

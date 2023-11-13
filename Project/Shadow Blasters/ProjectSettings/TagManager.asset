@@ -8,6 +8,7 @@ TagManager:
   - Canvas
   - Interact
   - DashPowerUp
+  - Coin Amount
   layers:
   - Default
   - TransparentFX

@@ -11,8 +11,6 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameController.Score++;
-        Debug.Log(GameController.Score);
-        Destroy(transform.parent.gameObject);
+        GameController.GetCoin(1, transform.parent.gameObject);
     }
 }
