@@ -17,12 +17,15 @@ public class Estalactite : MonoBehaviour
     [SerializeField] private float interactionDistance;
     [SerializeField] private GameObject particles;
     private Rigidbody2D rb;
+    private CauseDamage causeDamage;
 
 	[SerializeField] private EstalactiteMode currentMode = EstalactiteMode.Asleep;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        causeDamage = GetComponent<CauseDamage>();
+        causeDamage.active = false;
         rb.isKinematic = true;
 	}
 
@@ -34,6 +37,7 @@ public class Estalactite : MonoBehaviour
 			{
 				rb.isKinematic = false;
                 currentMode = EstalactiteMode.Falling;
+                causeDamage.active = true;
                 GameObject obj = Instantiate(particles);
                 obj.transform.position = transform.position + Vector3.up;
 			}
@@ -46,11 +50,8 @@ public class Estalactite : MonoBehaviour
 		{
 			rb.velocity = Vector2.zero;
 			rb.isKinematic = true;
+            causeDamage.active = false;
 			currentMode = EstalactiteMode.Grounded;
-		}
-        else if (collision.CompareTag("Player") && currentMode == EstalactiteMode.Falling)
-        {
-			Player.DamageMember.s_Instance.ApplyDamage(transform, new Vector2(5f, 6f), 1);
-		}
+        }
 	}
 }

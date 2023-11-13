@@ -40,6 +40,7 @@ namespace Player
 
 		private Animator _selfAnimator;
 		private Animator _playerAnimator;
+		public CauseDamage causeDamage;
 
 		private InputMember _inputMember;
 		private float _scale;
@@ -49,6 +50,7 @@ namespace Player
 			_scale = transform.localScale.x;
 			attackCollider = GetComponent<BoxCollider2D>();
 			attackCollider.enabled = false;
+			causeDamage = GetComponent<CauseDamage>();
 
 			#region Animation Setup
 			_sprRenderer = GetComponent<SpriteRenderer>();
@@ -96,26 +98,14 @@ namespace Player
 			SetAttacking(true, typeof(AttackMember));
 			CanAttack = false;
 			Attacking = true;
-			attackCollider.enabled = true;
+			causeDamage.active = true;
+            attackCollider.enabled = true;
 
 			_sprRenderer.enabled = true;
 			_selfAnimator.Play("Base Layer.Attack Anim");
 
 			_playerAnimator.SetBool("Attacking", true);
             _playerAnimator.Play("Base Layer.Attack");
-		}
-
-		private void OnTriggerEnter2D(Collider2D collision)
-		{
-			if (Attacking)
-			{
-				IDamage attackedTarget = collision.GetComponent<IDamage>();
-				
-				if (attackedTarget != null)
-				{
-                    attackedTarget.ApplyDamage(transform, new Vector2(_impact, _impact), _damage);
-                }
-			}
 		}
 	}
 }

@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7489b996afe096f4f99292cb701dc55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 15
   walkTime: {x: 3, y: 6}
   attackTriggerDistance: 7
 --- !u!114 &506923347

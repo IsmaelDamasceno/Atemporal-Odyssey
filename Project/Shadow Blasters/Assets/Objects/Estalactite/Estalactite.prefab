@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7750219933133413588}
   - component: {fileID: 7750219933133413585}
   - component: {fileID: 7750219933133413584}
+  - component: {fileID: 9383803822746064}
   m_Layer: 0
   m_Name: Estalactite
   m_TagString: Untagged
@@ -177,3 +178,17 @@ MonoBehaviour:
   interactionDistance: 4
   particles: {fileID: 8255861346037558487, guid: b91d5b327aa95c54d99049236cb3aca7, type: 3}
   currentMode: 0
+--- !u!114 &9383803822746064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750219933133413589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d33c8327be628948a2a4d959fd00f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impact: {x: 0, y: 0}
+  damage: 1

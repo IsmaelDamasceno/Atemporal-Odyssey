@@ -158,8 +158,8 @@ GameObject:
   - component: {fileID: 4361728441940119970}
   - component: {fileID: 4361728441940119981}
   - component: {fileID: 4361728441940119980}
-  - component: {fileID: 4361728441940119971}
   - component: {fileID: -7157000445020306833}
+  - component: {fileID: 6126837963098251399}
   m_Layer: 0
   m_Name: Spike1
   m_TagString: Untagged
@@ -290,18 +290,6 @@ PolygonCollider2D:
       - {x: 0.6805916, y: -0.15357399}
       - {x: 0.317214, y: 0.13505363}
   m_UseDelaunayMesh: 0
---- !u!114 &4361728441940119971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4361728441940119983}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 860d8fc57bacadd48a0bfd0efc9902f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &-7157000445020306833
 Rigidbody2D:
   serializedVersion: 4
@@ -329,6 +317,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 7
+--- !u!114 &6126837963098251399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4361728441940119983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d33c8327be628948a2a4d959fd00f4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impact: {x: 2, y: 5}
+  damage: 1
+  active: 1
 --- !u!1 &9166095704173917507
 GameObject:
   m_ObjectHideFlags: 0
