@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 {
 
     public static GameController instance;
+    public static int Score;
 
     public static Vector2 savePos;
 

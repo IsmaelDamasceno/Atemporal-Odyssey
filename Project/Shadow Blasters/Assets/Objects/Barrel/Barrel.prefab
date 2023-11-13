@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyParticles: {fileID: 7156746194494895659, guid: 105dbc2b062dff94cab66ab838783e8a, type: 3}
   pieces: {fileID: 2287090118402893891, guid: 66843ed48e9c9f74cb71535bcd5be714, type: 3}
+  coinObj: {fileID: 6232275254480183741, guid: 32176e3d81f170b41935bc98ad118783, type: 3}
 --- !u!61 &8662959292625756701
 BoxCollider2D:
   m_ObjectHideFlags: 0
