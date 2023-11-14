@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class BarrelScript : MonoBehaviour, IDamage
@@ -8,6 +9,20 @@ public class BarrelScript : MonoBehaviour, IDamage
     public GameObject destroyParticles;
     public GameObject pieces;
     public GameObject coinObj;
+
+    private Rigidbody2D rb;
+    private CauseDamage causeDamage;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        causeDamage = GetComponent<CauseDamage>();
+    }
+
+    void FixedUpdate()
+    {
+        causeDamage.active = rb.velocity.y <= -6.5f;
+    }
 
     public void ApplyDamage(Transform hitTransform, Vector2 impact, int amount)
     {
@@ -22,13 +37,17 @@ public class BarrelScript : MonoBehaviour, IDamage
 		Destroy(gameObject);
     }
 
-    void Start()
+#if UNITY_EDITOR
+    private void OnDrawGizmosSelected()
     {
-        
-    }
+        if (rb == null)
+        {
+            return;
+        }
 
-    void Update()
-    {
-        
+        Gizmos.color = Color.white;
+
+        Handles.Label(transform.position + Vector3.up, $"y speed: {rb.velocity.y}");
     }
+#endif
 }
