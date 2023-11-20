@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+
+    [SerializeField] private AudioClip pickupClip;
+
     private void Start()
     {
         transform.parent.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.Range(-3f, 3f), Random.Range(3f, 5f)), ForceMode2D.Impulse);
@@ -11,6 +14,8 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        AudioSource source = Player.PropertiesCore.Player.GetComponent<AudioSource>();
+        source.PlayOneShot(pickupClip);
         GameController.GetCoin(1, transform.parent.gameObject);
     }
 }
