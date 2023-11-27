@@ -16,6 +16,7 @@ public static class Globals
 		if (_playerControls == null)
 		{
 			_playerControls = new PlayerControls();
+            _playerControls.Enable();
 		}
         return _playerControls;
     }

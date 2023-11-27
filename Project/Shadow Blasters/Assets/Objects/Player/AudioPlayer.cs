@@ -22,7 +22,7 @@ namespace Player
 
 		void Update()
 		{
-
+			source.volume = GameController.masterVolume * GameController.effectsVolume;
 		}
 
 		public void PlayAttack()

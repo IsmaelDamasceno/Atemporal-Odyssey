@@ -34,6 +34,11 @@ namespace Player
 
 		void Update()
 		{
+			if (ConsistentCanvas.paused)
+			{
+				return;
+			}
+
 			grounded = OnFloor();
 			if (JumpControl)
 			{

@@ -15,7 +15,24 @@ public class GameController : MonoBehaviour
     public static TextMeshProUGUI coinAmount;
     public static Vector2 savePos;
 
-    void Awake()
+    public static float masterVolume = 1f;
+    public static float musicVolume = 1f;
+    public static float effectsVolume = 1f;
+
+    public static void ChangeMasterVolume()
+    {
+        masterVolume = MasterSlider.slider.value;
+    }
+	public static void ChangeMusicVolume()
+	{
+		musicVolume = MusicSlider.slider.value;
+	}
+	public static void ChangeEffectsVolume()
+	{
+		effectsVolume = EffectsSlider.slider.value;
+	}
+
+	void Awake()
     {
         if (instance == null)
         {

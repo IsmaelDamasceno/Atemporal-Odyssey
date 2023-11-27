@@ -25,23 +25,28 @@ namespace BoiTata {
 
 		public void PlayFireball()
 		{
+			source.volume = GameController.masterVolume * GameController.effectsVolume;
 			source.PlayOneShot(fireballClip);
 		}
 		public void PlayFireballTouchGround()
 		{
+			source.volume = GameController.masterVolume * GameController.effectsVolume;
 			int index = Random.Range(0, fireballTouchGround.Count);
 			source.PlayOneShot(fireballTouchGround[index]);
 		}
 		public void PlaySwingSide()
 		{
+			source.volume = GameController.masterVolume * GameController.effectsVolume;
 			source.PlayOneShot(swingSideClip);
 		}
 		public void PlaySwingUp()
 		{
+			source.volume = GameController.masterVolume * GameController.effectsVolume;
 			source.PlayOneShot(swingUpClip);
 		}
 		public void PlaySwingUpPrepare()
 		{
+			source.volume = GameController.masterVolume * GameController.effectsVolume;
 			source.PlayOneShot(swingUpPrepareClip);
 		}
 	}

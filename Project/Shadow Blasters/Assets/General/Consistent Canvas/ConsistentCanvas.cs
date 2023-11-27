@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class ConsistentCanvas : MonoBehaviour
 {
-
     public static ConsistentCanvas s_instance;
 
-    private void Awake()
+	public static bool onSoundMenu = false;
+	public static bool paused = false;
+	private static GameObject pauseMenu;
+
+	void Start()
+	{
+		pauseMenu = GameObject.FindGameObjectWithTag("Pause Menu");
+		pauseMenu.SetActive(false);
+	}
+
+	private void Awake()
     {
         if (s_instance == null)
         {
@@ -19,4 +28,32 @@ public class ConsistentCanvas : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+	void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			if (paused)
+			{
+				if (onSoundMenu)
+				{
+					PauseMenu.soundMenu.SetActive(false);
+					PauseMenu.pauseMenu.SetActive(true);
+					onSoundMenu = false;
+				}
+				else
+				{
+					pauseMenu.SetActive(false);
+					paused = false;
+					Time.timeScale = 1f;
+				}
+			}
+			else
+			{
+				pauseMenu.SetActive(true);
+				paused = true;
+				Time.timeScale = 0f;
+			}
+		}
+	}
 }

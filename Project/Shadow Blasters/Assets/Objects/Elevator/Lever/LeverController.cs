@@ -23,13 +23,5 @@ public class LeverController : MonoBehaviour, IInteractable
             return true;
 		}
         return false;
-        /*
-        DialogueSystem.InitDialogue(new string[] { 
-            "Olá",
-            "Eu sou uma alavanca",
-            "Porra"
-        });
-        return true; 
-        */
     }
 }

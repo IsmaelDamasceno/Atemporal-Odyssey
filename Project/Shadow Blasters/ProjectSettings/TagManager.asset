@@ -9,6 +9,7 @@ TagManager:
   - Interact
   - DashPowerUp
   - Coin Amount
+  - Pause Menu
   layers:
   - Default
   - TransparentFX

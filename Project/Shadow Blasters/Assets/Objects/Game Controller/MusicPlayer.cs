@@ -75,6 +75,6 @@ public class MusicPlayer : MonoBehaviour
 
 	void Update()
     {
-        
+        source.volume = GameController.masterVolume * GameController.musicVolume;
     }
 }

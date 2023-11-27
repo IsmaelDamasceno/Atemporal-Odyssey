@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public class Coin : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class Coin : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         AudioSource source = Player.PropertiesCore.Player.GetComponent<AudioSource>();
-        source.PlayOneShot(pickupClip);
+		source.volume = GameController.masterVolume * GameController.effectsVolume;
+		source.PlayOneShot(pickupClip);
         GameController.GetCoin(1, transform.parent.gameObject);
     }
 }

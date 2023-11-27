@@ -60,14 +60,11 @@ namespace Player
 			_controls.Player.Interact.canceled += (_) => { InteractInput = false; };
 			#endregion
 			#region Ladder Input
-			_controls.Player.Ladder.performed += (ctx) => { LadderInput = ctx.ReadValue<float>(); };
+			 _controls.Player.Ladder.performed += (ctx) => { LadderInput = ctx.ReadValue<float>(); };
 			_controls.Player.Ladder.canceled += (_) => { LadderInput = 0f; };
 			#endregion
 			#endregion
 		}
-
-		private void OnEnable() => _controls.Enable();
-		private void OnDisable() => _controls.Disable();
 
 		void Update()
 		{

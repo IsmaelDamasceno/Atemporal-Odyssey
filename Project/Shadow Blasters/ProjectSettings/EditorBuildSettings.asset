@@ -9,9 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 9a180b808e8146b42b821ac7bd5a18c3
   - enabled: 1
-    path: Assets/Scenes/TESTE.unity
+    path: Assets/Scenes/Fase1.unity
     guid: c4878afbda523c2439a83a72e869dc9a
   - enabled: 1
     path: Assets/Scenes/BossFight.unity
     guid: 854bc9ce331c101488df1ec2819c8fe6
+  - enabled: 1
+    path: Assets/Scenes/Fase2.unity
+    guid: 1a73a160c2a00e347a877ed044b32a83
+  - enabled: 1
+    path: Assets/Scenes/Final.unity
+    guid: d9b7d6e8fc33bd64a86441e4dbfb2905
   m_configObjects: {}

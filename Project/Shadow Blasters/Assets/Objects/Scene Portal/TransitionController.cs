@@ -9,20 +9,14 @@ public class TransitionController : MonoBehaviour
     public static TransitionController s_Instance;
     public static Animator s_Animator;
 
-    [SerializeField] private float _transitiontime;
-
-    public static float s_TransitionTime { get => s_Instance._transitiontime; private set => s_Instance._transitiontime = value; }
+    public static float s_TransitionTime = 2f;
 
     void Awake()
     {
-        if (s_Instance == null)
+		s_Animator = GetComponent<Animator>();
+		if (s_Instance == null)
         {
 			s_Instance = this;
-			s_Animator = GetComponent<Animator>();
 		}
-        else
-        {
-            Destroy(gameObject);
-        }
     }
 }

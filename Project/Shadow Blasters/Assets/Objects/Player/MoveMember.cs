@@ -28,6 +28,11 @@ namespace Player
 
 		private void Update()
 		{
+			if (ConsistentCanvas.paused)
+			{
+				return;
+			}
+
 			if (_inputMember.MoveInput != 0f)
 			{
 				_sprRenderer.flipX = (_inputMember.MoveInput < 0f);
@@ -42,6 +47,11 @@ namespace Player
 
 		void FixedUpdate()
 		{
+			if (ConsistentCanvas.paused)
+			{
+				return;
+			}
+
 			_rigidbody.velocity = new Vector2(MoveSpeed * _inputMember.MoveInput, _rigidbody.velocity.y);
 		}
 	}

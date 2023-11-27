@@ -14,6 +14,7 @@ public class DeathAudioPlayer : MonoBehaviour
 
     public void PlayDeath()
     {
-        source.PlayOneShot(boitataDeathClip);
+		source.volume = GameController.masterVolume * GameController.effectsVolume;
+		source.PlayOneShot(boitataDeathClip);
     }
 }

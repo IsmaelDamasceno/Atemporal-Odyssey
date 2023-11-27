@@ -1,3 +1,4 @@
+using Player;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -31,12 +32,12 @@ public class SceneTeleport : MonoBehaviour
     private IEnumerator LoadLevelCoroutine()
     {
 		TransitionController.s_Animator.SetTrigger("Start");
-        Player.PropertiesCore.Player.SetActive(false);
+        Globals.InitiateControls().Disable();
 
 		yield return new WaitForSeconds(TransitionController.s_TransitionTime);
 
 		SceneManager.LoadScene(targetSceneIndex);
-		Player.PropertiesCore.Player.SetActive(true);
+		Globals.InitiateControls().Enable();
 		Player.PropertiesCore.Player.transform.position = _targetPosition;
 		GameController.savePos = _targetPosition;
 	}

@@ -17,7 +17,6 @@ public class CauseDamage : MonoBehaviour
         }
 
         IDamage attackedTarget = collision.GetComponent<IDamage>();
-        Debug.Log($"obj: {collision.gameObject.name}");
 
         if (attackedTarget != null)
         {

@@ -33,6 +33,11 @@ public class MiddleUpFireSetup : MonoBehaviour
 
     void Update()
     {
+        if (BoiTataController.animator == null)
+        {
+            Destroy(gameObject);
+        }
+
         if (BoiTataController.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f && !started)
         {
             started = true;

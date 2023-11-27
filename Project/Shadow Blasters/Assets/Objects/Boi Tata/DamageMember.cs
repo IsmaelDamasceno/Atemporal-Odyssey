@@ -3,6 +3,7 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace BoiTata
 {
@@ -26,9 +27,11 @@ namespace BoiTata
             {
                 if (health <= 0)
                 {
-                    Instantiate(piecesPrefab, transform.position, Quaternion.identity).GetComponent<DeathAudioPlayer>().PlayDeath();
-                    Timer.playing = false;
-                    Destroy(gameObject);
+                    GameObject obj = Instantiate(piecesPrefab, transform.position, Quaternion.identity);
+                    obj.GetComponent<DeathAudioPlayer>().PlayDeath();
+                    obj.GetComponent<DeathAudioPlayer>().StartCoroutine(FaseFinal());
+
+					Destroy(gameObject);
 					return;
                 }
 
@@ -45,6 +48,20 @@ namespace BoiTata
                 stunned = true;
 			}
         }
-    }
+
+        IEnumerator FaseFinal()
+        {
+            yield return new WaitForSeconds(10f);
+			TransitionController.s_Animator.SetTrigger("Start");
+            Globals.InitiateControls().Disable();
+
+			yield return new WaitForSeconds(TransitionController.s_TransitionTime);
+
+			Globals.InitiateControls().Enable();
+			SceneManager.LoadScene(3);
+			Player.PropertiesCore.Player.transform.position = new Vector2(-268f, -19f);
+			GameController.savePos = new Vector2(-268f, -19f);
+		}
+	}
 
 }

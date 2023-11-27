@@ -9,8 +9,16 @@ public class BarrelPieces : MonoBehaviour
     [SerializeField] private float pushForce;
     [SerializeField] private float torqueForce;
 
+    public AudioClip breakSound;
+
+    private AudioSource source;
+
     void Start()
     {
+        source = GetComponent<AudioSource>();
+		source.volume = GameController.masterVolume * GameController.effectsVolume;
+		source.PlayOneShot(breakSound);
+
         float maxDistance = 0f;
         foreach(Transform childTrs in transform)
         {

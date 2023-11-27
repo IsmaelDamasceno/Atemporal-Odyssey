@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum PlayerState
 {
@@ -136,17 +137,16 @@ namespace Player
 						jumpMember.JumpControl = true;
 						ladderMember.enabled = false;
 
-						dashMember.enabled = true;
+						// dashMember.enabled = true;
 						attackMember.enabled = true;
 
-						dashMember.enabled = true;
 						damageMember.enabled = true;
 					}
                     break;
                 case PlayerState.Damage:
                     {
                         moveMember.enabled = false;
-						dashMember.enabled = false;
+						// dashMember.enabled = false;
 						attackMember.enabled = false;
 						jumpMember.JumpControl = false;
                     }
@@ -162,14 +162,14 @@ namespace Player
 					break;
 				case PlayerState.Swim:
 					{
-                        dashMember.enabled = false;
-                    }
+						// dashMember.enabled = false;
+					}
 					break;
 				case PlayerState.SwimFree:
 					{
-                        dashMember.enabled = false;
-                    }
-                    break;
+						// dashMember.enabled = false;
+					}
+					break;
 				case PlayerState.Interacting:
 					{
 
@@ -185,8 +185,8 @@ namespace Player
 					{
                         moveMember.enabled = false;
                         jumpMember.JumpControl = false;
-                        dashMember.enabled = false;
-                        damageMember.enabled = false;
+						// dashMember.enabled = false;
+						damageMember.enabled = false;
                         attackMember.enabled = false;
 						GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 						GetComponent<Animator>().SetBool("Moving", false);
@@ -214,6 +214,11 @@ namespace Player
 
             s_Instance.ChangeState(PlayerState.Free);
             s_Instance.Collider.excludeLayers = 0;
+		}
+
+		private void LoadScene(Scene scene, LoadSceneMode mode)
+		{
+			ChangeState(PlayerState.Free);
 		}
 	}
 }
